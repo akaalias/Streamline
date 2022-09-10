@@ -11,9 +11,9 @@ struct RageTextInput: View {
     @State private var input: String = ""
     @State private var characters: [String] = []
     @State private var lastWord: [String] = []
-    @State private var newWordHasStarted = true
     @State private var attributedString = AttributedString("")
-    @State private var mostRecentSpaceIndex = 0
+    @State private var firstPartAttributedString = AttributedString("")
+    @State private var lastWordAttributedString = AttributedString("")
     @StateObject var keyboardInput = KeyboardInput()
 
     public init(displayMode: String) {
@@ -45,17 +45,15 @@ struct RageTextInput: View {
                             self.lastWord = []
                         } else { self.lastWord.append(input) }
                         
-                        var firstPartAttributedString = AttributedString(characters.dropLast(lastWord.count).joined())
+                        firstPartAttributedString = AttributedString(characters.dropLast(lastWord.count).joined())
                         firstPartAttributedString.foregroundColor = .gray
 
-                        var lastWordAttributedString = AttributedString(lastWord.joined())
+                        lastWordAttributedString = AttributedString(lastWord.joined())
                         lastWordAttributedString.foregroundColor = .white
                         
-                        var final = AttributedString("")
-                        final.append(firstPartAttributedString)
-                        final.append(lastWordAttributedString)
-                        
-                        self.attributedString = final
+                        attributedString = AttributedString("")
+                        attributedString.append(firstPartAttributedString)
+                        attributedString.append(lastWordAttributedString)
                         
                         input = ""
                     }

@@ -8,11 +8,8 @@
 import SwiftUI
 import SwiftUIX
 
-
 struct RageTextInput: View {
-    private enum Field: Int, Hashable {
-            case inputField
-    }
+    private enum Field: Int, Hashable { case inputField }
 
     @State private var input: String = ""
     @State private var characters: [String] = []
@@ -21,11 +18,10 @@ struct RageTextInput: View {
     @State private var firstPartAttributedString = AttributedString("")
     @State private var lastWordAttributedString = AttributedString("")
     @State private var opacity = 1.0
-    @StateObject var keyboardInput = KeyboardInput()
+
     @FocusState private var focusedField: Field?
 
     var body: some View {
-        KeyboardEvent(into: $keyboardInput.keyCode)
 
         GeometryReader { geometry in
             HStack {
@@ -41,7 +37,6 @@ struct RageTextInput: View {
                 TextField("", text: $input)
                     .disableAutocorrection(true)
                     .font(.system(size: 64))
-                    .padding(10)
                     .background(.white)
                     .foregroundColor(.white)
                     .opacity(opacity)
@@ -63,7 +58,6 @@ struct RageTextInput: View {
                                 self.lastWord = []
                             } else { self.lastWord.append(input) }
                             
-                            // update display strings
                             firstPartAttributedString = AttributedString(characters.dropLast(lastWord.count).joined())
                             firstPartAttributedString.foregroundColor = .gray
                             lastWordAttributedString = AttributedString(lastWord.joined())
@@ -75,7 +69,7 @@ struct RageTextInput: View {
                             input = ""
                         }
                     }
-                    .frame(width: 10)
+                    .frame(width: 20)
                     .offset(y: (geometry.size.height / 2) * -0.5 )
 
             }
@@ -97,43 +91,3 @@ extension NSTextField {
     }
 }
 
-class KeyboardInput: ObservableObject {
-    @Published var keyCode: UInt16 = 0
-}
-
-struct KeyboardEvent: NSViewRepresentable {
-    @Binding var keyStorage: UInt16          // << here !!
-    init(into storage: Binding<UInt16>) {
-        _keyStorage = storage
-    }
-
-    class KeyView: NSView {
-        var owner: KeyboardEvent?   // << view holder
-
-        override var acceptsFirstResponder: Bool { true }
-        override func keyDown(with event: NSEvent) {
-            print(event.keyCode)
-            owner?.keyStorage = event.keyCode
-        }
-    }
-
-    func makeNSView(context: Context) -> NSView {
-        let view = KeyView()
-        view.owner = self           // << inject
-        DispatchQueue.main.async {
-            view.window?.makeFirstResponder(view)
-        }
-        return view
-    }
-
-    func updateNSView(_ nsView: NSView, context: Context) {
-    }
-
-}
-
-
-extension String {
-    func rangeFromNSRange(nsRange : NSRange) -> Range<String.Index>? {
-        return Range(nsRange, in: self)
-    }
-}

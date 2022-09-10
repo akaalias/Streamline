@@ -16,6 +16,7 @@
 		56DF1ED728B60D0D0020B6F6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1ED628B60D0D0020B6F6 /* Persistence.swift */; };
 		56DF1EDA28B60D0D0020B6F6 /* RageEditor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1ED828B60D0D0020B6F6 /* RageEditor.xcdatamodeld */; };
 		56DF1EE228B60D390020B6F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1EE128B60D390020B6F6 /* ContentView.swift */; };
+		56E285BE28CCD20D0025D343 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 56E285BD28CCD20D0025D343 /* SwiftUIX */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56E285BE28CCD20D0025D343 /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +102,9 @@
 			dependencies = (
 			);
 			name = RageEditor;
+			packageProductDependencies = (
+				56E285BD28CCD20D0025D343 /* SwiftUIX */,
+			);
 			productName = RageEditor;
 			productReference = 56DF1ECA28B60D0B0020B6F6 /* RageEditor.app */;
 			productType = "com.apple.product-type.application";
@@ -128,6 +133,9 @@
 				Base,
 			);
 			mainGroup = 56DF1EC128B60D0B0020B6F6;
+			packageReferences = (
+				56E285BC28CCD20D0025D343 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+			);
 			productRefGroup = 56DF1ECB28B60D0B0020B6F6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -356,6 +364,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		56E285BC28CCD20D0025D343 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		56E285BD28CCD20D0025D343 /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56E285BC28CCD20D0025D343 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		56DF1ED828B60D0D0020B6F6 /* RageEditor.xcdatamodeld */ = {

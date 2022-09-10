@@ -6,66 +6,86 @@
 //
 
 import SwiftUI
+import SwiftUIX
+
 
 struct RageTextInput: View {
+    private enum Field: Int, Hashable {
+            case inputField
+    }
+
     @State private var input: String = ""
     @State private var characters: [String] = []
     @State private var lastWord: [String] = []
     @State private var attributedString = AttributedString("")
     @State private var firstPartAttributedString = AttributedString("")
     @State private var lastWordAttributedString = AttributedString("")
+    @State private var opacity = 1.0
     @StateObject var keyboardInput = KeyboardInput()
-
-    public init(displayMode: String) {
-    }
+    @FocusState private var focusedField: Field?
 
     var body: some View {
         KeyboardEvent(into: $keyboardInput.keyCode)
 
-        HStack {
-            Text(attributedString)
-                .font(.system(size: 64))
-                .truncationMode(.head)
-                .frame(width: 400, alignment: .trailing)
-                .lineLimit(1)
-                .foregroundColor(.gray)
-                .mask(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .leading, endPoint: .trailing))
-            
-            TextField("", text: $input)
-                .disableAutocorrection(true)
-                .font(.system(size: 64))
-                .frame(width: 10)
-                .background(.white)
-                .foregroundColor(.white)
-                .onChange(of: input) { newValue in
-                    if(input != "") {
-                        characters.append(input)
-                                                
-                        if(input == " ") {
-                            self.lastWord = []
-                        } else { self.lastWord.append(input) }
-                        
-                        firstPartAttributedString = AttributedString(characters.dropLast(lastWord.count).joined())
-                        firstPartAttributedString.foregroundColor = .gray
+        GeometryReader { geometry in
+            HStack {
+                Text(attributedString)
+                    .font(.system(size: 64))
+                    .truncationMode(.head)
+                    .lineLimit(1)
+                    .foregroundColor(.gray)
+                    .frame(width: geometry.size.width * 0.6, alignment: .trailing)
+                    .mask(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .leading, endPoint: .trailing))
+                    .offset(y: (geometry.size.height / 2) * -0.5 )
 
-                        lastWordAttributedString = AttributedString(lastWord.joined())
-                        lastWordAttributedString.foregroundColor = .white
-                        
-                        attributedString = AttributedString("")
-                        attributedString.append(firstPartAttributedString)
-                        attributedString.append(lastWordAttributedString)
-                        
-                        input = ""
+                TextField("", text: $input)
+                    .disableAutocorrection(true)
+                    .font(.system(size: 64))
+                    .padding(10)
+                    .background(.white)
+                    .foregroundColor(.white)
+                    .opacity(opacity)
+                    .focused($focusedField, equals: .inputField)
+                    .task {
+                        self.focusedField = .inputField
                     }
-                }
+                    .onAppear() {
+                        withAnimation(.easeInOut(duration: 2).repeatForever()) {
+                            opacity = 0.2
+                        }
+                    }
+                    .onChange(of: input) { newValue in
+                        if(input != "") {
+                            characters.append(input)
+                            
+                            // Keep track of last word
+                            if(input == " ") {
+                                self.lastWord = []
+                            } else { self.lastWord.append(input) }
+                            
+                            // update display strings
+                            firstPartAttributedString = AttributedString(characters.dropLast(lastWord.count).joined())
+                            firstPartAttributedString.foregroundColor = .gray
+                            lastWordAttributedString = AttributedString(lastWord.joined())
+                            lastWordAttributedString.foregroundColor = .white
+                            attributedString = AttributedString("")
+                            attributedString.append(firstPartAttributedString)
+                            attributedString.append(lastWordAttributedString)
+                            
+                            input = ""
+                        }
+                    }
+                    .frame(width: 10)
+                    .offset(y: (geometry.size.height / 2) * -0.5 )
+
+            }
         }
-        .frame(maxWidth: .infinity, alignment: .trailing)
-        }
+    }
 }
 
 struct RageTextInput_Previews: PreviewProvider {
     static var previews: some View {
-        RageTextInput(displayMode: "Character")
+        RageTextInput()
     }
 }
 

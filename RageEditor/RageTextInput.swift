@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftUIX
 
 struct RageTextInput: View {
-    private enum Field: Int, Hashable { case inputField }
 
     @State private var input: String = ""
     @State private var allCharacters: [String] = []
@@ -20,62 +19,63 @@ struct RageTextInput: View {
     @State private var lastWordAttributedString = AttributedString("")
     @State private var opacity = 1.0
 
-    @FocusState private var focusedField: Field?
     @StateObject var keyboardInput = KeyboardInput()
 
     var body: some View {
         KeyboardEvent(into: $keyboardInput.keyCode)
         
         GeometryReader { geometry in
-            HStack {
-                Text(attributedString)
-                    .font(.system(size: 64))
-                    .truncationMode(.head)
-                    .lineLimit(1)
-                    .foregroundColor(.gray)
-                    .frame(width: geometry.size.width * 0.6, alignment: .trailing)
-                    .mask(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .leading, endPoint: .trailing))
-                    .offset(y: (geometry.size.height / 2) * -0.5 )
+                HStack {
+                    Text(attributedString)
+                        .font(.system(size: 64))
+                        .truncationMode(.head)
+                        .lineLimit(1)
+                        .foregroundColor(.gray)
+                        .frame(width: geometry.size.width * 0.6, alignment: .trailing)
+                        .mask(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .leading, endPoint: .trailing))
 
-                Rectangle()
-                    .frame(width: 20, height: 66)
-                    .offset(y: (geometry.size.height / 2) * -0.5 )
-                    .opacity(opacity)
-                    .onAppear() {
-                        withAnimation(.easeInOut(duration: 2).repeatForever()) {
-                            opacity = 0.2
-                        }
-                        
-                        NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
-                            if(event.keyCode == 36) {
-                                // Save it but not display it
-                            } else {
-                                let character = event.charactersIgnoringModifiers ?? ""
-                                
-                                characters.append(character)
-                                
-                                if(input == " ") {
-                                    self.lastWord = []
-                                } else {
-                                    self.lastWord.append(character)
-                                }
-                                
-                                firstPartAttributedString = AttributedString(characters.dropLast(lastWord.count).joined())
-                                firstPartAttributedString.foregroundColor = .gray
-                                lastWordAttributedString = AttributedString(lastWord.joined())
-                                lastWordAttributedString.foregroundColor = .white
-                                attributedString = AttributedString("")
-                                attributedString.append(firstPartAttributedString)
-                                attributedString.append(lastWordAttributedString)
-                                
-                                if event.keyCode == 53 { // if esc pressed
-                                    return nil // do not do "beep" sound
-                                }
+                    Rectangle()
+                        .fill(.white)
+                        .frame(width: 20, height: 64)
+                        .opacity(opacity)
+                        .onAppear() {
+                            withAnimation(.easeInOut(duration: 2).repeatForever()) {
+                                opacity = 0.2
                             }
-                            return event
                         }
+                        .offset(x: -10)
+            }
+            
+        }
+        .onAppear() {
+            NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
+                if(event.keyCode == 36) {
+                    // Save it but not display it
+                } else {
+                    let character = event.charactersIgnoringModifiers ?? ""
+                    
+                    characters.append(character)
+                    
+                    if(character == " ") {
+                        print("starting new word")
+                        self.lastWord = []
+                    } else {
+                        self.lastWord.append(character)
                     }
-                
+                    
+                    firstPartAttributedString = AttributedString(characters.dropLast(lastWord.count).joined())
+                    firstPartAttributedString.foregroundColor = .gray
+                    lastWordAttributedString = AttributedString(lastWord.joined())
+                    lastWordAttributedString.foregroundColor = .white
+                    attributedString = AttributedString("")
+                    attributedString.append(firstPartAttributedString)
+                    attributedString.append(lastWordAttributedString)
+                    
+                    if event.keyCode == 53 { // if esc pressed
+                        return nil // do not do "beep" sound
+                    }
+                }
+                return event
             }
         }
     }

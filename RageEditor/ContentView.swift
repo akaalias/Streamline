@@ -9,7 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        RageTextInput()
+        ZStack {
+            GeometryReader { geometry in
+                HStack {
+                    Rectangle()
+                        .frame(width: geometry.size.width * 0.6, alignment: .trailing)
+                        .opacity(0.0)
+                    
+                    Rectangle()
+                        .frame(width: geometry.size.width * 0.4, alignment: .trailing)
+                        .opacity(0.2)
+                }
+                
+                RageTextInput()
+                    .offset(y: (geometry.size.height / 2.0) - 38.0)
+
+            }
+        }
     }
 }
 

@@ -25,7 +25,7 @@ struct RageTextInput: View {
 
     var body: some View {
         KeyboardEvent(into: $keyboardInput.keyCode)
-
+        
         GeometryReader { geometry in
             HStack {
                 Text(attributedString)
@@ -37,53 +37,45 @@ struct RageTextInput: View {
                     .mask(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .leading, endPoint: .trailing))
                     .offset(y: (geometry.size.height / 2) * -0.5 )
 
-                TextField("", text: $input)
-                    .disableAutocorrection(true)
-                    .font(.system(size: 64))
-                    .background(.white)
-                    .foregroundColor(.white)
+                Rectangle()
+                    .frame(width: 20, height: 66)
+                    .offset(y: (geometry.size.height / 2) * -0.5 )
                     .opacity(opacity)
-                    .focused($focusedField, equals: .inputField)
-                    .task {
-                        self.focusedField = .inputField
-                    }
                     .onAppear() {
                         withAnimation(.easeInOut(duration: 2).repeatForever()) {
                             opacity = 0.2
                         }
                         
                         NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
-                            print(event.charactersIgnoringModifiers)
-                            
-                            if event.keyCode == 53 { // if esc pressed
-                                return nil // do not do "beep" sound
+                            if(event.keyCode == 36) {
+                                // Save it but not display it
+                            } else {
+                                let character = event.charactersIgnoringModifiers ?? ""
+                                
+                                characters.append(character)
+                                
+                                if(input == " ") {
+                                    self.lastWord = []
+                                } else {
+                                    self.lastWord.append(character)
+                                }
+                                
+                                firstPartAttributedString = AttributedString(characters.dropLast(lastWord.count).joined())
+                                firstPartAttributedString.foregroundColor = .gray
+                                lastWordAttributedString = AttributedString(lastWord.joined())
+                                lastWordAttributedString.foregroundColor = .white
+                                attributedString = AttributedString("")
+                                attributedString.append(firstPartAttributedString)
+                                attributedString.append(lastWordAttributedString)
+                                
+                                if event.keyCode == 53 { // if esc pressed
+                                    return nil // do not do "beep" sound
+                                }
                             }
                             return event
                         }
                     }
-                    .onChange(of: input) { newValue in
-                        if(input != "") {
-                            characters.append(input)
-                            
-                            // Keep track of last word
-                            if(input == " ") {
-                                self.lastWord = []
-                            } else { self.lastWord.append(input) }
-                            
-                            firstPartAttributedString = AttributedString(characters.dropLast(lastWord.count).joined())
-                            firstPartAttributedString.foregroundColor = .gray
-                            lastWordAttributedString = AttributedString(lastWord.joined())
-                            lastWordAttributedString.foregroundColor = .white
-                            attributedString = AttributedString("")
-                            attributedString.append(firstPartAttributedString)
-                            attributedString.append(lastWordAttributedString)
-                            
-                            input = ""
-                        }
-                    }
-                    .frame(width: 20)
-                    .offset(y: (geometry.size.height / 2) * -0.5 )
-
+                
             }
         }
     }

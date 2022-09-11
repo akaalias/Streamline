@@ -48,38 +48,33 @@ struct RageTextInput: View {
         }
         .onAppear() {
             NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
+                if event.keyCode == 53 { // if esc pressed
+                    return nil // do not do "beep" sound
+                }
+                
                 let character = event.charactersIgnoringModifiers ?? ""
-
                 state.allCharacters.append(character)
                 
                 if(event.keyCode == 36) {
-                    // Save it but not display it
-                    characters = []
-                    lastWord = []
-                    attributedString = AttributedString("")
-
+                    characters.append("↩")
+                    self.lastWord = []
                 } else {
-                    
                     characters.append(character)
-                    
                     if(character == " ") {
                         self.lastWord = []
                     } else {
                         self.lastWord.append(character)
                     }
-                    
-                    firstPartAttributedString = AttributedString(characters.dropLast(lastWord.count).joined())
-                    firstPartAttributedString.foregroundColor = .gray
-                    lastWordAttributedString = AttributedString(lastWord.joined())
-                    lastWordAttributedString.foregroundColor = .white
-                    attributedString = AttributedString("")
-                    attributedString.append(firstPartAttributedString)
-                    attributedString.append(lastWordAttributedString)
-                    
-                    if event.keyCode == 53 { // if esc pressed
-                        return nil // do not do "beep" sound
-                    }
                 }
+                                                
+                firstPartAttributedString = AttributedString(characters.dropLast(lastWord.count).joined())
+                firstPartAttributedString.foregroundColor = .gray
+                lastWordAttributedString = AttributedString(lastWord.joined())
+                lastWordAttributedString.foregroundColor = .white
+                attributedString = AttributedString("")
+                attributedString.append(firstPartAttributedString)
+                attributedString.append(lastWordAttributedString)
+                            
                 return event
             }
         }

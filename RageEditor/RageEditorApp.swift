@@ -18,5 +18,6 @@ struct RageEditorApp: App {
                 .environmentObject(state)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
+        .windowStyle(HiddenTitleBarWindowStyle())
     }
 }

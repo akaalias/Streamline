@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		56D0C3C828B61D5900B96243 /* TextHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0C3C728B61D5900B96243 /* TextHelper.swift */; };
+		5648615628CDEA1800B7A3E5 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5648615528CDEA1800B7A3E5 /* AppState.swift */; };
 		56D0C3CA28B6297100B96243 /* RageTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0C3C928B6297100B96243 /* RageTextInput.swift */; };
 		56DF1ECE28B60D0B0020B6F6 /* RageEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1ECD28B60D0B0020B6F6 /* RageEditorApp.swift */; };
 		56DF1ED028B60D0B0020B6F6 /* ContentViewBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1ECF28B60D0B0020B6F6 /* ContentViewBackup.swift */; };
@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		56D0C3C728B61D5900B96243 /* TextHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextHelper.swift; sourceTree = "<group>"; };
+		5648615528CDEA1800B7A3E5 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		56D0C3C928B6297100B96243 /* RageTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RageTextInput.swift; sourceTree = "<group>"; };
 		56DF1ECA28B60D0B0020B6F6 /* RageEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RageEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56DF1ECD28B60D0B0020B6F6 /* RageEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RageEditorApp.swift; sourceTree = "<group>"; };
@@ -65,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				56DF1ECD28B60D0B0020B6F6 /* RageEditorApp.swift */,
+				5648615528CDEA1800B7A3E5 /* AppState.swift */,
 				56DF1ECF28B60D0B0020B6F6 /* ContentViewBackup.swift */,
 				56DF1EE128B60D390020B6F6 /* ContentView.swift */,
 				56DF1ED128B60D0D0020B6F6 /* Assets.xcassets */,
@@ -72,7 +73,6 @@
 				56DF1EDB28B60D0D0020B6F6 /* RageEditor.entitlements */,
 				56DF1ED828B60D0D0020B6F6 /* RageEditor.xcdatamodeld */,
 				56DF1ED328B60D0D0020B6F6 /* Preview Content */,
-				56D0C3C728B61D5900B96243 /* TextHelper.swift */,
 				56D0C3C928B6297100B96243 /* RageTextInput.swift */,
 			);
 			path = RageEditor;
@@ -164,10 +164,10 @@
 			files = (
 				56DF1ED728B60D0D0020B6F6 /* Persistence.swift in Sources */,
 				56D0C3CA28B6297100B96243 /* RageTextInput.swift in Sources */,
+				5648615628CDEA1800B7A3E5 /* AppState.swift in Sources */,
 				56DF1EE228B60D390020B6F6 /* ContentView.swift in Sources */,
 				56DF1EDA28B60D0D0020B6F6 /* RageEditor.xcdatamodeld in Sources */,
 				56DF1ED028B60D0B0020B6F6 /* ContentViewBackup.swift in Sources */,
-				56D0C3C828B61D5900B96243 /* TextHelper.swift in Sources */,
 				56DF1ECE28B60D0B0020B6F6 /* RageEditorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

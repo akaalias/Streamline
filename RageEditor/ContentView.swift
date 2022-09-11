@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var state: AppState
+
     var body: some View {
         ZStack {
             GeometryReader { geometry in
@@ -18,14 +20,15 @@ struct ContentView: View {
                     
                     Rectangle()
                         .frame(width: geometry.size.width * 0.4, alignment: .trailing)
-                        .opacity(0.2)
+                        .opacity(0.1)
                 }
                 
                 RageTextInput()
                     .offset(y: (geometry.size.height / 2.0) - 38.0)
-
             }
         }
+        // Text("\(state.allCharacters.joined())")
+
     }
 }
 
@@ -49,7 +52,7 @@ struct KeyboardEvent: NSViewRepresentable {
         var owner: KeyboardEvent?   // << view holder
         override var acceptsFirstResponder: Bool { true }
         override func keyDown(with event: NSEvent) {
-            print(event.keyCode)
+            // print(event.keyCode)
             owner?.keyStorage = event.keyCode
         }
     }

@@ -9,9 +9,8 @@ import SwiftUI
 import SwiftUIX
 
 struct RageTextInput: View {
+    @EnvironmentObject var state: AppState
 
-    @State private var input: String = ""
-    @State private var allCharacters: [String] = []
     @State private var characters: [String] = []
     @State private var lastWord: [String] = []
     @State private var attributedString = AttributedString("")
@@ -49,15 +48,21 @@ struct RageTextInput: View {
         }
         .onAppear() {
             NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
+                let character = event.charactersIgnoringModifiers ?? ""
+
+                state.allCharacters.append(character)
+                
                 if(event.keyCode == 36) {
                     // Save it but not display it
+                    characters = []
+                    lastWord = []
+                    attributedString = AttributedString("")
+
                 } else {
-                    let character = event.charactersIgnoringModifiers ?? ""
                     
                     characters.append(character)
                     
                     if(character == " ") {
-                        print("starting new word")
                         self.lastWord = []
                     } else {
                         self.lastWord.append(character)

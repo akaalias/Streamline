@@ -12,6 +12,7 @@ struct RageTextInput: View {
     private enum Field: Int, Hashable { case inputField }
 
     @State private var input: String = ""
+    @State private var allCharacters: [String] = []
     @State private var characters: [String] = []
     @State private var lastWord: [String] = []
     @State private var attributedString = AttributedString("")
@@ -20,8 +21,10 @@ struct RageTextInput: View {
     @State private var opacity = 1.0
 
     @FocusState private var focusedField: Field?
+    @StateObject var keyboardInput = KeyboardInput()
 
     var body: some View {
+        KeyboardEvent(into: $keyboardInput.keyCode)
 
         GeometryReader { geometry in
             HStack {
@@ -47,6 +50,15 @@ struct RageTextInput: View {
                     .onAppear() {
                         withAnimation(.easeInOut(duration: 2).repeatForever()) {
                             opacity = 0.2
+                        }
+                        
+                        NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
+                            print(event.charactersIgnoringModifiers)
+                            
+                            if event.keyCode == 53 { // if esc pressed
+                                return nil // do not do "beep" sound
+                            }
+                            return event
                         }
                     }
                     .onChange(of: input) { newValue in

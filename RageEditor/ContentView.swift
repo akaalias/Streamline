@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var keyboardInput = KeyboardInput()
-
     var body: some View {
-        KeyboardEvent(into: $keyboardInput.keyCode)
-        Text("\(keyboardInput.keyCode)")
         RageTextInput()
     }
 }

@@ -8,7 +8,16 @@
 import Foundation
 import SwiftUI
 import Combine
+import SpriteKit
 
 class AppState: ObservableObject {
-    @Published var allCharacters: [String] = []
+    @Published var allCharacters: [String]
+    @Published var scene: ParticleScene
+    
+    init() {
+        allCharacters = []
+        scene = ParticleScene()
+        scene.scaleMode = .resizeFill
+        scene.backgroundColor = .clear
+    }
 }

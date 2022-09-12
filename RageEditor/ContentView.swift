@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 struct ContentView: View {
     @EnvironmentObject var state: AppState
 
     var body: some View {
         ZStack {
+            SpriteView(scene: state.scene, options: [.allowsTransparency])
+                .ignoresSafeArea()
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+            
             GeometryReader { geometry in
                 HStack {
                     Rectangle()

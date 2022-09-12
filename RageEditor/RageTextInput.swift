@@ -48,6 +48,7 @@ struct RageTextInput: View {
         }
         .onAppear() {
             NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
+                
                 if event.keyCode == 53 { // if esc pressed
                     return nil // do not do "beep" sound
                 }
@@ -75,6 +76,8 @@ struct RageTextInput: View {
                 attributedString.append(firstPartAttributedString)
                 attributedString.append(lastWordAttributedString)
                             
+                state.scene.start()
+                state.scene.update(particleCount: state.allCharacters.count)
                 return event
             }
         }

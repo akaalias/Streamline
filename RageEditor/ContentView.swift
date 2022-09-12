@@ -17,23 +17,22 @@ struct ContentView: View {
                 HStack {
                     Rectangle()
                         .frame(width: geometry.size.width * 0.6, alignment: .trailing)
-                        .opacity(0)
+                        .opacity(0.1)
                     
                     Rectangle()
                         .frame(width: geometry.size.width * 0.4, alignment: .trailing)
                         .opacity(0)
                 }
                 
-                SpriteView(scene: state.scene, options: [.allowsTransparency])
-                    .ignoresSafeArea()
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                    .opacity(0.5)
+//                SpriteView(scene: state.scene, options: [.allowsTransparency])
+//                    .ignoresSafeArea()
+//                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+//                    .opacity(0.2)
 
                 RageTextInput()
                     .offset(y: (geometry.size.height / 2.0) - 38.0)
             }
         }
-        .background(.black)
     }
 }
 

@@ -32,7 +32,6 @@ struct RageTextInput: View {
                         .foregroundColor(.gray)
                         .frame(width: geometry.size.width * 0.6, alignment: .trailing)
                         .mask(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .leading, endPoint: .trailing))
-                        .padding()
 
                     Rectangle()
                         .fill(.white)
@@ -43,7 +42,7 @@ struct RageTextInput: View {
                                 opacity = 0.2
                             }
                         }
-                        .offset(x: -23)
+                        .offset(x: -8)
             }
             
         }

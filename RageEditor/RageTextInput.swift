@@ -75,9 +75,9 @@ struct RageTextInput: View {
                 attributedString = AttributedString("")
                 attributedString.append(firstPartAttributedString)
                 attributedString.append(lastWordAttributedString)
-                            
-                state.scene.start()
-                state.scene.update(particleCount: state.allCharacters.count)
+                
+                state.scene.emitOne()
+                
                 return event
             }
         }

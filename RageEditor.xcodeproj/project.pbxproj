@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5648615628CDEA1800B7A3E5 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5648615528CDEA1800B7A3E5 /* AppState.swift */; };
-		5679D95428CE818E0036EC9C /* FireParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5679D95328CE818E0036EC9C /* FireParticles.sks */; };
 		5679D95628CE83AF0036EC9C /* ParticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5679D95528CE83AF0036EC9C /* ParticleView.swift */; };
 		5679D95828CE86340036EC9C /* SnowParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5679D95728CE86340036EC9C /* SnowParticles.sks */; };
 		56D0C3CA28B6297100B96243 /* RageTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0C3C928B6297100B96243 /* RageTextInput.swift */; };
@@ -24,7 +23,6 @@
 
 /* Begin PBXFileReference section */
 		5648615528CDEA1800B7A3E5 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		5679D95328CE818E0036EC9C /* FireParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireParticles.sks; sourceTree = "<group>"; };
 		5679D95528CE83AF0036EC9C /* ParticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleView.swift; sourceTree = "<group>"; };
 		5679D95728CE86340036EC9C /* SnowParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SnowParticles.sks; sourceTree = "<group>"; };
 		56D0C3C928B6297100B96243 /* RageTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RageTextInput.swift; sourceTree = "<group>"; };
@@ -76,7 +74,6 @@
 				56DF1EE128B60D390020B6F6 /* ContentView.swift */,
 				5679D95728CE86340036EC9C /* SnowParticles.sks */,
 				56DF1ED128B60D0D0020B6F6 /* Assets.xcassets */,
-				5679D95328CE818E0036EC9C /* FireParticles.sks */,
 				5679D95528CE83AF0036EC9C /* ParticleView.swift */,
 				56DF1ED628B60D0D0020B6F6 /* Persistence.swift */,
 				56DF1EDB28B60D0D0020B6F6 /* RageEditor.entitlements */,
@@ -159,7 +156,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5679D95428CE818E0036EC9C /* FireParticles.sks in Resources */,
 				56DF1ED528B60D0D0020B6F6 /* Preview Assets.xcassets in Resources */,
 				5679D95828CE86340036EC9C /* SnowParticles.sks in Resources */,
 				56DF1ED228B60D0D0020B6F6 /* Assets.xcassets in Resources */,

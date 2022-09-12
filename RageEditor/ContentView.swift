@@ -32,8 +32,7 @@ struct ContentView: View {
                     .offset(y: (geometry.size.height / 2.0) - 38.0)
             }
         }
-        // Text("\(state.allCharacters.joined())")
-
+        Text("\(state.scene.snowEmitterNode?.numParticlesToEmit.formatted() ?? "")")
     }
 }
 

@@ -31,7 +31,7 @@ class ParticleScene: SKScene {
     override func didMove(to view: SKView) {
         guard let snowEmitterNode = snowEmitterNode else { return }
 
-        snowEmitterNode.particlePosition = CGPoint(x: size.width * 0.6, y: size.height / 2)
+        snowEmitterNode.particlePosition = CGPoint(x: size.width * 0.6, y: (size.height / 2) - 100)
         snowEmitterNode.particleBirthRate = 0
 
         addChild(snowEmitterNode)
@@ -40,7 +40,7 @@ class ParticleScene: SKScene {
     override func didChangeSize(_ oldSize: CGSize) {
         guard let snowEmitterNode = snowEmitterNode else { return }
 
-        snowEmitterNode.particlePosition = CGPoint(x: size.width * 0.6, y: size.height / 2)
+        snowEmitterNode.particlePosition = CGPoint(x: size.width * 0.6, y: (size.height / 2) - 100)
         snowEmitterNode.particleBirthRate = 0
     }
 }

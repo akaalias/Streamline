@@ -27,12 +27,13 @@ struct ContentView: View {
                 SpriteView(scene: state.scene, options: [.allowsTransparency])
                     .ignoresSafeArea()
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                    .opacity(0.5)
 
                 RageTextInput()
                     .offset(y: (geometry.size.height / 2.0) - 38.0)
             }
         }
-        .background(.gray)
+        .background(.black)
     }
 }
 

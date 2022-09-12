@@ -17,11 +17,11 @@ struct ContentView: View {
                 HStack {
                     Rectangle()
                         .frame(width: geometry.size.width * 0.6, alignment: .trailing)
-                        .opacity(0.1)
+                        .opacity(0)
                     
                     Rectangle()
                         .frame(width: geometry.size.width * 0.4, alignment: .trailing)
-                        .opacity(0)
+                        .opacity(0.05)
                 }
                 
 //                SpriteView(scene: state.scene, options: [.allowsTransparency])
@@ -30,7 +30,7 @@ struct ContentView: View {
 //                    .opacity(0.2)
 
                 RageTextInput()
-                    .offset(y: (geometry.size.height / 2.0) - 38.0)
+                    .offset(y: (geometry.size.height / 2.0) - 80.0)
             }
         }
     }

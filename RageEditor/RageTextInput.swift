@@ -17,6 +17,8 @@ struct RageTextInput: View {
     @State private var firstPartAttributedString = AttributedString("")
     @State private var lastWordAttributedString = AttributedString("")
     @State private var opacity = 1.0
+    
+    @State private var words: [String] = []
 
     @StateObject var keyboardInput = KeyboardInput()
 
@@ -56,6 +58,10 @@ struct RageTextInput: View {
                 let character = event.charactersIgnoringModifiers ?? ""
                 state.allCharacters.append(character)
                 
+                if(character == " ") {
+                    self.words.append(self.lastWord.joined())
+                }
+
                 if(event.keyCode == 36) {
                     characters.append("↩")
                     self.lastWord = []
@@ -67,6 +73,7 @@ struct RageTextInput: View {
                         self.lastWord.append(character)
                     }
                 }
+                
                                                 
                 firstPartAttributedString = AttributedString(characters.dropLast(lastWord.count).joined())
                 firstPartAttributedString.foregroundColor = .gray

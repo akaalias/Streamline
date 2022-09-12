@@ -13,26 +13,26 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            SpriteView(scene: state.scene, options: [.allowsTransparency])
-                .ignoresSafeArea()
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-            
             GeometryReader { geometry in
                 HStack {
                     Rectangle()
                         .frame(width: geometry.size.width * 0.6, alignment: .trailing)
-                        .opacity(0.0)
+                        .opacity(0)
                     
                     Rectangle()
                         .frame(width: geometry.size.width * 0.4, alignment: .trailing)
-                        .opacity(0.1)
+                        .opacity(0)
                 }
                 
+                SpriteView(scene: state.scene, options: [.allowsTransparency])
+                    .ignoresSafeArea()
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+
                 RageTextInput()
                     .offset(y: (geometry.size.height / 2.0) - 38.0)
             }
         }
-        Text("\(state.scene.snowEmitterNode?.numParticlesToEmit.formatted() ?? "")")
+        .background(.gray)
     }
 }
 

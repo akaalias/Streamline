@@ -32,17 +32,19 @@ struct RageTextInput: View {
                         .foregroundColor(.gray)
                         .frame(width: geometry.size.width * 0.6, alignment: .trailing)
                         .mask(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .leading, endPoint: .trailing))
+                        .padding()
+                        .background(.black)
 
                     Rectangle()
                         .fill(.white)
-                        .frame(width: 20, height: 64)
+                        .frame(width: 15, height: 108)
                         .opacity(opacity)
                         .onAppear() {
                             withAnimation(.easeInOut(duration: 2).repeatForever()) {
                                 opacity = 0.2
                             }
                         }
-                        .offset(x: -10)
+                        .offset(x: -23)
             }
             
         }

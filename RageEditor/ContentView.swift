@@ -32,6 +32,11 @@ struct ContentView: View {
                 RageTextInput()
                     .offset(y: (geometry.size.height / 2.0) - 80.0)
             }
+            // Text("Seconds: \(state.secondsElapsed) Characters: \(state.allCharacters.count) Speed: \(state.typingSpeed)")
+                .offset(y: 100)
+        }
+        .onAppear() {
+            state.startTimer()
         }
     }
 }

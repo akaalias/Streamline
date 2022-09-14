@@ -19,6 +19,7 @@
 		56DF1EDA28B60D0D0020B6F6 /* RageEditor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1ED828B60D0D0020B6F6 /* RageEditor.xcdatamodeld */; };
 		56DF1EE228B60D390020B6F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1EE128B60D390020B6F6 /* ContentView.swift */; };
 		56E285BE28CCD20D0025D343 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 56E285BD28CCD20D0025D343 /* SwiftUIX */; };
+		56EF44EC28D209080072F03E /* SparkParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 56EF44EB28D209080072F03E /* SparkParticle.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		56DF1ED928B60D0D0020B6F6 /* RageEditor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RageEditor.xcdatamodel; sourceTree = "<group>"; };
 		56DF1EDB28B60D0D0020B6F6 /* RageEditor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RageEditor.entitlements; sourceTree = "<group>"; };
 		56DF1EE128B60D390020B6F6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		56EF44EB28D209080072F03E /* SparkParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SparkParticle.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				56DF1ED828B60D0D0020B6F6 /* RageEditor.xcdatamodeld */,
 				56DF1ED328B60D0D0020B6F6 /* Preview Content */,
 				56D0C3C928B6297100B96243 /* RageTextInput.swift */,
+				56EF44EB28D209080072F03E /* SparkParticle.sks */,
 			);
 			path = RageEditor;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56DF1ED528B60D0D0020B6F6 /* Preview Assets.xcassets in Resources */,
+				56EF44EC28D209080072F03E /* SparkParticle.sks in Resources */,
 				5679D95828CE86340036EC9C /* SnowParticles.sks in Resources */,
 				56DF1ED228B60D0D0020B6F6 /* Assets.xcassets in Resources */,
 			);

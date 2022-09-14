@@ -30,8 +30,15 @@ class AppState: ObservableObject {
         if(allCharacters.count > 0) {
             self.typingSpeed = Float(allCharacters.count) / Float(secondsElapsed)
         }
-        self.scene.snowEmitterNode?.particleSpeed = CGFloat(-self.typingSpeed)
-        self.scene.snowEmitterNode?.xAcceleration = CGFloat(-self.typingSpeed)
+        
+        print(typingSpeed)
+        let scale = CGFloat(self.typingSpeed / 10 * 2)
+        print("Scale: \(scale)")
+
+        self.scene.snowEmitterNode?.particleScale = scale
+        self.scene.snowEmitterNode?.particleAlpha = CGFloat(self.typingSpeed / 100 * 5)
+        self.scene.snowEmitterNode?.particleSpeed = CGFloat(-self.typingSpeed * 5)
+        self.scene.snowEmitterNode?.xAcceleration = CGFloat(-self.typingSpeed * 4)
     }
     
     @objc func fireTimer() {
@@ -39,7 +46,9 @@ class AppState: ObservableObject {
     }
 
     func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1.0,
+        self.scene.snowEmitterNode?.particleScale = CGFloat(0.0)
+
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0,
                                      target: self,
                                      selector: #selector(fireTimer),
                                      userInfo: [ "foo" : "bar" ],

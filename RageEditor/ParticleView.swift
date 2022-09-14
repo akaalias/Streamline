@@ -9,7 +9,7 @@ import SpriteKit
 
 class ParticleScene: SKScene {
 
-    public var snowEmitterNode = SKEmitterNode(fileNamed: "SnowParticles.sks")
+    public var snowEmitterNode = SKEmitterNode(fileNamed: "SparkParticle.sks")
 
     func emitOne() {
         self.start()

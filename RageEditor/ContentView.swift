@@ -24,16 +24,17 @@ struct ContentView: View {
                         .opacity(0.05)
                 }
                 
-//                SpriteView(scene: state.scene, options: [.allowsTransparency])
-//                    .ignoresSafeArea()
-//                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-//                    .opacity(0.2)
+                SpriteView(scene: state.scene, options: [.allowsTransparency])
+                    .ignoresSafeArea()
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                    .offset(x: -30, y: 20)
+                    .opacity(1)
 
                 RageTextInput()
                     .offset(y: (geometry.size.height / 2.0) - 80.0)
             }
             // Text("Seconds: \(state.secondsElapsed) Characters: \(state.allCharacters.count) Speed: \(state.typingSpeed)")
-                .offset(y: 100)
+                // .offset(y: 100)
         }
         .onAppear() {
             state.startTimer()

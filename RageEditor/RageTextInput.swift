@@ -24,7 +24,6 @@ struct RageTextInput: View {
 
     var body: some View {
         KeyboardEvent(into: $keyboardInput.keyCode)
-        
         GeometryReader { geometry in
                 HStack {
                     Text(attributedString)

@@ -12,29 +12,23 @@ struct ContentView: View {
     @EnvironmentObject var state: AppState
 
     var body: some View {
-        ZStack {
-            GeometryReader { geometry in
-                HStack {
-                    Rectangle()
-                        .frame(width: geometry.size.width * 0.6, alignment: .trailing)
-                        .opacity(0)
-                    
-                    Rectangle()
-                        .frame(width: geometry.size.width * 0.4, alignment: .trailing)
-                        .opacity(0.05)
+        GeometryReader { geometry in
+            ZStack {
+                Path() { path in
+                    path.move(to: CGPoint(x: geometry.size.width * 0.6 + 8, y: -30))
+                    path.addLine(to: CGPoint(x: geometry.size.width * 0.6 + 8, y: geometry.size.height))
                 }
-                
+                .stroke(.white, lineWidth: 1)
+                .opacity(0.1)
+
                 SpriteView(scene: state.scene, options: [.allowsTransparency])
                     .ignoresSafeArea()
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                    .offset(x: -30, y: 20)
                     .opacity(1)
-
+                               
                 RageTextInput()
                     .offset(y: (geometry.size.height / 2.0) - 80.0)
             }
-            // Text("Seconds: \(state.secondsElapsed) Characters: \(state.allCharacters.count) Speed: \(state.typingSpeed)")
-                // .offset(y: 100)
         }
         .onAppear() {
             state.startTimer()

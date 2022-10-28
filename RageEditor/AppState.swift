@@ -16,7 +16,7 @@ class AppState: ObservableObject {
     @Published var secondsElapsed: Int = 0
     @Published var typingSpeed: Float = 0.0
     @Published var searchString: [String] = []
-    @Published var autocompleteOptions: [String] = ["Music", "Ideas", "News"]
+    @Published var autocompleteOptions: [String] = ["Music", "Ideas", "News", "Obsidian"]
     @Published var selectedAutocompleteOption: String = ""
     @Published var selectIndex = -1
 
@@ -30,17 +30,21 @@ class AppState: ObservableObject {
     }
     
     func autocompleteSearchMatches() -> [String] {
-        return autocompleteOptions.filter { $0.contains(searchString.joined()) }
+        return colorNames().filter { $0.localizedCaseInsensitiveContains(searchString.joined()) }
     }
     
     func selectNextAutocompleteOptionsDown() {
-        selectIndex += 1
-        selectOption()
+        if(selectIndex < autocompleteSearchMatches().count - 1) {
+            selectIndex += 1
+            selectOption()
+        }
     }
 
     func selectNextAutocompleteOptionsUp() {
-        selectIndex -= 1
-        selectOption()
+        if(selectIndex >= 0) {
+            selectIndex -= 1
+            selectOption()
+        }
     }
     
     func selectOption() {
@@ -49,6 +53,11 @@ class AppState: ObservableObject {
         if(selectIndex >= 0 && selectIndex < autocompleteSearchMatches().count) {
             selectedAutocompleteOption = autocompleteSearchMatches()[selectIndex]
         }
+    }
+    
+    func resetSearch() {
+        selectedAutocompleteOption = searchString.joined()
+        selectIndex = -1
     }
     
     func updateTypingSpeed() {
@@ -78,5 +87,155 @@ class AppState: ObservableObject {
                                      selector: #selector(fireTimer),
                                      userInfo: [ "foo" : "bar" ],
                                      repeats: true)
+    }
+    
+    func colorNames() -> [String] {
+        return ["AliceBlue",
+                "AntiqueWhite",
+                "Aqua",
+                "Aquamarine",
+                "Azure",
+                "Beige",
+                "Bisque",
+                "Black",
+                "BlanchedAlmond",
+                "Blue",
+                "BlueViolet",
+                "Brown",
+                "BurlyWood",
+                "CadetBlue",
+                "Chartreuse",
+                "Chocolate",
+                "Coral",
+                "CornflowerBlue",
+                "Cornsilk",
+                "Crimson",
+                "Cyan",
+                "DarkBlue",
+                "DarkCyan",
+                "DarkGoldenRod",
+                "DarkGray",
+                "DarkGrey",
+                "DarkGreen",
+                "DarkKhaki",
+                "DarkMagenta",
+                "DarkOliveGreen",
+                "DarkOrange",
+                "DarkOrchid",
+                "DarkRed",
+                "DarkSalmon",
+                "DarkSeaGreen",
+                "DarkSlateBlue",
+                "DarkSlateGray",
+                "DarkSlateGrey",
+                "DarkTurquoise",
+                "DarkViolet",
+                "DeepPink",
+                "DeepSkyBlue",
+                "DimGray",
+                "DimGrey",
+                "DodgerBlue",
+                "FireBrick",
+                "FloralWhite",
+                "ForestGreen",
+                "Fuchsia",
+                "Gainsboro",
+                "GhostWhite",
+                "Gold",
+                "GoldenRod",
+                "Gray",
+                "Grey",
+                "Green",
+                "GreenYellow",
+                "HoneyDew",
+                "HotPink",
+                "IndianRed",
+                "Indigo",
+                "Ivory",
+                "Khaki",
+                "Lavender",
+                "LavenderBlush",
+                "LawnGreen",
+                "LemonChiffon",
+                "LightBlue",
+                "LightCoral",
+                "LightCyan",
+                "LightGoldenRodYellow",
+                "LightGray",
+                "LightGrey",
+                "LightGreen",
+                "LightPink",
+                "LightSalmon",
+                "LightSeaGreen",
+                "LightSkyBlue",
+                "LightSlateGray",
+                "LightSlateGrey",
+                "LightSteelBlue",
+                "LightYellow",
+                "Lime",
+                "LimeGreen",
+                "Linen",
+                "Magenta",
+                "Maroon",
+                "MediumAquaMarine",
+                "MediumBlue",
+                "MediumOrchid",
+                "MediumPurple",
+                "MediumSeaGreen",
+                "MediumSlateBlue",
+                "MediumSpringGreen",
+                "MediumTurquoise",
+                "MediumVioletRed",
+                "MidnightBlue",
+                "MintCream",
+                "MistyRose",
+                "Moccasin",
+                "NavajoWhite",
+                "Navy",
+                "OldLace",
+                "Olive",
+                "OliveDrab",
+                "Orange",
+                "OrangeRed",
+                "Orchid",
+                "PaleGoldenRod",
+                "PaleGreen",
+                "PaleTurquoise",
+                "PaleVioletRed",
+                "PapayaWhip",
+                "PeachPuff",
+                "Peru",
+                "Pink",
+                "Plum",
+                "PowderBlue",
+                "Purple",
+                "LightPink",
+                "Red",
+                "RosyBrown",
+                "RoyalBlue",
+                "SaddleBrown",
+                "Salmon",
+                "SandyBrown",
+                "SeaGreen",
+                "SeaShell",
+                "Sienna",
+                "Silver",
+                "SkyBlue",
+                "SlateBlue",
+                "SlateGray",
+                "SlateGrey",
+                "Snow",
+                "SpringGreen",
+                "SteelBlue",
+                "Tan",
+                "Teal",
+                "Thistle",
+                "Tomato",
+                "Turquoise",
+                "Violet",
+                "Wheat",
+                "White",
+                "WhiteSmoke",
+                "Yellow"]
     }
 }

@@ -11,28 +11,29 @@ struct AutocompleteView: View {
     @EnvironmentObject var state: AppState
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(state.searchString.joined())
-                .frame(width: 400, height: 64)
-                .foregroundColor(.black)
-                .font(.system(size: 64))
-                .truncationMode(.tail)
-                .lineLimit(1)
-                .background(.white)
-                .padding(0)
+        GeometryReader { geometry in
 
-            ForEach(state.autocompleteSearchMatches(), id: \.self) { match in
+            VStack(alignment: .leading) {
+                Text(state.searchString.joined())
+                    .frame(width: geometry.size.width * 0.4, height: 108)
+                    .font(.system(size: 64))
+                    .truncationMode(.tail)
+                    .lineLimit(1)
+                    .background(.gray)
+                    .foregroundColor(.black)
+                    .padding(0)
+                
+                ForEach(state.autocompleteSearchMatches(), id: \.self) { match in
                     Text(match)
-                        .frame(width: 400, height: 40)
+                        .frame(width: geometry.size.width * 0.4, height: 42)
                         .background(state.selectedAutocompleteOption == match ? .black : .white)
                         .foregroundColor(state.selectedAutocompleteOption == match ? .white : .black)
                         .font(.system(size: 24))
                         .truncationMode(.tail)
                         .lineLimit(1)
                         .padding(0)
+                }
             }
-            
-            Text(state.selectedAutocompleteOption)
         }
     }
 }

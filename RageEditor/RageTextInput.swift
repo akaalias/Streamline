@@ -45,13 +45,13 @@ struct RageTextInput: View {
                             }
                         }
                         .offset(x: -8)
-                    
-                    // Autocomplete
-                    AutocompleteView()
-                        .visible(currentlySearching)
-
                 }
-            
+
+            // Autocomplete
+            AutocompleteView()
+                .visible(currentlySearching)
+                .offset(x: geometry.size.width * 0.6 + 15)
+
         }
         .onAppear() {
             NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
@@ -59,15 +59,13 @@ struct RageTextInput: View {
                 let lastTypedCharacter = event.charactersIgnoringModifiers ?? ""
                 
                 if(currentlySearching) {
-                    
-                    print(event.keyCode)
-                    
                     if(event.keyCode == 48) {
                         // TAB
                         currentlySearching = false
                     } else if (event.keyCode == 51) {
                         // Backspace
                         state.searchString = state.searchString.dropLast()
+                        state.resetSearch()
                     } else if (event.keyCode == 125) {
                         // Arrow DOWN
                         state.selectNextAutocompleteOptionsDown()
@@ -87,18 +85,15 @@ struct RageTextInput: View {
                         currentlySearching = false
                     } else {
                         state.searchString.append(lastTypedCharacter)
-                        state.selectedAutocompleteOption = state.searchString.joined()
+                        state.resetSearch()
                     }
-
                 } else {
-
                     if(lastTypedCharacter == "[" && state.allCharacters.last == "[") {
                         currentlySearching = true
                         state.searchString = []
                         self.lastWord = []
                         self.lastWord.append("[")
                     }
-                    
                     
                     state.allCharacters.append(lastTypedCharacter)
                         

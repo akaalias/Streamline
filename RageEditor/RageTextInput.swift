@@ -76,16 +76,18 @@ struct RageTextInput: View {
                         state.selectNextAutocompleteOptionsUp()
                     } else if (event.keyCode == 36) {
                         // Enter
-                        print("Enter")
+                        let appendString = state.selectedAutocompleteOption + "]]"
+                        state.selectedAutocompleteOption = ""
+
+                        let arrayLiteral = Array(arrayLiteral: appendString)
+                        state.allCharacters.append(contentsOf: arrayLiteral)
+                        characters.append(contentsOf: arrayLiteral)
+                        self.lastWord.append(contentsOf: arrayLiteral)
+
                         currentlySearching = false
-                        var appendString = state.searchString
-                        appendString.append("]")
-                        appendString.append("]")
-                        state.allCharacters.append(contentsOf: appendString)
-                        characters.append(contentsOf: appendString)
-                        self.lastWord.append(contentsOf: appendString)
                     } else {
                         state.searchString.append(lastTypedCharacter)
+                        state.selectedAutocompleteOption = state.searchString.joined()
                     }
 
                 } else {

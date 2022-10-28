@@ -18,7 +18,8 @@ class AppState: ObservableObject {
     @Published var searchString: [String] = []
     @Published var autocompleteOptions: [String] = ["Music", "Ideas", "News"]
     @Published var selectedAutocompleteOption: String = ""
-    
+    @Published var selectIndex = -1
+
     var timer: Timer?
     
     init() {
@@ -33,13 +34,22 @@ class AppState: ObservableObject {
     }
     
     func selectNextAutocompleteOptionsDown() {
-        print("Arrow DOWN")
+        selectIndex += 1
+        selectOption()
     }
 
     func selectNextAutocompleteOptionsUp() {
-        print("Arrow UP")
+        selectIndex -= 1
+        selectOption()
     }
+    
+    func selectOption() {
+        selectedAutocompleteOption = searchString.joined()
 
+        if(selectIndex >= 0 && selectIndex < autocompleteSearchMatches().count) {
+            selectedAutocompleteOption = autocompleteSearchMatches()[selectIndex]
+        }
+    }
     
     func updateTypingSpeed() {
         secondsElapsed += 1

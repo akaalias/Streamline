@@ -24,13 +24,15 @@ struct AutocompleteView: View {
             ForEach(state.autocompleteSearchMatches(), id: \.self) { match in
                     Text(match)
                         .frame(width: 400, height: 40)
-                        .background(.white)
-                        .foregroundColor(.black)
+                        .background(state.selectedAutocompleteOption == match ? .black : .white)
+                        .foregroundColor(state.selectedAutocompleteOption == match ? .white : .black)
                         .font(.system(size: 24))
                         .truncationMode(.tail)
                         .lineLimit(1)
                         .padding(0)
             }
+            
+            Text(state.selectedAutocompleteOption)
         }
     }
 }

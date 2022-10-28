@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5648615628CDEA1800B7A3E5 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5648615528CDEA1800B7A3E5 /* AppState.swift */; };
+		565561D7290C16CB00290876 /* AutocompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565561D6290C16CB00290876 /* AutocompleteView.swift */; };
 		5679D95628CE83AF0036EC9C /* ParticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5679D95528CE83AF0036EC9C /* ParticleView.swift */; };
 		56D0C3CA28B6297100B96243 /* RageTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0C3C928B6297100B96243 /* RageTextInput.swift */; };
 		56DF1ECE28B60D0B0020B6F6 /* RageEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1ECD28B60D0B0020B6F6 /* RageEditorApp.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		5648615528CDEA1800B7A3E5 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		565561D6290C16CB00290876 /* AutocompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteView.swift; sourceTree = "<group>"; };
 		5679D95528CE83AF0036EC9C /* ParticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleView.swift; sourceTree = "<group>"; };
 		56D0C3C928B6297100B96243 /* RageTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RageTextInput.swift; sourceTree = "<group>"; };
 		56DF1ECA28B60D0B0020B6F6 /* RageEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RageEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +72,7 @@
 			children = (
 				56DF1ECD28B60D0B0020B6F6 /* RageEditorApp.swift */,
 				5648615528CDEA1800B7A3E5 /* AppState.swift */,
+				565561D6290C16CB00290876 /* AutocompleteView.swift */,
 				56DF1ECF28B60D0B0020B6F6 /* ContentViewBackup.swift */,
 				56DF1EE128B60D390020B6F6 /* ContentView.swift */,
 				56DF1ED128B60D0D0020B6F6 /* Assets.xcassets */,
@@ -173,6 +176,7 @@
 				56D0C3CA28B6297100B96243 /* RageTextInput.swift in Sources */,
 				5648615628CDEA1800B7A3E5 /* AppState.swift in Sources */,
 				56DF1EE228B60D390020B6F6 /* ContentView.swift in Sources */,
+				565561D7290C16CB00290876 /* AutocompleteView.swift in Sources */,
 				5679D95628CE83AF0036EC9C /* ParticleView.swift in Sources */,
 				56DF1EDA28B60D0D0020B6F6 /* RageEditor.xcdatamodeld in Sources */,
 				56DF1ED028B60D0B0020B6F6 /* ContentViewBackup.swift in Sources */,

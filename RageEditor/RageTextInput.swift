@@ -17,8 +17,9 @@ struct RageTextInput: View {
     @State private var firstPartAttributedString = AttributedString("")
     @State private var lastWordAttributedString = AttributedString("")
     @State private var opacity = 1.0
-    
     @State private var words: [String] = []
+    @State private var currentlySearching = false
+    @State private var searchString: [String] = []
 
     @StateObject var keyboardInput = KeyboardInput()
 
@@ -44,36 +45,78 @@ struct RageTextInput: View {
                             }
                         }
                         .offset(x: -8)
-            }
+                    
+                    // Autocomplete
+                    AutocompleteView()
+                        .visible(currentlySearching)
+
+                }
             
         }
         .onAppear() {
             NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
-                
-                if event.keyCode == 53 { // if esc pressed
-                    return nil // do not do "beep" sound
-                }
-                
-                let character = event.charactersIgnoringModifiers ?? ""
-                state.allCharacters.append(character)
-                
-                if(character == " ") {
-                    self.words.append(self.lastWord.joined())
-                }
 
-                if(event.keyCode == 36) {
-                    characters.append("↩")
-                    self.lastWord = []
-                } else {
-                    characters.append(character)
-                    if(character == " ") {
-                        self.lastWord = []
+                let lastTypedCharacter = event.charactersIgnoringModifiers ?? ""
+                
+                if(currentlySearching) {
+                    
+                    print(event.keyCode)
+                    
+                    if(event.keyCode == 48) {
+                        // TAB
+                        currentlySearching = false
+                    } else if (event.keyCode == 51) {
+                        // Backspace
+                        state.searchString = state.searchString.dropLast()
+                    } else if (event.keyCode == 125) {
+                        // Arrow DOWN
+                        state.selectNextAutocompleteOptionsDown()
+                    } else if (event.keyCode == 126) {
+                        // Arrow UP
+                        state.selectNextAutocompleteOptionsUp()
+                    } else if (event.keyCode == 36) {
+                        // Enter
+                        print("Enter")
+                        currentlySearching = false
+                        var appendString = state.searchString
+                        appendString.append("]")
+                        appendString.append("]")
+                        state.allCharacters.append(contentsOf: appendString)
+                        characters.append(contentsOf: appendString)
+                        self.lastWord.append(contentsOf: appendString)
                     } else {
-                        self.lastWord.append(character)
+                        state.searchString.append(lastTypedCharacter)
                     }
+
+                } else {
+
+                    if(lastTypedCharacter == "[" && state.allCharacters.last == "[") {
+                        currentlySearching = true
+                        state.searchString = []
+                        self.lastWord = []
+                        self.lastWord.append("[")
+                    }
+                    
+                    
+                    state.allCharacters.append(lastTypedCharacter)
+                        
+                        if(lastTypedCharacter == " ") {
+                            self.words.append(self.lastWord.joined())
+                        }
+                        
+                        if(event.keyCode == 36) {
+                            characters.append("↩")
+                            self.lastWord = []
+                        } else {
+                            characters.append(lastTypedCharacter)
+                            if(lastTypedCharacter == " ") {
+                                self.lastWord = []
+                            } else {
+                                self.lastWord.append(lastTypedCharacter)
+                            }
+                        }
                 }
                 
-                                                
                 firstPartAttributedString = AttributedString(characters.dropLast(lastWord.count).joined())
                 firstPartAttributedString.foregroundColor = .gray
                 lastWordAttributedString = AttributedString(lastWord.joined())
@@ -82,8 +125,8 @@ struct RageTextInput: View {
                 attributedString.append(firstPartAttributedString)
                 attributedString.append(lastWordAttributedString)
                 
-                state.scene.emitOne()
-                
+                // state.scene.emitOne()
+
                 return event
             }
         }

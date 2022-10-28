@@ -15,6 +15,9 @@ class AppState: ObservableObject {
     @Published var scene: ParticleScene
     @Published var secondsElapsed: Int = 0
     @Published var typingSpeed: Float = 0.0
+    @Published var searchString: [String] = []
+    @Published var autocompleteOptions: [String] = ["Music", "Ideas", "News"]
+    @Published var selectedAutocompleteOption: String = ""
     
     var timer: Timer?
     
@@ -24,6 +27,19 @@ class AppState: ObservableObject {
         scene.scaleMode = .resizeFill
         scene.backgroundColor = .clear
     }
+    
+    func autocompleteSearchMatches() -> [String] {
+        return autocompleteOptions.filter { $0.contains(searchString.joined()) }
+    }
+    
+    func selectNextAutocompleteOptionsDown() {
+        print("Arrow DOWN")
+    }
+
+    func selectNextAutocompleteOptionsUp() {
+        print("Arrow UP")
+    }
+
     
     func updateTypingSpeed() {
         secondsElapsed += 1

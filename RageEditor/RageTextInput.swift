@@ -28,29 +28,30 @@ struct RageTextInput: View {
         GeometryReader { geometry in
                 HStack {
                     Text(attributedString)
-                        .font(.system(size: 64))
+                        .font(.system(size: state.defaultFontSize))
                         .truncationMode(.head)
                         .lineLimit(1)
                         .foregroundColor(.gray)
-                        .frame(width: geometry.size.width * 0.6, alignment: .trailing)
+                        .frame(width: geometry.size.width * state.ratioLeft, alignment: .trailing)
                         .mask(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .leading, endPoint: .trailing))
+                        .offset(x: -15)
 
                     Rectangle()
                         .fill(.white)
-                        .frame(width: 15, height: 108)
+                        .frame(width: 15, height: state.defaultFontSize * 1.5)
                         .opacity(opacity)
                         .onAppear() {
                             withAnimation(.easeInOut(duration: 2).repeatForever()) {
                                 opacity = 0.2
                             }
                         }
-                        .offset(x: -8)
+                        .offset(x: -23)
                 }
 
             // Autocomplete
             AutocompleteView()
                 .visible(currentlySearching)
-                .offset(x: geometry.size.width * 0.6 + 15)
+                .offset(x: geometry.size.width * state.ratioLeft)
 
         }
         .onAppear() {
@@ -74,7 +75,7 @@ struct RageTextInput: View {
                         state.selectNextAutocompleteOptionsUp()
                     } else if (event.keyCode == 36) {
                         // Enter
-                        let appendString = state.selectedAutocompleteOption + "]]"
+                        let appendString = state.selectedAutocompleteOption + "]] "
                         state.selectedAutocompleteOption = ""
 
                         let arrayLiteral = Array(arrayLiteral: appendString)
@@ -122,7 +123,7 @@ struct RageTextInput: View {
                 attributedString.append(firstPartAttributedString)
                 attributedString.append(lastWordAttributedString)
                 
-                // state.scene.emitOne()
+                state.scene.emitOne()
 
                 return event
             }

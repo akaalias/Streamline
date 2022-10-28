@@ -19,7 +19,11 @@ class AppState: ObservableObject {
     @Published var autocompleteOptions: [String] = ["Music", "Ideas", "News", "Obsidian"]
     @Published var selectedAutocompleteOption: String = ""
     @Published var selectIndex = -1
-
+    @Published var defaultFontSize = 48.0
+    @Published var ratioLeft = 0.6
+    @Published var ratioRight = 0.4
+    @Published var ratioTop = 2.0
+    
     var timer: Timer?
     
     init() {

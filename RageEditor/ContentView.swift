@@ -15,8 +15,8 @@ struct ContentView: View {
         GeometryReader { geometry in
             ZStack {
                 Path() { path in
-                    path.move(to: CGPoint(x: geometry.size.width * 0.6 + 8, y: -30))
-                    path.addLine(to: CGPoint(x: geometry.size.width * 0.6 + 8, y: geometry.size.height))
+                    path.move(to: CGPoint(x: geometry.size.width * state.ratioLeft, y: -30))
+                    path.addLine(to: CGPoint(x: geometry.size.width * state.ratioLeft, y: geometry.size.height))
                 }
                 .stroke(.white, lineWidth: 1)
                 .opacity(0.1)
@@ -27,7 +27,7 @@ struct ContentView: View {
                     .opacity(1)
                                
                 RageTextInput()
-                    .offset(y: (geometry.size.height / 2.0) - 80.0)
+                    .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
             }
         }
         .onAppear() {
@@ -56,7 +56,6 @@ struct KeyboardEvent: NSViewRepresentable {
         var owner: KeyboardEvent?   // << view holder
         override var acceptsFirstResponder: Bool { true }
         override func keyDown(with event: NSEvent) {
-            // print(event.keyCode)
             owner?.keyStorage = event.keyCode
         }
     }

@@ -12,26 +12,23 @@ struct AutocompleteView: View {
 
     var body: some View {
         GeometryReader { geometry in
-
             VStack(alignment: .leading) {
-                Text(state.searchString.joined())
-                    .frame(width: geometry.size.width * 0.4, height: 108)
-                    .font(.system(size: 64))
+                Text(" " + state.searchString.joined())
+                    .frame(width: geometry.size.width * state.ratioRight, height: state.defaultFontSize * 1.5, alignment: .leading)
+                    .font(.system(size: state.defaultFontSize))
                     .truncationMode(.tail)
                     .lineLimit(1)
-                    .background(.gray)
-                    .foregroundColor(.black)
                     .padding(0)
+                    .background(Color.black.opacity(0.2))
                 
                 ForEach(state.autocompleteSearchMatches(), id: \.self) { match in
-                    Text(match)
-                        .frame(width: geometry.size.width * 0.4, height: 42)
-                        .background(state.selectedAutocompleteOption == match ? .black : .white)
+                    Text(" " + match)
+                        .frame(width: geometry.size.width * state.ratioRight, height: state.defaultFontSize, alignment: .leading)
+                        .background(state.selectedAutocompleteOption == match ? .black : .gray)
                         .foregroundColor(state.selectedAutocompleteOption == match ? .white : .black)
-                        .font(.system(size: 24))
+                        .font(.system(size: state.defaultFontSize / 2))
                         .truncationMode(.tail)
                         .lineLimit(1)
-                        .padding(0)
                 }
             }
         }

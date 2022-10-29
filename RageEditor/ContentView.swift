@@ -11,24 +11,57 @@ import SpriteKit
 struct ContentView: View {
     @EnvironmentObject var state: AppState
 
-    var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                Path() { path in
-                    path.move(to: CGPoint(x: geometry.size.width * state.ratioLeft, y: -30))
-                    path.addLine(to: CGPoint(x: geometry.size.width * state.ratioLeft, y: geometry.size.height))
-                }
-                .stroke(.white, lineWidth: 1)
-                .opacity(0.1)
+    @State var autocompleteFileFolder = ""
+    @State var showFileChooser = false
 
-                SpriteView(scene: state.scene, options: [.allowsTransparency])
-                    .ignoresSafeArea()
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                    .opacity(1)
-                               
-                RageTextInput()
-                    .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
+    var body: some View {
+        
+        GeometryReader { geometry in
+            VStack {
+                Button("Select Folder")
+                      {
+                        let panel = NSOpenPanel()
+                        panel.allowsMultipleSelection = false
+                        panel.canChooseDirectories = true
+                          panel.canChooseFiles = false
+                        if panel.runModal() == .OK {
+                            self.autocompleteFileFolder = panel.url?.absoluteString ?? "<none>"
+
+                            let url = panel.url!
+                            if let enumerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.isRegularFileKey, .documentIdentifierKey, .contentTypeKey, .nameKey], options: [.skipsHiddenFiles, .skipsPackageDescendants]) {
+                                for case let fileURL as URL in enumerator {
+                                    do {
+                                        let fileAttributes = try fileURL.resourceValues(forKeys:[.isRegularFileKey, .contentTypeKey])
+                                        if (fileAttributes.isRegularFile! && fileAttributes.contentType != nil) {
+                                            if(fileAttributes.contentType != nil && fileAttributes.contentType?.description == "net.daringfireball.markdown") {
+
+                                                let fileName = String(fileURL.lastPathComponent.dropLast(3))
+                                                state.markdownFileNames.append(fileName)
+                                            }
+                                        }
+                                    } catch { print(error, fileURL) }
+                                }
+                            }
+                        }
+                      }
+                ZStack {
+                    Path() { path in
+                        path.move(to: CGPoint(x: geometry.size.width * state.ratioLeft, y: -30))
+                        path.addLine(to: CGPoint(x: geometry.size.width * state.ratioLeft, y: geometry.size.height))
+                    }
+                    .stroke(.white, lineWidth: 1)
+                    .opacity(0.1)
+
+                    SpriteView(scene: state.scene, options: [.allowsTransparency])
+                        .ignoresSafeArea()
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                        .opacity(1)
+                                   
+                    RageTextInput()
+                        .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
+                }
             }
+
         }
         .onAppear() {
             state.startTimer()

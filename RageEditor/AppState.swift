@@ -16,13 +16,13 @@ class AppState: ObservableObject {
     @Published var secondsElapsed: Int = 0
     @Published var typingSpeed: Float = 0.0
     @Published var searchString: [String] = []
-    @Published var autocompleteOptions: [String] = ["Music", "Ideas", "News", "Obsidian"]
     @Published var selectedAutocompleteOption: String = ""
     @Published var selectIndex = -1
     @Published var defaultFontSize = 48.0
     @Published var ratioLeft = 0.6
     @Published var ratioRight = 0.4
     @Published var ratioTop = 2.0
+    @Published var markdownFileNames: [String] = []
     
     var timer: Timer?
     
@@ -34,7 +34,8 @@ class AppState: ObservableObject {
     }
     
     func autocompleteSearchMatches() -> [String] {
-        return colorNames().filter { $0.localizedCaseInsensitiveContains(searchString.joined()) }
+        if(searchString.count <= 4) { return [] }
+        return markdownFileNames.filter { $0.localizedCaseInsensitiveContains(searchString.joined()) }
     }
     
     func selectNextAutocompleteOptionsDown() {

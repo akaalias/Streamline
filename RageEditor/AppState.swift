@@ -34,7 +34,7 @@ class AppState: ObservableObject {
     }
     
     func autocompleteSearchMatches() -> [String] {
-        if(searchString.count <= 4) { return [] }
+        if(searchString.count <= 3) { return [] }
         return markdownFileNames.filter { $0.localizedCaseInsensitiveContains(searchString.joined()) }
     }
     

@@ -25,7 +25,15 @@ struct RageTextInput: View {
 
     var body: some View {
         KeyboardEvent(into: $keyboardInput.keyCode)
+
         GeometryReader { geometry in
+                Path() { path in
+                    path.move(to: CGPoint(x: 0, y: state.defaultFontSize * 1.5))
+                    path.addLine(to: CGPoint(x: geometry.size.width, y: state.defaultFontSize * 1.5))
+                }
+                .stroke(.white, lineWidth: 1)
+                .opacity(0.1)
+
                 HStack {
                     Text(attributedString)
                         .font(.system(size: state.defaultFontSize))
@@ -57,8 +65,11 @@ struct RageTextInput: View {
         .onAppear() {
             NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
 
+                print(event.charactersIgnoringModifiers)
                 let lastTypedCharacter = event.charactersIgnoringModifiers ?? ""
                 
+                // ESC = Optional("\u{1B}")
+
                 if(currentlySearching) {
                     if(event.keyCode == 48) {
                         // TAB
@@ -123,7 +134,7 @@ struct RageTextInput: View {
                 attributedString.append(firstPartAttributedString)
                 attributedString.append(lastWordAttributedString)
                 
-                state.scene.emitOne()
+                // state.scene.emitOne()
 
                 return event
             }
@@ -136,12 +147,3 @@ struct RageTextInput_Previews: PreviewProvider {
         RageTextInput()
     }
 }
-
-// Hides blue focus glow
-extension NSTextField {
-    open override var focusRingType: NSFocusRingType {
-        get { .none }
-        set { }
-    }
-}
-

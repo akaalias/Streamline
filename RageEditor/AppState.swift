@@ -65,6 +65,25 @@ class AppState: ObservableObject {
         selectIndex = -1
     }
     
+    func cacheMarkdownFilenames(url: URL) {
+        print("Caching for: " + url.absoluteString)
+        self.markdownFileNames = []
+        if let enumerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.isRegularFileKey, .documentIdentifierKey, .contentTypeKey, .nameKey], options: [.skipsHiddenFiles, .skipsPackageDescendants]) {
+            for case let fileURL as URL in enumerator {
+                do {
+                    let fileAttributes = try fileURL.resourceValues(forKeys:[.isRegularFileKey, .contentTypeKey])
+                    if (fileAttributes.isRegularFile! && fileAttributes.contentType != nil) {
+                        if(fileAttributes.contentType != nil && fileAttributes.contentType?.description == "net.daringfireball.markdown") {
+                            let fileName = String(fileURL.lastPathComponent.dropLast(3))
+                            self.markdownFileNames.append(fileName)
+                            // print(fileName)
+                        }
+                    }
+                } catch { print(error, fileURL) }
+            }
+        }
+    }
+    
     func updateTypingSpeed() {
         secondsElapsed += 1
 

@@ -11,106 +11,48 @@ import SpriteKit
 struct ContentView: View {
     @EnvironmentObject var state: AppState
     @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
-    @State var showFileChooser = false
-
+    @State private var resetRequested: Bool = false
+    
     var body: some View {
         GeometryReader { geometry in
             if(folderBookmarkData.isEmpty) {
-                
-                ZStack {
-                    RoundedRectangle(cornerSize: CGSize(width: 10.0, height: 10.0))
-                        .foregroundColor(.black.opacity(0.2))
-                        .frame(width: 400, height: 400)
-
-                    VStack {
-                        Text("Please Configure Your Folder")
-                            .font(.largeTitle)
-                        Button {
-                            setupFolder()
-                        } label: {
-                            Text("Select Folder")
-                        }
-                        .buttonStyle(.bordered)
-                    }
-
-                }
+               FolderSetupView()
                 .offset(x: geometry.size.width / 2.0 - 200,
                         y: (geometry.size.height / 2) - 200)
-
-                
             } else {
                 ZStack {
-                    SpriteView(scene: state.scene, options: [.allowsTransparency])
-                        .ignoresSafeArea()
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .opacity(1)
+//                    SpriteView(scene: state.scene, options: [.allowsTransparency])
+//                        .ignoresSafeArea()
+//                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+//                        .opacity(1)
                                    
                     RageTextInput()
                         .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
+                    
+                    Button() {
+                        self.folderBookmarkData = Data()
+                    } label: {
+                        Text("Reset")
+                    }
+                    .offset(x: geometry.size.width / 2 - 50, y: geometry.size.height / 2 - 30)
                 }
-
             }
         }
         .onAppear() {
             // App is ready
-            state.startTimer()
-            
-            // self.folderBookmarkData = Data()
-            
+            // state.startTimer()
+                    
             // Bookmark handling
             if(!self.folderBookmarkData.isEmpty) {
                 do {
                     var isStale = false
-
                     let newURL = try URL(resolvingBookmarkData: self.folderBookmarkData, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &isStale)
-                    
                     newURL.startAccessingSecurityScopedResource()
-                    self.cacheMarkdownFilenames(url: newURL)
+                    state.cacheMarkdownFilenames(url: newURL)
                     newURL.stopAccessingSecurityScopedResource()
-
                 } catch {
                     print("Error while decoding bookmark URL data")
                 }
-            }
-        }
-    }
-    
-    func setupFolder() {
-        let panel = NSOpenPanel()
-        panel.allowsMultipleSelection = false
-        panel.canChooseDirectories = true
-        panel.canChooseFiles = false
-
-        if panel.runModal() == .OK {
-            
-            let url = panel.url
-            do {
-                let bookmarkData = try url?.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
-                
-                self.folderBookmarkData = bookmarkData!
-
-                cacheMarkdownFilenames(url: url!)
-
-            } catch {
-                print("Error while accessing folder!")
-            }
-        }
-    }
-    
-    func cacheMarkdownFilenames(url: URL) {
-        print("Caching for: " + url.absoluteString)
-        if let enumerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.isRegularFileKey, .documentIdentifierKey, .contentTypeKey, .nameKey], options: [.skipsHiddenFiles, .skipsPackageDescendants]) {
-            for case let fileURL as URL in enumerator {
-                do {
-                    let fileAttributes = try fileURL.resourceValues(forKeys:[.isRegularFileKey, .contentTypeKey])
-                    if (fileAttributes.isRegularFile! && fileAttributes.contentType != nil) {
-                        if(fileAttributes.contentType != nil && fileAttributes.contentType?.description == "net.daringfireball.markdown") {
-                            let fileName = String(fileURL.lastPathComponent.dropLast(3))
-                            state.markdownFileNames.append(fileName)
-                            // print(fileName)
-                        }
-                    }
-                } catch { print(error, fileURL) }
             }
         }
     }
@@ -129,6 +71,7 @@ class KeyboardInput: ObservableObject {
 struct KeyboardEvent: NSViewRepresentable {
     @Binding var keyStorage: UInt16          // << here !!
     init(into storage: Binding<UInt16>) {
+        print("Init KeyboardEvent")
         _keyStorage = storage
     }
 
@@ -141,11 +84,14 @@ struct KeyboardEvent: NSViewRepresentable {
     }
 
     func makeNSView(context: Context) -> NSView {
+                
         let view = KeyView()
         view.owner = self           // << inject
         DispatchQueue.main.async {
-            view.window?.makeFirstResponder(view)
-        }
+             print("Making first responder")
+             print(view.window?.description)
+             view.window?.makeFirstResponder(view)
+         }
         return view
     }
 

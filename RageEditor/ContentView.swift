@@ -14,28 +14,36 @@ struct ContentView: View {
     @State var showFileChooser = false
 
     var body: some View {
-        
         GeometryReader { geometry in
             if(folderBookmarkData.isEmpty) {
-                Button {
-                    setupFolder()
-                } label: {
-                    Text("Please select your Obsidian Vault")
-                }
+                
+                ZStack {
+                    RoundedRectangle(cornerSize: CGSize(width: 10.0, height: 10.0))
+                        .foregroundColor(.black.opacity(0.2))
+                        .frame(width: 400, height: 400)
 
+                    VStack {
+                        Text("Please Configure Your Folder")
+                            .font(.largeTitle)
+                        Button {
+                            setupFolder()
+                        } label: {
+                            Text("Select Folder")
+                        }
+                        .buttonStyle(.bordered)
+                    }
+
+                }
+                .offset(x: geometry.size.width / 2.0 - 200,
+                        y: (geometry.size.height / 2) - 200)
+
+                
             } else {
                 ZStack {
-                    Path() { path in
-                        path.move(to: CGPoint(x: geometry.size.width * state.ratioLeft, y: -30))
-                        path.addLine(to: CGPoint(x: geometry.size.width * state.ratioLeft, y: geometry.size.height))
-                    }
-                    .stroke(.white, lineWidth: 1)
-                    .opacity(0.1)
-
-//                    SpriteView(scene: state.scene, options: [.allowsTransparency])
-//                        .ignoresSafeArea()
-//                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-//                        .opacity(1)
+                    SpriteView(scene: state.scene, options: [.allowsTransparency])
+                        .ignoresSafeArea()
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                        .opacity(1)
                                    
                     RageTextInput()
                         .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
@@ -45,7 +53,9 @@ struct ContentView: View {
         }
         .onAppear() {
             // App is ready
-            // state.startTimer()
+            state.startTimer()
+            
+            // self.folderBookmarkData = Data()
             
             // Bookmark handling
             if(!self.folderBookmarkData.isEmpty) {

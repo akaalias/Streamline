@@ -34,6 +34,7 @@ struct FolderSetupView: View {
     
     func setupFolder() {
         let panel = NSOpenPanel()
+
         panel.allowsMultipleSelection = false
         panel.canChooseDirectories = true
         panel.canChooseFiles = false
@@ -43,11 +44,8 @@ struct FolderSetupView: View {
             let url = panel.url
             do {
                 let bookmarkData = try url?.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
-                
                 self.folderBookmarkData = bookmarkData!
-
                 state.cacheMarkdownFilenames(url: url!)
-
             } catch {
                 print("Error while accessing folder!")
             }

@@ -10,6 +10,8 @@
 		5648615628CDEA1800B7A3E5 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5648615528CDEA1800B7A3E5 /* AppState.swift */; };
 		565561D7290C16CB00290876 /* AutocompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565561D6290C16CB00290876 /* AutocompleteView.swift */; };
 		5679D95628CE83AF0036EC9C /* ParticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5679D95528CE83AF0036EC9C /* ParticleView.swift */; };
+		568D87B0290E83CC00B1B017 /* CGKeyCode_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D87AF290E83CC00B1B017 /* CGKeyCode_Extension.swift */; };
+		568D87B2290E867E00B1B017 /* KeyboardInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D87B1290E867D00B1B017 /* KeyboardInput.swift */; };
 		56B51A88290D695C00EFEAD1 /* FolderSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B51A87290D695C00EFEAD1 /* FolderSetupView.swift */; };
 		56D0C3CA28B6297100B96243 /* RageTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0C3C928B6297100B96243 /* RageTextInput.swift */; };
 		56DF1ECE28B60D0B0020B6F6 /* RageEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1ECD28B60D0B0020B6F6 /* RageEditorApp.swift */; };
@@ -26,6 +28,8 @@
 		5648615528CDEA1800B7A3E5 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		565561D6290C16CB00290876 /* AutocompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteView.swift; sourceTree = "<group>"; };
 		5679D95528CE83AF0036EC9C /* ParticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleView.swift; sourceTree = "<group>"; };
+		568D87AF290E83CC00B1B017 /* CGKeyCode_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGKeyCode_Extension.swift; sourceTree = "<group>"; };
+		568D87B1290E867D00B1B017 /* KeyboardInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardInput.swift; sourceTree = "<group>"; };
 		56B51A86290D5FC700EFEAD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		56B51A87290D695C00EFEAD1 /* FolderSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderSetupView.swift; sourceTree = "<group>"; };
 		56D0C3C928B6297100B96243 /* RageTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RageTextInput.swift; sourceTree = "<group>"; };
@@ -55,6 +59,7 @@
 		56DF1EC128B60D0B0020B6F6 = {
 			isa = PBXGroup;
 			children = (
+				568D87B1290E867D00B1B017 /* KeyboardInput.swift */,
 				56DF1ECC28B60D0B0020B6F6 /* RageEditor */,
 				56DF1ECB28B60D0B0020B6F6 /* Products */,
 			);
@@ -84,6 +89,7 @@
 				56DF1ED828B60D0D0020B6F6 /* RageEditor.xcdatamodeld */,
 				56DF1ED328B60D0D0020B6F6 /* Preview Content */,
 				56D0C3C928B6297100B96243 /* RageTextInput.swift */,
+				568D87AF290E83CC00B1B017 /* CGKeyCode_Extension.swift */,
 				56EF44EB28D209080072F03E /* SparkParticle.sks */,
 			);
 			path = RageEditor;
@@ -180,6 +186,8 @@
 				56DF1EE228B60D390020B6F6 /* ContentView.swift in Sources */,
 				56B51A88290D695C00EFEAD1 /* FolderSetupView.swift in Sources */,
 				565561D7290C16CB00290876 /* AutocompleteView.swift in Sources */,
+				568D87B2290E867E00B1B017 /* KeyboardInput.swift in Sources */,
+				568D87B0290E83CC00B1B017 /* CGKeyCode_Extension.swift in Sources */,
 				5679D95628CE83AF0036EC9C /* ParticleView.swift in Sources */,
 				56DF1EDA28B60D0D0020B6F6 /* RageEditor.xcdatamodeld in Sources */,
 				56DF1ECE28B60D0B0020B6F6 /* RageEditorApp.swift in Sources */,

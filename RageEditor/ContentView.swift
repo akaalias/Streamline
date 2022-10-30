@@ -12,7 +12,8 @@ struct ContentView: View {
     @EnvironmentObject var state: AppState
     @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
     @State private var resetRequested: Bool = false
-    
+    @State var refresh: Bool = false
+
     var body: some View {
         GeometryReader { geometry in
             if(folderBookmarkData.isEmpty) {
@@ -21,27 +22,28 @@ struct ContentView: View {
                         y: (geometry.size.height / 2) - 200)
             } else {
                 ZStack {
-//                    SpriteView(scene: state.scene, options: [.allowsTransparency])
-//                        .ignoresSafeArea()
-//                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-//                        .opacity(1)
+                    SpriteView(scene: state.scene, options: [.allowsTransparency])
+                        .ignoresSafeArea()
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                        .opacity(1)
                                    
                     RageTextInput()
                         .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
                     
                     Button() {
                         self.folderBookmarkData = Data()
+                        self.update()
                     } label: {
                         Text("Reset")
                     }
                     .offset(x: geometry.size.width / 2 - 50, y: geometry.size.height / 2 - 30)
+                    
+                    Text(String(state.markdownFileNames.count))
+                        .offset(x: geometry.size.width / 2 - 100, y: geometry.size.height / 2 - 30)
                 }
             }
         }
         .onAppear() {
-            // App is ready
-            // state.startTimer()
-                    
             // Bookmark handling
             if(!self.folderBookmarkData.isEmpty) {
                 do {
@@ -54,47 +56,19 @@ struct ContentView: View {
                     print("Error while decoding bookmark URL data")
                 }
             }
+            
+            // Begin particle system
+            state.startTimer()
         }
+    }
+    
+    func update() {
+       refresh.toggle()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-    }
-}
-
-class KeyboardInput: ObservableObject {
-    @Published var keyCode: UInt16 = 0
-}
-
-struct KeyboardEvent: NSViewRepresentable {
-    @Binding var keyStorage: UInt16          // << here !!
-    init(into storage: Binding<UInt16>) {
-        print("Init KeyboardEvent")
-        _keyStorage = storage
-    }
-
-    class KeyView: NSView {
-        var owner: KeyboardEvent?   // << view holder
-        override var acceptsFirstResponder: Bool { true }
-        override func keyDown(with event: NSEvent) {
-            owner?.keyStorage = event.keyCode
-        }
-    }
-
-    func makeNSView(context: Context) -> NSView {
-                
-        let view = KeyView()
-        view.owner = self           // << inject
-        DispatchQueue.main.async {
-             print("Making first responder")
-             print(view.window?.description)
-             view.window?.makeFirstResponder(view)
-         }
-        return view
-    }
-
-    func updateNSView(_ nsView: NSView, context: Context) {
     }
 }

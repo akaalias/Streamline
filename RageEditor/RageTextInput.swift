@@ -20,8 +20,9 @@ struct RageTextInput: View {
     @State private var words: [String] = []
     @State private var currentlySearching = false
     @State private var searchString: [String] = []
-
     @StateObject var keyboardInput = KeyboardInput()
+
+    private static var viewAppearedCount: Int = 0
 
     var body: some View {
         KeyboardEvent(into: $keyboardInput.keyCode)
@@ -63,82 +64,90 @@ struct RageTextInput: View {
 
         }
         .onAppear() {
-            NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
-
-                print(event.charactersIgnoringModifiers)
-                let lastTypedCharacter = event.charactersIgnoringModifiers ?? ""
-                
-                // ESC = Optional("\u{1B}")
-
-                if(currentlySearching) {
-                    if(event.keyCode == 48) {
-                        // TAB
-                        currentlySearching = false
-                    } else if (event.keyCode == 51) {
-                        // Backspace
-                        state.searchString = state.searchString.dropLast()
-                        state.resetSearch()
-                    } else if (event.keyCode == 125) {
-                        // Arrow DOWN
-                        state.selectNextAutocompleteOptionsDown()
-                    } else if (event.keyCode == 126) {
-                        // Arrow UP
-                        state.selectNextAutocompleteOptionsUp()
-                    } else if (event.keyCode == 36) {
-                        // Enter
-                        let appendString = state.selectedAutocompleteOption + "]] "
-                        state.selectedAutocompleteOption = ""
-
-                        let arrayLiteral = Array(arrayLiteral: appendString)
-                        state.allCharacters.append(contentsOf: arrayLiteral)
-                        characters.append(contentsOf: arrayLiteral)
-                        self.lastWord.append(contentsOf: arrayLiteral)
-
-                        currentlySearching = false
-                    } else {
-                        state.searchString.append(lastTypedCharacter)
-                        state.resetSearch()
-                    }
-                } else {
-                    if(lastTypedCharacter == "[" && state.allCharacters.last == "[") {
-                        currentlySearching = true
-                        state.searchString = []
-                        self.lastWord = []
-                        self.lastWord.append("[")
-                    }
-                    
-                    state.allCharacters.append(lastTypedCharacter)
-                        
-                        if(lastTypedCharacter == " ") {
-                            self.words.append(self.lastWord.joined())
-                        }
-                        
-                        if(event.keyCode == 36) {
-                            characters.append("↩")
-                            self.lastWord = []
-                        } else {
-                            characters.append(lastTypedCharacter)
-                            if(lastTypedCharacter == " ") {
-                                self.lastWord = []
-                            } else {
-                                self.lastWord.append(lastTypedCharacter)
-                            }
-                        }
+            RageTextInput.viewAppearedCount += 1
+            
+            // NSEvent.addLocalMonitorForEvents(matching: .keyDown, handler: handleKeyEvent(event:))
+            if(RageTextInput.viewAppearedCount == 1) {
+                NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (aEvent) -> NSEvent? in
+                    self.handleKeyEvent(event: aEvent)
+                    self.state.scene.emitOne()
+                    return aEvent
                 }
-                
-                firstPartAttributedString = AttributedString(characters.dropLast(lastWord.count).joined())
-                firstPartAttributedString.foregroundColor = .gray
-                lastWordAttributedString = AttributedString(lastWord.joined())
-                lastWordAttributedString.foregroundColor = .white
-                attributedString = AttributedString("")
-                attributedString.append(firstPartAttributedString)
-                attributedString.append(lastWordAttributedString)
-                
-                // state.scene.emitOne()
-
-                return event
             }
         }
+    }
+    
+    func handleKeyEvent(event: NSEvent) {
+        
+        let lastTypedCharacter = event.charactersIgnoringModifiers ?? ""
+        
+        // ESC = Optional("\u{1B}")
+
+        if(currentlySearching) {
+            if(event.keyCode == 48) {
+                // TAB
+                currentlySearching = false
+            } else if (event.keyCode == 51) {
+                // Backspace
+                state.searchString = state.searchString.dropLast()
+                state.resetSearch()
+            } else if (event.keyCode == 125) {
+                // Arrow DOWN
+                state.selectNextAutocompleteOptionsDown()
+            } else if (event.keyCode == 126) {
+                // Arrow UP
+                state.selectNextAutocompleteOptionsUp()
+            } else if (event.keyCode == 36) {
+                // Enter
+                let appendString = state.selectedAutocompleteOption + "]] "
+                state.selectedAutocompleteOption = ""
+
+                let arrayLiteral = Array(arrayLiteral: appendString)
+                state.allCharacters.append(contentsOf: arrayLiteral)
+                characters.append(contentsOf: arrayLiteral)
+                self.lastWord.append(contentsOf: arrayLiteral)
+
+                currentlySearching = false
+            } else {
+                state.searchString.append(lastTypedCharacter)
+                state.resetSearch()
+            }
+        } else {
+            if(lastTypedCharacter == "[" && state.allCharacters.last == "[") {
+                currentlySearching = true
+                state.searchString = []
+                self.lastWord = []
+                self.lastWord.append("[")
+            }
+            
+            state.allCharacters.append(lastTypedCharacter)
+                
+                if(lastTypedCharacter == " ") {
+                    self.words.append(self.lastWord.joined())
+                }
+                
+                if(event.keyCode == 36) {
+                    characters.append("↩")
+                    self.lastWord = []
+                } else {
+                    characters.append(lastTypedCharacter)
+                    if(lastTypedCharacter == " ") {
+                        self.lastWord = []
+                    } else {
+                        self.lastWord.append(lastTypedCharacter)
+                    }
+                }
+        }
+        
+        firstPartAttributedString = AttributedString(characters.dropLast(lastWord.count).joined())
+        firstPartAttributedString.foregroundColor = .gray
+        lastWordAttributedString = AttributedString(lastWord.joined())
+        lastWordAttributedString.foregroundColor = .white
+        attributedString = AttributedString("")
+        attributedString.append(firstPartAttributedString)
+        attributedString.append(lastWordAttributedString)
+        
+        return
     }
 }
 

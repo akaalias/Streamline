@@ -22,11 +22,6 @@ struct ContentView: View {
                         y: (geometry.size.height / 2) - 200)
             } else {
                 ZStack {
-                    SpriteView(scene: state.scene, options: [.allowsTransparency])
-                        .ignoresSafeArea()
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .opacity(1)
-                                   
                     RageTextInput()
                         .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
                     
@@ -56,9 +51,6 @@ struct ContentView: View {
                     print("Error while decoding bookmark URL data")
                 }
             }
-            
-            // Begin particle system
-            state.startTimer()
         }
     }
     

@@ -11,6 +11,8 @@ import SwiftUIX
 struct RageTextInput: View {
     @EnvironmentObject var state: AppState
 
+    public static var viewAppearedCount: Int = 0
+
     @State private var characters: [String] = []
     @State private var lastWord: [String] = []
     @State private var attributedString = AttributedString("")
@@ -21,8 +23,7 @@ struct RageTextInput: View {
     @State private var currentlySearching = false
     @State private var searchString: [String] = []
     @StateObject var keyboardInput = KeyboardInput()
-
-    private static var viewAppearedCount: Int = 0
+    @State private var monitor: Any?
 
     var body: some View {
         KeyboardEvent(into: $keyboardInput.keyCode)
@@ -63,16 +64,13 @@ struct RageTextInput: View {
                 .offset(x: geometry.size.width * state.ratioLeft)
 
         }
+        .onDisappear() {
+            NSEvent.removeMonitor(self.monitor)
+        }
         .onAppear() {
-            RageTextInput.viewAppearedCount += 1
-            
-            // NSEvent.addLocalMonitorForEvents(matching: .keyDown, handler: handleKeyEvent(event:))
-            if(RageTextInput.viewAppearedCount == 1) {
-                NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (aEvent) -> NSEvent? in
-                    self.handleKeyEvent(event: aEvent)
-                    self.state.scene.emitOne()
-                    return aEvent
-                }
+            self.monitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (aEvent) -> NSEvent? in
+                self.handleKeyEvent(event: aEvent)
+                return aEvent
             }
         }
     }
@@ -82,7 +80,6 @@ struct RageTextInput: View {
         let lastTypedCharacter = event.charactersIgnoringModifiers ?? ""
         
         // ESC = Optional("\u{1B}")
-
         if(currentlySearching) {
             if(event.keyCode == 48) {
                 // TAB

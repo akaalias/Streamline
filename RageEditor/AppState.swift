@@ -18,10 +18,10 @@ class AppState: ObservableObject {
     @Published var searchString: [String] = []
     @Published var selectedAutocompleteOption: String = ""
     @Published var selectIndex = -1
-    @Published var defaultFontSize = 48.0
+    @Published var defaultFontSize = 28.0
     @Published var ratioLeft = 0.6
     @Published var ratioRight = 0.4
-    @Published var ratioTop = 2.0
+    @Published var ratioTop = 2.25
     @Published var markdownFileNames: [String] = []
     
     var timer: Timer?

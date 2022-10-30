@@ -40,7 +40,6 @@ struct FolderSetupView: View {
         panel.canChooseFiles = false
 
         if panel.runModal() == .OK {
-            
             let url = panel.url
             do {
                 let bookmarkData = try url?.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)

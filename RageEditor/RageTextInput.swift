@@ -22,8 +22,8 @@ struct RageTextInput: View {
     @State private var words: [String] = []
     @State private var currentlySearching = false
     @State private var searchString: [String] = []
-    @StateObject var keyboardInput = KeyboardInput()
     @State private var monitor: Any?
+    @StateObject var keyboardInput = KeyboardInput()
 
     var body: some View {
         KeyboardEvent(into: $keyboardInput.keyCode)

@@ -75,12 +75,13 @@ class AppState: ObservableObject {
                         if(fileAttributes.contentType != nil && fileAttributes.contentType?.description == "net.daringfireball.markdown") {
                             let fileName = String(fileURL.lastPathComponent.dropLast(3))
                             self.markdownFileNames.append(fileName)
-                            // print(fileName)
                         }
                     }
                 } catch { print(error, fileURL) }
             }
         }
+
+        self.markdownFileNames = Array(Set(self.markdownFileNames))
     }
     
     func updateTypingSpeed() {

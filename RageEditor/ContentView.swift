@@ -11,7 +11,6 @@ import SpriteKit
 struct ContentView: View {
     @EnvironmentObject var state: AppState
     @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
-    @State private var resetRequested: Bool = false
     @State var refresh: Bool = false
 
     var body: some View {
@@ -24,26 +23,6 @@ struct ContentView: View {
                 ZStack {
                     RageTextInput()
                         .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
-                    
-                    HStack {
-                        Button() {
-                            self.folderBookmarkData = Data()
-                            self.update()
-                        } label: {
-                            Text("Reset")
-                        }
-
-                        Button() {
-                            self.save()
-                        } label: {
-                            Text("Save")
-                        }
-
-                        Text(String(state.markdownFileNames.count) + " Indexed Markdown Files")
-                            .font(.footnote)
-                    }
-                    .offset(x: geometry.size.width / 2 - 150, y: geometry.size.height / 2 - 30)
-
                 }
             }
         }
@@ -69,6 +48,12 @@ struct ContentView: View {
     
     func save() {
         let savePanel = NSSavePanel()
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YY/MM/dd – HH:mm"
+        let dateString = formatter.string(from: date)
+        print(dateString)
+
         savePanel.allowedFileTypes = ["md"]
         savePanel.canCreateDirectories = true
         savePanel.isExtensionHidden = false
@@ -77,7 +62,8 @@ struct ContentView: View {
         savePanel.message = "Choose a folder and a name"
         savePanel.prompt = "Save now"
         savePanel.nameFieldLabel = "File name:"
-        savePanel.nameFieldStringValue = "mytext.md"
+        savePanel.nameFieldStringValue = "Streamline Note " + dateString
+        
             
         // Present the save panel as a modal window.
         let response = savePanel.runModal()

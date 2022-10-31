@@ -11,7 +11,16 @@ import Combine
 import SpriteKit
 
 class AppState: ObservableObject {
+    
+    @Published var characters: [String] = []
+    @Published var lastWord: [String] = []
+    @Published var attributedString = AttributedString("")
+    @Published var firstPartAttributedString = AttributedString("")
+    @Published var lastWordAttributedString = AttributedString("")
+    @Published var words: [String] = []
+    @Published var currentlySearching = false
     @Published var allCharacters: [String]
+
     @Published var scene: ParticleScene
     @Published var secondsElapsed: Int = 0
     @Published var typingSpeed: Float = 0.0
@@ -24,6 +33,8 @@ class AppState: ObservableObject {
     @Published var ratioTop = 2.25
     @Published var markdownFileNames: [String] = []
     
+    @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
+
     var timer: Timer?
     
     init() {
@@ -103,6 +114,74 @@ class AppState: ObservableObject {
         self.scene.snowEmitterNode?.particleSpeed = CGFloat(-self.typingSpeed * 3)
         self.scene.snowEmitterNode?.xAcceleration = CGFloat(-self.typingSpeed * 3)
     }
+    
+    func handleKeyEvent(event: NSEvent) {
+        let lastTypedCharacter = event.charactersIgnoringModifiers ?? ""
+        if(self.currentlySearching) {
+            if(event.characters == "\u{1B}") {
+                // ESC = Optional("\u{1B}")
+                self.currentlySearching = false
+            } else if (event.keyCode == 51) {
+                // Backspace
+                self.searchString = self.searchString.dropLast()
+                self.resetSearch()
+            } else if (event.keyCode == 125 || event.keyCode == 48  ) {
+                // Arrow DOWN
+                self.selectNextAutocompleteOptionsDown()
+            } else if (event.keyCode == 126) {
+                // Arrow UP
+                self.selectNextAutocompleteOptionsUp()
+            } else if (event.keyCode == 36) {
+                // Enter
+                let appendString = self.selectedAutocompleteOption + "]] "
+                self.selectedAutocompleteOption = ""
+
+                let arrayLiteral = Array(arrayLiteral: appendString)
+                self.allCharacters.append(contentsOf: arrayLiteral)
+                self.characters.append(contentsOf: arrayLiteral)
+                self.lastWord.append(contentsOf: arrayLiteral)
+                self.currentlySearching = false
+
+            } else {
+                self.searchString.append(lastTypedCharacter)
+                self.resetSearch()
+            }
+        } else {
+            if(lastTypedCharacter == "[" && self.allCharacters.last == "[") {
+                self.currentlySearching = true
+                self.searchString = []
+                self.lastWord = []
+                self.lastWord.append("[")
+            }
+            
+            self.allCharacters.append(lastTypedCharacter)
+                
+                if(lastTypedCharacter == " ") {
+                    self.words.append(self.lastWord.joined())
+                }
+                
+                if(event.keyCode == 36) {
+                    self.characters.append("↩")
+                    self.lastWord = []
+                } else {
+                    self.characters.append(lastTypedCharacter)
+                    if(lastTypedCharacter == " ") {
+                        self.lastWord = []
+                    } else {
+                        self.lastWord.append(lastTypedCharacter)
+                    }
+                }
+        }
+        
+        self.firstPartAttributedString = AttributedString(self.characters.dropLast(self.lastWord.count).joined())
+        self.firstPartAttributedString.foregroundColor = Color.gray
+        self.lastWordAttributedString = AttributedString(self.lastWord.joined())
+        self.lastWordAttributedString.foregroundColor = .white
+        self.attributedString = AttributedString("")
+        self.attributedString.append(self.firstPartAttributedString)
+        self.attributedString.append(self.lastWordAttributedString)
+    }
+
     
     @objc func fireTimer() {
         updateTypingSpeed()

@@ -10,19 +10,8 @@ import SwiftUIX
 
 struct RageTextInput: View {
     @EnvironmentObject var state: AppState
-
-    public static var viewAppearedCount: Int = 0
-
-    @State private var characters: [String] = []
-    @State private var lastWord: [String] = []
-    @State private var attributedString = AttributedString("")
-    @State private var firstPartAttributedString = AttributedString("")
-    @State private var lastWordAttributedString = AttributedString("")
-    @State private var opacity = 1.0
-    @State private var words: [String] = []
-    @State private var currentlySearching = false
-    @State private var searchString: [String] = []
     @State private var monitor: Any?
+    @State private var opacity = 1.0
     @StateObject var keyboardInput = KeyboardInput()
 
     var body: some View {
@@ -37,7 +26,7 @@ struct RageTextInput: View {
                 .opacity(0.1)
 
                 HStack {
-                    Text(attributedString)
+                    Text(state.attributedString)
                         .font(.system(size: state.defaultFontSize))
                         .truncationMode(.head)
                         .lineLimit(1)
@@ -60,8 +49,20 @@ struct RageTextInput: View {
 
             // Autocomplete
             AutocompleteView()
-                .visible(currentlySearching)
+                .visible(state.currentlySearching)
                 .offset(x: geometry.size.width * state.ratioLeft)
+            
+            HStack {
+                Button() {
+                    self.save()
+                } label: {
+                    Text("Save")
+                }
+
+                Text(String(state.markdownFileNames.count) + " Indexed Markdown Files")
+                    .font(.footnote)
+            }
+            .offset(x: geometry.size.width / 2 - 150, y: geometry.size.height / 2 - 30)
 
         }
         .onDisappear() {
@@ -69,79 +70,33 @@ struct RageTextInput: View {
         }
         .onAppear() {
             self.monitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (aEvent) -> NSEvent? in
-                self.handleKeyEvent(event: aEvent)
+                state.handleKeyEvent(event: aEvent)
                 return aEvent
             }
         }
     }
     
-    func handleKeyEvent(event: NSEvent) {        
-        let lastTypedCharacter = event.charactersIgnoringModifiers ?? ""
-        if(currentlySearching) {
-            if(event.characters == "\u{1B}") {
-                // ESC = Optional("\u{1B}")
-                currentlySearching = false
-            } else if (event.keyCode == 51) {
-                // Backspace
-                state.searchString = state.searchString.dropLast()
-                state.resetSearch()
-            } else if (event.keyCode == 125 || event.keyCode == 48  ) {
-                // Arrow DOWN
-                state.selectNextAutocompleteOptionsDown()
-            } else if (event.keyCode == 126) {
-                // Arrow UP
-                state.selectNextAutocompleteOptionsUp()
-            } else if (event.keyCode == 36) {
-                // Enter
-                let appendString = state.selectedAutocompleteOption + "]] "
-                state.selectedAutocompleteOption = ""
+    func save() {
+        let savePanel = NSSavePanel()
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YY/MM/dd – HH:mm"
+        let dateString = formatter.string(from: date)
 
-                let arrayLiteral = Array(arrayLiteral: appendString)
-                state.allCharacters.append(contentsOf: arrayLiteral)
-                characters.append(contentsOf: arrayLiteral)
-                self.lastWord.append(contentsOf: arrayLiteral)
-
-                currentlySearching = false
-            } else {
-                state.searchString.append(lastTypedCharacter)
-                state.resetSearch()
-            }
-        } else {
-            if(lastTypedCharacter == "[" && state.allCharacters.last == "[") {
-                currentlySearching = true
-                state.searchString = []
-                self.lastWord = []
-                self.lastWord.append("[")
-            }
-            
-            state.allCharacters.append(lastTypedCharacter)
-                
-                if(lastTypedCharacter == " ") {
-                    self.words.append(self.lastWord.joined())
-                }
-                
-                if(event.keyCode == 36) {
-                    characters.append("↩")
-                    self.lastWord = []
-                } else {
-                    characters.append(lastTypedCharacter)
-                    if(lastTypedCharacter == " ") {
-                        self.lastWord = []
-                    } else {
-                        self.lastWord.append(lastTypedCharacter)
-                    }
-                }
-        }
+        savePanel.allowedFileTypes = ["md"]
+        savePanel.canCreateDirectories = true
+        savePanel.isExtensionHidden = false
+        savePanel.allowsOtherFileTypes = false
+        savePanel.title = "Save your Streamline note"
+        savePanel.message = "Choose a folder and a name"
+        savePanel.prompt = "Save now"
+        savePanel.nameFieldLabel = "File name:"
+        savePanel.nameFieldStringValue = "Streamline Note " + dateString
         
-        firstPartAttributedString = AttributedString(characters.dropLast(lastWord.count).joined())
-        firstPartAttributedString.foregroundColor = .gray
-        lastWordAttributedString = AttributedString(lastWord.joined())
-        lastWordAttributedString.foregroundColor = .white
-        attributedString = AttributedString("")
-        attributedString.append(firstPartAttributedString)
-        attributedString.append(lastWordAttributedString)
-        
-        return
+        // Present the save panel as a modal window.
+        let response = savePanel.runModal()
+        guard response == .OK, let saveURL = savePanel.url else { return }
+        try? state.allCharacters.joined().write(to: saveURL, atomically: true, encoding: .utf8)
     }
 }
 

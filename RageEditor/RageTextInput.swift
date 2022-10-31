@@ -78,17 +78,17 @@ struct RageTextInput: View {
     func handleKeyEvent(event: NSEvent) {
         
         let lastTypedCharacter = event.charactersIgnoringModifiers ?? ""
-        
+        print(event.characters)
+        print(lastTypedCharacter)
         // ESC = Optional("\u{1B}")
         if(currentlySearching) {
-            if(event.keyCode == 48) {
-                // TAB
+            if(event.characters == "\u{1B}") {
                 currentlySearching = false
             } else if (event.keyCode == 51) {
                 // Backspace
                 state.searchString = state.searchString.dropLast()
                 state.resetSearch()
-            } else if (event.keyCode == 125) {
+            } else if (event.keyCode == 125 || event.keyCode == 48  ) {
                 // Arrow DOWN
                 state.selectNextAutocompleteOptionsDown()
             } else if (event.keyCode == 126) {

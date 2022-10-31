@@ -13,14 +13,19 @@ struct AutocompleteView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading) {
-                Text(" " + state.searchString.joined())
-                    .frame(width: geometry.size.width * state.ratioRight, height: state.defaultFontSize * 1.5, alignment: .leading)
-                    .font(.system(size: state.defaultFontSize))
-                    .truncationMode(.tail)
-                    .lineLimit(1)
-                    .padding(0)
-                    .background(Color("ObsidianPurple").opacity(0.5))
-                
+                ZStack(alignment: .leading) {
+                    Text(" " + state.searchString.joined())
+                        .frame(width: geometry.size.width * state.ratioRight, height: state.defaultFontSize * 1.5, alignment: .leading)
+                        .font(.system(size: state.defaultFontSize))
+                        .truncationMode(.tail)
+                        .lineLimit(1)
+                        .padding(0)
+                        .background(Color("ObsidianPurple").opacity(0.4))
+
+                    Text("ESC to dismiss")
+                        .foregroundColor(Color("ObsidianPurple"))
+                        .offset(x: geometry.size.width / 2 - 240, y: state.defaultFontSize * -0.5)
+                }
                 ForEach(state.autocompleteSearchMatches(), id: \.self) { match in
                     Text(" " + match)
                         .frame(width: geometry.size.width * state.ratioRight, height: state.defaultFontSize, alignment: .leading)

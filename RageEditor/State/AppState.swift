@@ -27,7 +27,7 @@ class AppState: ObservableObject {
     @Published var searchString: [String] = []
     @Published var selectedAutocompleteOption: String = ""
     @Published var selectIndex = -1
-    @Published var defaultFontSize = 28.0
+    @Published var defaultFontSize = 38.0
     @Published var ratioLeft = 0.6
     @Published var ratioRight = 0.4
     @Published var ratioTop = 2.25
@@ -147,7 +147,7 @@ class AppState: ObservableObject {
                 self.selectNextAutocompleteOptionsUp()
             } else if (event.keyCode == 36) {
                 // Enter
-                let appendString = self.selectedAutocompleteOption + "]] "
+                let appendString = self.selectedAutocompleteOption + "]]"
                 self.selectedAutocompleteOption = ""
 
                 let arrayLiteral = Array(arrayLiteral: appendString)
@@ -155,7 +155,6 @@ class AppState: ObservableObject {
                 self.characters.append(contentsOf: arrayLiteral)
                 self.lastWord.append(contentsOf: arrayLiteral)
                 self.currentlySearching = false
-
             } else {
                 self.searchString.append(lastTypedCharacter)
                 self.resetSearch()
@@ -190,7 +189,13 @@ class AppState: ObservableObject {
         self.firstPartAttributedString = AttributedString(self.characters.dropLast(self.lastWord.count).joined())
         self.firstPartAttributedString.foregroundColor = Color.gray
         self.lastWordAttributedString = AttributedString(self.lastWord.joined())
-        self.lastWordAttributedString.foregroundColor = .white
+
+        if(self.lastWord.joined().starts(with: "[[")) {
+            self.lastWordAttributedString.foregroundColor = Color("ObsidianPurple")
+        } else {
+            self.lastWordAttributedString.foregroundColor = .white
+        }
+
         self.attributedString = AttributedString("")
         self.attributedString.append(self.firstPartAttributedString)
         self.attributedString.append(self.lastWordAttributedString)

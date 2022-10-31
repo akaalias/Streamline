@@ -10,9 +10,9 @@ import SwiftUIX
 
 struct RageTextInput: View {
     @EnvironmentObject var state: AppState
+    @StateObject var keyboardInput = KeyboardInput()
     @State private var monitor: Any?
     @State private var opacity = 1.0
-    @StateObject var keyboardInput = KeyboardInput()
 
     var body: some View {
         KeyboardEvent(into: $keyboardInput.keyCode)
@@ -52,6 +52,7 @@ struct RageTextInput: View {
                 .visible(state.currentlySearching)
                 .offset(x: geometry.size.width * state.ratioLeft)
             
+            // Menu (WIP)
             HStack {
                 Button() {
                     self.save()

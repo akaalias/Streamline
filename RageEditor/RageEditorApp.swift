@@ -9,14 +9,12 @@ import SwiftUI
 
 @main
 struct RageEditorApp: App {
-    let persistenceController = PersistenceController.shared
     @StateObject var state = AppState()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(state)
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
         .windowStyle(HiddenTitleBarWindowStyle())
     }

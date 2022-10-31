@@ -17,7 +17,6 @@
 		56DF1ECE28B60D0B0020B6F6 /* RageEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1ECD28B60D0B0020B6F6 /* RageEditorApp.swift */; };
 		56DF1ED228B60D0D0020B6F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56DF1ED128B60D0D0020B6F6 /* Assets.xcassets */; };
 		56DF1ED528B60D0D0020B6F6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56DF1ED428B60D0D0020B6F6 /* Preview Assets.xcassets */; };
-		56DF1ED728B60D0D0020B6F6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1ED628B60D0D0020B6F6 /* Persistence.swift */; };
 		56DF1EDA28B60D0D0020B6F6 /* RageEditor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1ED828B60D0D0020B6F6 /* RageEditor.xcdatamodeld */; };
 		56DF1EE228B60D390020B6F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1EE128B60D390020B6F6 /* ContentView.swift */; };
 		56E285BE28CCD20D0025D343 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 56E285BD28CCD20D0025D343 /* SwiftUIX */; };
@@ -37,7 +36,6 @@
 		56DF1ECD28B60D0B0020B6F6 /* RageEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RageEditorApp.swift; sourceTree = "<group>"; };
 		56DF1ED128B60D0D0020B6F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56DF1ED428B60D0D0020B6F6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		56DF1ED628B60D0D0020B6F6 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		56DF1ED928B60D0D0020B6F6 /* RageEditor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RageEditor.xcdatamodel; sourceTree = "<group>"; };
 		56DF1EDB28B60D0D0020B6F6 /* RageEditor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RageEditor.entitlements; sourceTree = "<group>"; };
 		56DF1EE128B60D390020B6F6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,10 +54,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5617C6E729103A300081FA58 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				56D0C3C928B6297100B96243 /* RageTextInput.swift */,
+				56DF1EE128B60D390020B6F6 /* ContentView.swift */,
+				565561D6290C16CB00290876 /* AutocompleteView.swift */,
+				56B51A87290D695C00EFEAD1 /* FolderSetupView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5617C6E829103A350081FA58 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				5679D95528CE83AF0036EC9C /* ParticleView.swift */,
+				56EF44EB28D209080072F03E /* SparkParticle.sks */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		5617C6E929103A600081FA58 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				5648615528CDEA1800B7A3E5 /* AppState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		5617C6EA29103A6F0081FA58 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				568D87AF290E83CC00B1B017 /* CGKeyCode_Extension.swift */,
+				568D87B1290E867D00B1B017 /* KeyboardInput.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
 		56DF1EC128B60D0B0020B6F6 = {
 			isa = PBXGroup;
 			children = (
-				568D87B1290E867D00B1B017 /* KeyboardInput.swift */,
 				56DF1ECC28B60D0B0020B6F6 /* RageEditor */,
 				56DF1ECB28B60D0B0020B6F6 /* Products */,
 			);
@@ -76,21 +110,16 @@
 		56DF1ECC28B60D0B0020B6F6 /* RageEditor */ = {
 			isa = PBXGroup;
 			children = (
+				5617C6EA29103A6F0081FA58 /* Keyboard */,
+				5617C6E929103A600081FA58 /* State */,
+				5617C6E829103A350081FA58 /* Util */,
+				5617C6E729103A300081FA58 /* Views */,
 				56B51A86290D5FC700EFEAD1 /* Info.plist */,
 				56DF1ECD28B60D0B0020B6F6 /* RageEditorApp.swift */,
-				56B51A87290D695C00EFEAD1 /* FolderSetupView.swift */,
-				5648615528CDEA1800B7A3E5 /* AppState.swift */,
-				565561D6290C16CB00290876 /* AutocompleteView.swift */,
-				56DF1EE128B60D390020B6F6 /* ContentView.swift */,
 				56DF1ED128B60D0D0020B6F6 /* Assets.xcassets */,
-				5679D95528CE83AF0036EC9C /* ParticleView.swift */,
-				56DF1ED628B60D0D0020B6F6 /* Persistence.swift */,
 				56DF1EDB28B60D0D0020B6F6 /* RageEditor.entitlements */,
 				56DF1ED828B60D0D0020B6F6 /* RageEditor.xcdatamodeld */,
 				56DF1ED328B60D0D0020B6F6 /* Preview Content */,
-				56D0C3C928B6297100B96243 /* RageTextInput.swift */,
-				568D87AF290E83CC00B1B017 /* CGKeyCode_Extension.swift */,
-				56EF44EB28D209080072F03E /* SparkParticle.sks */,
 			);
 			path = RageEditor;
 			sourceTree = "<group>";
@@ -180,7 +209,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56DF1ED728B60D0D0020B6F6 /* Persistence.swift in Sources */,
 				56D0C3CA28B6297100B96243 /* RageTextInput.swift in Sources */,
 				5648615628CDEA1800B7A3E5 /* AppState.swift in Sources */,
 				56DF1EE228B60D390020B6F6 /* ContentView.swift in Sources */,

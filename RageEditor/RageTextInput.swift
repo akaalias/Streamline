@@ -75,14 +75,11 @@ struct RageTextInput: View {
         }
     }
     
-    func handleKeyEvent(event: NSEvent) {
-        
+    func handleKeyEvent(event: NSEvent) {        
         let lastTypedCharacter = event.charactersIgnoringModifiers ?? ""
-        print(event.characters)
-        print(lastTypedCharacter)
-        // ESC = Optional("\u{1B}")
         if(currentlySearching) {
             if(event.characters == "\u{1B}") {
+                // ESC = Optional("\u{1B}")
                 currentlySearching = false
             } else if (event.keyCode == 51) {
                 // Backspace

@@ -81,6 +81,20 @@ class AppState: ObservableObject {
         selectIndex = -1
     }
     
+    func setupCacheFromBookmark() {
+        if(!self.folderBookmarkData.isEmpty) {
+            do {
+                var isStale = false
+                let newURL = try URL(resolvingBookmarkData: self.folderBookmarkData, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &isStale)
+                newURL.startAccessingSecurityScopedResource()
+                self.cacheMarkdownFilenames(url: newURL)
+                newURL.stopAccessingSecurityScopedResource()
+            } catch {
+                print("Error while decoding bookmark URL data")
+            }
+        }
+    }
+    
     func cacheMarkdownFilenames(url: URL) {
         self.markdownFileNames = []
         if let enumerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.isRegularFileKey, .documentIdentifierKey, .contentTypeKey, .nameKey], options: [.skipsHiddenFiles, .skipsPackageDescendants]) {

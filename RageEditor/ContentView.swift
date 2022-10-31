@@ -25,16 +25,25 @@ struct ContentView: View {
                     RageTextInput()
                         .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
                     
-                    Button() {
-                        self.folderBookmarkData = Data()
-                        self.update()
-                    } label: {
-                        Text("Reset")
+                    HStack {
+                        Button() {
+                            self.folderBookmarkData = Data()
+                            self.update()
+                        } label: {
+                            Text("Reset")
+                        }
+
+                        Button() {
+                            self.save()
+                        } label: {
+                            Text("Save")
+                        }
+
+                        Text(String(state.markdownFileNames.count) + " Indexed Markdown Files")
+                            .font(.footnote)
                     }
-                    .offset(x: geometry.size.width / 2 - 50, y: geometry.size.height / 2 - 30)
-                    
-                    Text(String(state.markdownFileNames.count))
-                        .offset(x: geometry.size.width / 2 - 100, y: geometry.size.height / 2 - 30)
+                    .offset(x: geometry.size.width / 2 - 150, y: geometry.size.height / 2 - 30)
+
                 }
             }
         }
@@ -56,6 +65,24 @@ struct ContentView: View {
     
     func update() {
        refresh.toggle()
+    }
+    
+    func save() {
+        let savePanel = NSSavePanel()
+        savePanel.allowedFileTypes = ["md"]
+        savePanel.canCreateDirectories = true
+        savePanel.isExtensionHidden = false
+        savePanel.allowsOtherFileTypes = false
+        savePanel.title = "Save your Streamline note"
+        savePanel.message = "Choose a folder and a name"
+        savePanel.prompt = "Save now"
+        savePanel.nameFieldLabel = "File name:"
+        savePanel.nameFieldStringValue = "mytext.md"
+            
+        // Present the save panel as a modal window.
+        let response = savePanel.runModal()
+        guard response == .OK, let saveURL = savePanel.url else { return }
+        try? state.allCharacters.joined().write(to: saveURL, atomically: true, encoding: .utf8)
     }
 }
 

@@ -12,19 +12,18 @@ import SpriteKit
 
 class AppState: ObservableObject {
     
-    @Published var characters: [String] = []
-    @Published var lastWord: [String] = []
+    @Published var visibleCharactersStringArray: [String] = []
+    @Published var visibleLastWordStringArray: [String] = []
     @Published var attributedString = AttributedString("")
     @Published var firstPartAttributedString = AttributedString("")
     @Published var lastWordAttributedString = AttributedString("")
-    @Published var words: [String] = []
     @Published var currentlySearching = false
-    @Published var allCharacters: [String]
+    @Published var allCharactersStorageStringArray: [String]
 
     @Published var scene: ParticleScene
     @Published var secondsElapsed: Int = 0
     @Published var typingSpeed: Float = 0.0
-    @Published var searchString: [String] = []
+    @Published var searchStringArray: [String] = []
     @Published var selectedAutocompleteOption: String = ""
     @Published var selectIndex = -1
     @Published var defaultFontSize = 38.0
@@ -38,15 +37,15 @@ class AppState: ObservableObject {
     var timer: Timer?
     
     init() {
-        allCharacters = []
+        allCharactersStorageStringArray = []
         scene = ParticleScene()
         scene.scaleMode = .resizeFill
         scene.backgroundColor = .clear
     }
     
     func autocompleteSearchMatches() -> [String] {
-        if(searchString.count <= 3) { return [] }
-        let filteredFileNames = markdownFileNames.filter { $0.localizedCaseInsensitiveContains(searchString.joined()) }
+        if(searchStringArray.count <= 3) { return [] }
+        let filteredFileNames = markdownFileNames.filter { $0.localizedCaseInsensitiveContains(searchStringArray.joined()) }
         if(filteredFileNames.count >= 6) {
             return Array(filteredFileNames.prefix(upTo: 6))
         } else {
@@ -69,7 +68,7 @@ class AppState: ObservableObject {
     }
     
     func selectOption() {
-        selectedAutocompleteOption = searchString.joined()
+        selectedAutocompleteOption = searchStringArray.joined()
 
         if(selectIndex >= 0 && selectIndex < autocompleteSearchMatches().count) {
             selectedAutocompleteOption = autocompleteSearchMatches()[selectIndex]
@@ -77,7 +76,7 @@ class AppState: ObservableObject {
     }
     
     func resetSearch() {
-        selectedAutocompleteOption = searchString.joined()
+        selectedAutocompleteOption = searchStringArray.joined()
         selectIndex = -1
     }
     
@@ -117,8 +116,8 @@ class AppState: ObservableObject {
     func updateTypingSpeed() {
         secondsElapsed += 1
 
-        if(allCharacters.count > 0) {
-            self.typingSpeed = Float(allCharacters.count) / Float(secondsElapsed)
+        if(allCharactersStorageStringArray.count > 0) {
+            self.typingSpeed = Float(allCharactersStorageStringArray.count) / Float(secondsElapsed)
         }
         
         let scale = CGFloat(0.4 * self.typingSpeed * Float.random(in: 0.1 ..< 1.0))
@@ -130,14 +129,24 @@ class AppState: ObservableObject {
     }
     
     func handleKeyEvent(event: NSEvent) {
-        let lastTypedCharacter = event.charactersIgnoringModifiers ?? ""
+        let lastTypedCharacterIgnoringModifiers = event.charactersIgnoringModifiers ?? ""
+        let lastTypedCharacters = event.characters ?? ""
+        let charactersWithModifiersApplied = event.characters(byApplyingModifiers: event.modifierFlags) ?? ""
+        let modifierFlags = event.modifierFlags
+        
+        //        print("lastTypedCharacterIgnoringModifiers: " + lastTypedCharacterIgnoringModifiers)
+        //        print("lastTypedCharacter: " + lastTypedCharacters)
+        //        print("charactersWithModifiersApplied: " + charactersWithModifiersApplied)
+        //        print("modifierFlags: " + modifierFlags.rawValue.description)
+        
+        // Autocomplete triggered
         if(self.currentlySearching) {
             if(event.characters == "\u{1B}") {
                 // ESC = Optional("\u{1B}")
                 self.currentlySearching = false
             } else if (event.keyCode == 51) {
                 // Backspace
-                self.searchString = self.searchString.dropLast()
+                self.searchStringArray = self.searchStringArray.dropLast()
                 self.resetSearch()
             } else if (event.keyCode == 125 || event.keyCode == 48  ) {
                 // Arrow DOWN
@@ -151,46 +160,44 @@ class AppState: ObservableObject {
                 self.selectedAutocompleteOption = ""
 
                 let arrayLiteral = Array(arrayLiteral: appendString)
-                self.allCharacters.append(contentsOf: arrayLiteral)
-                self.characters.append(contentsOf: arrayLiteral)
-                self.lastWord.append(contentsOf: arrayLiteral)
+                self.allCharactersStorageStringArray.append(contentsOf: arrayLiteral)
+                self.visibleCharactersStringArray.append(contentsOf: arrayLiteral)
+                self.visibleLastWordStringArray.append(contentsOf: arrayLiteral)
                 self.currentlySearching = false
             } else {
-                self.searchString.append(lastTypedCharacter)
+                self.searchStringArray.append(lastTypedCharacterIgnoringModifiers)
                 self.resetSearch()
             }
         } else {
-            if(lastTypedCharacter == "[" && self.allCharacters.last == "[") {
+            if(lastTypedCharacterIgnoringModifiers == "[" && self.allCharactersStorageStringArray.last == "[") {
                 self.currentlySearching = true
-                self.searchString = []
-                self.lastWord = []
-                self.lastWord.append("[")
+                self.searchStringArray = []
+                self.visibleLastWordStringArray = []
+                self.visibleLastWordStringArray.append("[")
             }
             
-            self.allCharacters.append(lastTypedCharacter)
-                
-                if(lastTypedCharacter == " ") {
-                    self.words.append(self.lastWord.joined())
+            self.allCharactersStorageStringArray.append(lastTypedCharacterIgnoringModifiers)
+                if(lastTypedCharacterIgnoringModifiers == " ") {
                 }
                 
                 if(event.keyCode == 36) {
-                    self.characters.append("↩")
-                    self.lastWord = []
+                    self.visibleCharactersStringArray.append("¶")
+                    self.visibleLastWordStringArray = []
                 } else {
-                    self.characters.append(lastTypedCharacter)
-                    if(lastTypedCharacter == " ") {
-                        self.lastWord = []
+                    self.visibleCharactersStringArray.append(lastTypedCharacterIgnoringModifiers)
+                    if(lastTypedCharacterIgnoringModifiers == " ") {
+                        self.visibleLastWordStringArray = []
                     } else {
-                        self.lastWord.append(lastTypedCharacter)
+                        self.visibleLastWordStringArray.append(lastTypedCharacterIgnoringModifiers)
                     }
                 }
         }
         
-        self.firstPartAttributedString = AttributedString(self.characters.dropLast(self.lastWord.count).joined())
+        self.firstPartAttributedString = AttributedString(self.visibleCharactersStringArray.dropLast(self.visibleLastWordStringArray.count).joined())
         self.firstPartAttributedString.foregroundColor = Color.gray
-        self.lastWordAttributedString = AttributedString(self.lastWord.joined())
+        self.lastWordAttributedString = AttributedString(self.visibleLastWordStringArray.joined())
 
-        if(self.lastWord.joined().starts(with: "[[")) {
+        if(self.visibleLastWordStringArray.joined().starts(with: "[[")) {
             self.lastWordAttributedString.foregroundColor = Color("ObsidianPurple")
         } else {
             self.lastWordAttributedString.foregroundColor = .white

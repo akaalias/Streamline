@@ -14,7 +14,7 @@ struct AutocompleteView: View {
         GeometryReader { geometry in
             VStack(alignment: .leading) {
                 ZStack(alignment: .leading) {
-                    Text(" " + state.searchString.joined())
+                    Text(" " + state.searchStringArray.joined())
                         .frame(width: geometry.size.width * state.ratioRight, height: state.defaultFontSize * 1.5, alignment: .leading)
                         .font(.system(size: state.defaultFontSize))
                         .truncationMode(.tail)

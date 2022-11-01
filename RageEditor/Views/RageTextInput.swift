@@ -97,7 +97,7 @@ struct RageTextInput: View {
         // Present the save panel as a modal window.
         let response = savePanel.runModal()
         guard response == .OK, let saveURL = savePanel.url else { return }
-        try? state.allCharacters.joined().write(to: saveURL, atomically: true, encoding: .utf8)
+        try? state.allCharactersStorageStringArray.joined().write(to: saveURL, atomically: true, encoding: .utf8)
     }
 }
 

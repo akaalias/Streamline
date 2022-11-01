@@ -112,22 +112,7 @@ class AppState: ObservableObject {
 
         self.markdownFileNames = Array(Set(self.markdownFileNames))
     }
-    
-    func updateTypingSpeed() {
-        secondsElapsed += 1
-
-        if(allCharactersStorageStringArray.count > 0) {
-            self.typingSpeed = Float(allCharactersStorageStringArray.count) / Float(secondsElapsed)
-        }
         
-        let scale = CGFloat(0.4 * self.typingSpeed * Float.random(in: 0.1 ..< 1.0))
-
-        self.scene.snowEmitterNode?.particleScale = scale
-        self.scene.snowEmitterNode?.particleAlpha = CGFloat(self.typingSpeed / 100)
-        self.scene.snowEmitterNode?.particleSpeed = CGFloat(-self.typingSpeed * 3)
-        self.scene.snowEmitterNode?.xAcceleration = CGFloat(-self.typingSpeed * 3)
-    }
-    
     func handleKeyEvent(event: NSEvent) {
         let lastTypedCharacterIgnoringModifiers = event.charactersIgnoringModifiers ?? ""
         let lastTypedCharacters = event.characters ?? ""
@@ -225,5 +210,20 @@ class AppState: ObservableObject {
                                      selector: #selector(fireTimer),
                                      userInfo: [ "foo" : "bar" ],
                                      repeats: true)
+    }
+
+    func updateTypingSpeed() {
+        secondsElapsed += 1
+
+        if(allCharactersStorageStringArray.count > 0) {
+            self.typingSpeed = Float(allCharactersStorageStringArray.count) / Float(secondsElapsed)
+        }
+        
+        let scale = CGFloat(0.4 * self.typingSpeed * Float.random(in: 0.1 ..< 1.0))
+
+        self.scene.snowEmitterNode?.particleScale = scale
+        self.scene.snowEmitterNode?.particleAlpha = CGFloat(self.typingSpeed / 100)
+        self.scene.snowEmitterNode?.particleSpeed = CGFloat(-self.typingSpeed * 3)
+        self.scene.snowEmitterNode?.xAcceleration = CGFloat(-self.typingSpeed * 3)
     }
 }

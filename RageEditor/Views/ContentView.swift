@@ -23,11 +23,11 @@ struct ContentView: View {
                 .offset(x: geometry.size.width / 2.0 - 200,
                         y: (geometry.size.height / 2) - 200)
             } else {
-                RageTextInput()
+                RageTextInputView()
                     .offset(y: (-geometry.size.height / state.ratioTop) + state.defaultFontSize)
             }
         }
-        .padding(10)
+        .padding(20)
         .onDisappear() {
             NSEvent.removeMonitor(self.monitor)
         }

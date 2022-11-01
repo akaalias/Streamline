@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AutocompleteView: View {
     @EnvironmentObject var state: AppState
+    @State private var commonSize = CGSize()
 
     var body: some View {
         GeometryReader { geometry in
@@ -24,8 +25,13 @@ struct AutocompleteView: View {
 
                     Text("ESC to dismiss")
                         .foregroundColor(Color("ObsidianPurple"))
-                        .offset(x: geometry.size.width / 2 - 240, y: state.defaultFontSize * -0.5)
+                        .frame(maxWidth: 100, alignment: .trailing)
+                        .offset(x: commonSize.width - 110, y: commonSize.height - 75)
+
+                }.readSize { textSize in
+                    commonSize = textSize
                 }
+                
                 ForEach(state.autocompleteSearchMatches(), id: \.self) { match in
                     Text(" " + match)
                         .frame(width: geometry.size.width * state.ratioRight, height: state.defaultFontSize, alignment: .leading)

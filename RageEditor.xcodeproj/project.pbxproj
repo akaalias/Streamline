@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		5648615628CDEA1800B7A3E5 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5648615528CDEA1800B7A3E5 /* AppState.swift */; };
+		56514BB229115F8E002D1BDC /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56514BB129115F8E002D1BDC /* AppSettings.swift */; };
 		565561D7290C16CB00290876 /* AutocompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565561D6290C16CB00290876 /* AutocompleteView.swift */; };
 		5679D95628CE83AF0036EC9C /* ParticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5679D95528CE83AF0036EC9C /* ParticleView.swift */; };
 		568D87B0290E83CC00B1B017 /* CGKeyCode_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D87AF290E83CC00B1B017 /* CGKeyCode_Extension.swift */; };
 		568D87B2290E867E00B1B017 /* KeyboardInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D87B1290E867D00B1B017 /* KeyboardInput.swift */; };
 		56B51A88290D695C00EFEAD1 /* FolderSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B51A87290D695C00EFEAD1 /* FolderSetupView.swift */; };
-		56D0C3CA28B6297100B96243 /* RageTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0C3C928B6297100B96243 /* RageTextInput.swift */; };
+		56D0C3CA28B6297100B96243 /* RageTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0C3C928B6297100B96243 /* RageTextInputView.swift */; };
+		56DDF1BB29115A7D00113DFF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DDF1BA29115A7D00113DFF /* ViewExtensions.swift */; };
 		56DF1ECE28B60D0B0020B6F6 /* RageEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1ECD28B60D0B0020B6F6 /* RageEditorApp.swift */; };
 		56DF1ED228B60D0D0020B6F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56DF1ED128B60D0D0020B6F6 /* Assets.xcassets */; };
 		56DF1ED528B60D0D0020B6F6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56DF1ED428B60D0D0020B6F6 /* Preview Assets.xcassets */; };
@@ -25,13 +27,15 @@
 
 /* Begin PBXFileReference section */
 		5648615528CDEA1800B7A3E5 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		56514BB129115F8E002D1BDC /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		565561D6290C16CB00290876 /* AutocompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteView.swift; sourceTree = "<group>"; };
 		5679D95528CE83AF0036EC9C /* ParticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleView.swift; sourceTree = "<group>"; };
 		568D87AF290E83CC00B1B017 /* CGKeyCode_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGKeyCode_Extension.swift; sourceTree = "<group>"; };
 		568D87B1290E867D00B1B017 /* KeyboardInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardInput.swift; sourceTree = "<group>"; };
 		56B51A86290D5FC700EFEAD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		56B51A87290D695C00EFEAD1 /* FolderSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderSetupView.swift; sourceTree = "<group>"; };
-		56D0C3C928B6297100B96243 /* RageTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RageTextInput.swift; sourceTree = "<group>"; };
+		56D0C3C928B6297100B96243 /* RageTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RageTextInputView.swift; sourceTree = "<group>"; };
+		56DDF1BA29115A7D00113DFF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		56DF1ECA28B60D0B0020B6F6 /* RageEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RageEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56DF1ECD28B60D0B0020B6F6 /* RageEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RageEditorApp.swift; sourceTree = "<group>"; };
 		56DF1ED128B60D0D0020B6F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,7 +61,7 @@
 		5617C6E729103A300081FA58 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				56D0C3C928B6297100B96243 /* RageTextInput.swift */,
+				56D0C3C928B6297100B96243 /* RageTextInputView.swift */,
 				56DF1EE128B60D390020B6F6 /* ContentView.swift */,
 				565561D6290C16CB00290876 /* AutocompleteView.swift */,
 				56B51A87290D695C00EFEAD1 /* FolderSetupView.swift */,
@@ -68,8 +72,7 @@
 		5617C6E829103A350081FA58 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				5679D95528CE83AF0036EC9C /* ParticleView.swift */,
-				56EF44EB28D209080072F03E /* SparkParticle.sks */,
+				56DDF1BA29115A7D00113DFF /* ViewExtensions.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -78,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				5648615528CDEA1800B7A3E5 /* AppState.swift */,
+				56514BB129115F8E002D1BDC /* AppSettings.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -89,6 +93,15 @@
 				568D87B1290E867D00B1B017 /* KeyboardInput.swift */,
 			);
 			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		56514BB329115FFD002D1BDC /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				5679D95528CE83AF0036EC9C /* ParticleView.swift */,
+				56EF44EB28D209080072F03E /* SparkParticle.sks */,
+			);
+			path = Particles;
 			sourceTree = "<group>";
 		};
 		56DF1EC128B60D0B0020B6F6 = {
@@ -110,6 +123,7 @@
 		56DF1ECC28B60D0B0020B6F6 /* RageEditor */ = {
 			isa = PBXGroup;
 			children = (
+				56514BB329115FFD002D1BDC /* Particles */,
 				5617C6EA29103A6F0081FA58 /* Keyboard */,
 				5617C6E929103A600081FA58 /* State */,
 				5617C6E829103A350081FA58 /* Util */,
@@ -209,7 +223,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56D0C3CA28B6297100B96243 /* RageTextInput.swift in Sources */,
+				56DDF1BB29115A7D00113DFF /* ViewExtensions.swift in Sources */,
+				56D0C3CA28B6297100B96243 /* RageTextInputView.swift in Sources */,
+				56514BB229115F8E002D1BDC /* AppSettings.swift in Sources */,
 				5648615628CDEA1800B7A3E5 /* AppState.swift in Sources */,
 				56DF1EE228B60D390020B6F6 /* ContentView.swift in Sources */,
 				56B51A88290D695C00EFEAD1 /* FolderSetupView.swift in Sources */,

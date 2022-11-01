@@ -23,10 +23,8 @@ struct RageTextInputView: View {
 
                 HStack {
                     Text(state.attributedString)
-//                        .font(.custom("iAWriterQuattroS-Regular", size: state.defaultFontSize))
-//                        .kerning(-2)
-                        .font(.system(size: state.defaultFontSize))
-                        .kerning(-1)
+                        .font(.custom("JetBrainsMonoNL-Regular", size: state.defaultFontSize))
+                            // .font(.system(size: state.defaultFontSize))
                         .truncationMode(.head)
                         .lineLimit(1)
                         .foregroundColor(.gray)

@@ -10,13 +10,9 @@ import SwiftUIX
 
 struct RageTextInput: View {
     @EnvironmentObject var state: AppState
-    @StateObject var keyboardInput = KeyboardInput()
-    @State private var monitor: Any?
     @State private var opacity = 1.0
 
     var body: some View {
-        KeyboardEvent(into: $keyboardInput.keyCode)
-
         GeometryReader { geometry in
                 Path() { path in
                     path.move(to: CGPoint(x: 0, y: state.defaultFontSize * 1.5))
@@ -53,7 +49,7 @@ struct RageTextInput: View {
                 .offset(x: geometry.size.width * state.ratioLeft)
             
             // Menu (WIP)
-            HStack {
+            HStack() {
                 Button() {
                     self.save()
                 } label: {
@@ -63,17 +59,8 @@ struct RageTextInput: View {
                 Text(String(state.markdownFileNames.count) + " Indexed Markdown Files")
                     .font(.footnote)
             }
-            .offset(x: geometry.size.width / 2 - 150, y: geometry.size.height / 2 - 30)
+            .offset(y: geometry.size.height)
 
-        }
-        .onDisappear() {
-            NSEvent.removeMonitor(self.monitor)
-        }
-        .onAppear() {
-            self.monitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (aEvent) -> NSEvent? in
-                state.handleKeyEvent(event: aEvent)
-                return aEvent
-            }
         }
     }
     

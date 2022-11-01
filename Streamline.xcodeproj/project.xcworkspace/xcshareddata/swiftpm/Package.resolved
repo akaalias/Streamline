@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SwiftUIX/SwiftUIX",
       "state" : {
-        "revision" : "889c781539cdd1e6a1111472c711082522aa35c6",
-        "version" : "0.1.2"
+        "branch" : "master",
+        "revision" : "93105dbdc9f47585a56d74cc0c7558f6dd60cea3"
       }
     }
   ],

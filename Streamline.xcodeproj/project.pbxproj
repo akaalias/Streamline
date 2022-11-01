@@ -15,12 +15,11 @@
 		56B51A88290D695C00EFEAD1 /* FolderSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B51A87290D695C00EFEAD1 /* FolderSetupView.swift */; };
 		56D0C3CA28B6297100B96243 /* RageTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0C3C928B6297100B96243 /* RageTextInputView.swift */; };
 		56DDF1BB29115A7D00113DFF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DDF1BA29115A7D00113DFF /* ViewExtensions.swift */; };
-		56DF1ECE28B60D0B0020B6F6 /* RageEditorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1ECD28B60D0B0020B6F6 /* RageEditorApp.swift */; };
+		56DF1ECE28B60D0B0020B6F6 /* StreamlineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1ECD28B60D0B0020B6F6 /* StreamlineApp.swift */; };
 		56DF1ED228B60D0D0020B6F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56DF1ED128B60D0D0020B6F6 /* Assets.xcassets */; };
 		56DF1ED528B60D0D0020B6F6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56DF1ED428B60D0D0020B6F6 /* Preview Assets.xcassets */; };
-		56DF1EDA28B60D0D0020B6F6 /* RageEditor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1ED828B60D0D0020B6F6 /* RageEditor.xcdatamodeld */; };
 		56DF1EE228B60D390020B6F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1EE128B60D390020B6F6 /* ContentView.swift */; };
-		56E285BE28CCD20D0025D343 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 56E285BD28CCD20D0025D343 /* SwiftUIX */; };
+		56E81F7C29117A9500CAD9ED /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 56E81F7B29117A9500CAD9ED /* SwiftUIX */; };
 		56E94FA729116BBB002BC465 /* iAWriterDuoS-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FA329116BBB002BC465 /* iAWriterDuoS-Bold.ttf */; };
 		56E94FA829116BBB002BC465 /* iAWriterDuoS-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FA429116BBB002BC465 /* iAWriterDuoS-BoldItalic.ttf */; };
 		56E94FA929116BBB002BC465 /* iAWriterDuoS-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FA529116BBB002BC465 /* iAWriterDuoS-Regular.ttf */; };
@@ -69,12 +68,11 @@
 		56B51A87290D695C00EFEAD1 /* FolderSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderSetupView.swift; sourceTree = "<group>"; };
 		56D0C3C928B6297100B96243 /* RageTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RageTextInputView.swift; sourceTree = "<group>"; };
 		56DDF1BA29115A7D00113DFF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
-		56DF1ECA28B60D0B0020B6F6 /* RageEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RageEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		56DF1ECD28B60D0B0020B6F6 /* RageEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RageEditorApp.swift; sourceTree = "<group>"; };
+		56DF1ECA28B60D0B0020B6F6 /* Streamline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamline.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56DF1ECD28B60D0B0020B6F6 /* StreamlineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamlineApp.swift; sourceTree = "<group>"; };
 		56DF1ED128B60D0D0020B6F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56DF1ED428B60D0D0020B6F6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		56DF1ED928B60D0D0020B6F6 /* RageEditor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RageEditor.xcdatamodel; sourceTree = "<group>"; };
-		56DF1EDB28B60D0D0020B6F6 /* RageEditor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RageEditor.entitlements; sourceTree = "<group>"; };
+		56DF1EDB28B60D0D0020B6F6 /* Streamline.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Streamline.entitlements; sourceTree = "<group>"; };
 		56DF1EE128B60D390020B6F6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		56E94FA329116BBB002BC465 /* iAWriterDuoS-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuoS-Bold.ttf"; sourceTree = "<group>"; };
 		56E94FA429116BBB002BC465 /* iAWriterDuoS-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuoS-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -119,7 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56E285BE28CCD20D0025D343 /* SwiftUIX in Frameworks */,
+				56E81F7C29117A9500CAD9ED /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +164,7 @@
 		56DF1EC128B60D0B0020B6F6 = {
 			isa = PBXGroup;
 			children = (
-				56DF1ECC28B60D0B0020B6F6 /* RageEditor */,
+				56DF1ECC28B60D0B0020B6F6 /* Streamline */,
 				56DF1ECB28B60D0B0020B6F6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -174,12 +172,12 @@
 		56DF1ECB28B60D0B0020B6F6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				56DF1ECA28B60D0B0020B6F6 /* RageEditor.app */,
+				56DF1ECA28B60D0B0020B6F6 /* Streamline.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		56DF1ECC28B60D0B0020B6F6 /* RageEditor */ = {
+		56DF1ECC28B60D0B0020B6F6 /* Streamline */ = {
 			isa = PBXGroup;
 			children = (
 				56E94FA229116B81002BC465 /* Fonts */,
@@ -188,13 +186,12 @@
 				5617C6E829103A350081FA58 /* Util */,
 				5617C6E729103A300081FA58 /* Views */,
 				56B51A86290D5FC700EFEAD1 /* Info.plist */,
-				56DF1ECD28B60D0B0020B6F6 /* RageEditorApp.swift */,
+				56DF1ECD28B60D0B0020B6F6 /* StreamlineApp.swift */,
 				56DF1ED128B60D0D0020B6F6 /* Assets.xcassets */,
-				56DF1EDB28B60D0D0020B6F6 /* RageEditor.entitlements */,
-				56DF1ED828B60D0D0020B6F6 /* RageEditor.xcdatamodeld */,
+				56DF1EDB28B60D0D0020B6F6 /* Streamline.entitlements */,
 				56DF1ED328B60D0D0020B6F6 /* Preview Content */,
 			);
-			path = RageEditor;
+			path = Streamline;
 			sourceTree = "<group>";
 		};
 		56DF1ED328B60D0D0020B6F6 /* Preview Content */ = {
@@ -251,9 +248,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		56DF1EC928B60D0B0020B6F6 /* RageEditor */ = {
+		56DF1EC928B60D0B0020B6F6 /* Streamline */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56DF1EDE28B60D0D0020B6F6 /* Build configuration list for PBXNativeTarget "RageEditor" */;
+			buildConfigurationList = 56DF1EDE28B60D0D0020B6F6 /* Build configuration list for PBXNativeTarget "Streamline" */;
 			buildPhases = (
 				56DF1EC628B60D0B0020B6F6 /* Sources */,
 				56DF1EC728B60D0B0020B6F6 /* Frameworks */,
@@ -263,12 +260,12 @@
 			);
 			dependencies = (
 			);
-			name = RageEditor;
+			name = Streamline;
 			packageProductDependencies = (
-				56E285BD28CCD20D0025D343 /* SwiftUIX */,
+				56E81F7B29117A9500CAD9ED /* SwiftUIX */,
 			);
 			productName = RageEditor;
-			productReference = 56DF1ECA28B60D0B0020B6F6 /* RageEditor.app */;
+			productReference = 56DF1ECA28B60D0B0020B6F6 /* Streamline.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -279,14 +276,14 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					56DF1EC928B60D0B0020B6F6 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
 			};
-			buildConfigurationList = 56DF1EC528B60D0B0020B6F6 /* Build configuration list for PBXProject "RageEditor" */;
+			buildConfigurationList = 56DF1EC528B60D0B0020B6F6 /* Build configuration list for PBXProject "Streamline" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -296,13 +293,13 @@
 			);
 			mainGroup = 56DF1EC128B60D0B0020B6F6;
 			packageReferences = (
-				56E285BC28CCD20D0025D343 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				56E81F7A29117A9500CAD9ED /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = 56DF1ECB28B60D0B0020B6F6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				56DF1EC928B60D0B0020B6F6 /* RageEditor */,
+				56DF1EC928B60D0B0020B6F6 /* Streamline */,
 			);
 		};
 /* End PBXProject section */
@@ -369,8 +366,7 @@
 				565561D7290C16CB00290876 /* AutocompleteView.swift in Sources */,
 				568D87B2290E867E00B1B017 /* KeyboardInput.swift in Sources */,
 				568D87B0290E83CC00B1B017 /* CGKeyCode_Extension.swift in Sources */,
-				56DF1EDA28B60D0D0020B6F6 /* RageEditor.xcdatamodeld in Sources */,
-				56DF1ECE28B60D0B0020B6F6 /* RageEditorApp.swift in Sources */,
+				56DF1ECE28B60D0B0020B6F6 /* StreamlineApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +406,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -470,6 +467,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -495,25 +493,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = RageEditor/RageEditor.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Streamline/Streamline.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"RageEditor/Preview Content\"";
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Streamline/Preview Content\"";
 				DEVELOPMENT_TEAM = HKQARCV8QZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RageEditor/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Rage;
+				INFOPLIST_FILE = Streamline/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Streamline;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rondeau.RageEditor;
+				MARKETING_VERSION = 1.7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rondeau.Streamline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -525,25 +526,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = RageEditor/RageEditor.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Streamline/Streamline.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"RageEditor/Preview Content\"";
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Streamline/Preview Content\"";
 				DEVELOPMENT_TEAM = HKQARCV8QZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RageEditor/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Rage;
+				INFOPLIST_FILE = Streamline/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Streamline;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rondeau.RageEditor;
+				MARKETING_VERSION = 1.7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rondeau.Streamline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -553,7 +557,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		56DF1EC528B60D0B0020B6F6 /* Build configuration list for PBXProject "RageEditor" */ = {
+		56DF1EC528B60D0B0020B6F6 /* Build configuration list for PBXProject "Streamline" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56DF1EDC28B60D0D0020B6F6 /* Debug */,
@@ -562,7 +566,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56DF1EDE28B60D0D0020B6F6 /* Build configuration list for PBXNativeTarget "RageEditor" */ = {
+		56DF1EDE28B60D0D0020B6F6 /* Build configuration list for PBXNativeTarget "Streamline" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56DF1EDF28B60D0D0020B6F6 /* Debug */,
@@ -574,36 +578,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		56E285BC28CCD20D0025D343 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+		56E81F7A29117A9500CAD9ED /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.2;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		56E285BD28CCD20D0025D343 /* SwiftUIX */ = {
+		56E81F7B29117A9500CAD9ED /* SwiftUIX */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 56E285BC28CCD20D0025D343 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			package = 56E81F7A29117A9500CAD9ED /* XCRemoteSwiftPackageReference "SwiftUIX" */;
 			productName = SwiftUIX;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		56DF1ED828B60D0D0020B6F6 /* RageEditor.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				56DF1ED928B60D0D0020B6F6 /* RageEditor.xcdatamodel */,
-			);
-			currentVersion = 56DF1ED928B60D0D0020B6F6 /* RageEditor.xcdatamodel */;
-			path = RageEditor.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 56DF1EC228B60D0B0020B6F6 /* Project object */;
 }

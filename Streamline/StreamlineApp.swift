@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct RageEditorApp: App {
+struct StreamlineApp: App {
     @StateObject var state = AppState()
 
     var body: some Scene {

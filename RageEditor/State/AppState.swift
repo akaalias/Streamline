@@ -155,8 +155,12 @@ class AppState: ObservableObject {
                 // Arrow UP
                 self.selectNextAutocompleteOptionsUp()
             } else if (event.keyCode == 36) {
+                var appendString = self.selectedAutocompleteOption
+
                 // Enter
-                let appendString = self.selectedAutocompleteOption + "]]"
+                if(!self.selectedAutocompleteOption.reversed().starts(with: "]]")) {
+                    appendString = appendString + "]]"
+                }
                 self.selectedAutocompleteOption = ""
 
                 let arrayLiteral = Array(arrayLiteral: appendString)

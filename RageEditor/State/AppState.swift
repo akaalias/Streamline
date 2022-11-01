@@ -31,7 +31,6 @@ class AppState: ObservableObject {
     @Published var ratioRight = 0.4
     @Published var ratioTop = 2.25
     @Published var markdownFileNames: [String] = []
-    
     @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
 
     var timer: Timer?
@@ -118,6 +117,10 @@ class AppState: ObservableObject {
         let lastTypedCharacters = event.characters ?? ""
         let charactersWithModifiersApplied = event.characters(byApplyingModifiers: event.modifierFlags) ?? ""
         let modifierFlags = event.modifierFlags
+        
+        if(modifierFlags.contains(.command)) {
+            return
+        }
         
         //        print("lastTypedCharacterIgnoringModifiers: " + lastTypedCharacterIgnoringModifiers)
         //        print("lastTypedCharacter: " + lastTypedCharacters)

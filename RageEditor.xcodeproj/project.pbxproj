@@ -10,7 +10,6 @@
 		5648615628CDEA1800B7A3E5 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5648615528CDEA1800B7A3E5 /* AppState.swift */; };
 		56514BB229115F8E002D1BDC /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56514BB129115F8E002D1BDC /* AppSettings.swift */; };
 		565561D7290C16CB00290876 /* AutocompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565561D6290C16CB00290876 /* AutocompleteView.swift */; };
-		5679D95628CE83AF0036EC9C /* ParticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5679D95528CE83AF0036EC9C /* ParticleView.swift */; };
 		568D87B0290E83CC00B1B017 /* CGKeyCode_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D87AF290E83CC00B1B017 /* CGKeyCode_Extension.swift */; };
 		568D87B2290E867E00B1B017 /* KeyboardInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D87B1290E867D00B1B017 /* KeyboardInput.swift */; };
 		56B51A88290D695C00EFEAD1 /* FolderSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B51A87290D695C00EFEAD1 /* FolderSetupView.swift */; };
@@ -22,14 +21,16 @@
 		56DF1EDA28B60D0D0020B6F6 /* RageEditor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1ED828B60D0D0020B6F6 /* RageEditor.xcdatamodeld */; };
 		56DF1EE228B60D390020B6F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1EE128B60D390020B6F6 /* ContentView.swift */; };
 		56E285BE28CCD20D0025D343 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 56E285BD28CCD20D0025D343 /* SwiftUIX */; };
-		56EF44EC28D209080072F03E /* SparkParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 56EF44EB28D209080072F03E /* SparkParticle.sks */; };
+		56E94FA729116BBB002BC465 /* iAWriterDuoS-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FA329116BBB002BC465 /* iAWriterDuoS-Bold.ttf */; };
+		56E94FA829116BBB002BC465 /* iAWriterDuoS-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FA429116BBB002BC465 /* iAWriterDuoS-BoldItalic.ttf */; };
+		56E94FA929116BBB002BC465 /* iAWriterDuoS-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FA529116BBB002BC465 /* iAWriterDuoS-Regular.ttf */; };
+		56E94FAA29116BBB002BC465 /* iAWriterDuoS-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FA629116BBB002BC465 /* iAWriterDuoS-Italic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5648615528CDEA1800B7A3E5 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		56514BB129115F8E002D1BDC /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		565561D6290C16CB00290876 /* AutocompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteView.swift; sourceTree = "<group>"; };
-		5679D95528CE83AF0036EC9C /* ParticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleView.swift; sourceTree = "<group>"; };
 		568D87AF290E83CC00B1B017 /* CGKeyCode_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGKeyCode_Extension.swift; sourceTree = "<group>"; };
 		568D87B1290E867D00B1B017 /* KeyboardInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardInput.swift; sourceTree = "<group>"; };
 		56B51A86290D5FC700EFEAD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -43,7 +44,10 @@
 		56DF1ED928B60D0D0020B6F6 /* RageEditor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RageEditor.xcdatamodel; sourceTree = "<group>"; };
 		56DF1EDB28B60D0D0020B6F6 /* RageEditor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RageEditor.entitlements; sourceTree = "<group>"; };
 		56DF1EE128B60D390020B6F6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		56EF44EB28D209080072F03E /* SparkParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SparkParticle.sks; sourceTree = "<group>"; };
+		56E94FA329116BBB002BC465 /* iAWriterDuoS-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuoS-Bold.ttf"; sourceTree = "<group>"; };
+		56E94FA429116BBB002BC465 /* iAWriterDuoS-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuoS-BoldItalic.ttf"; sourceTree = "<group>"; };
+		56E94FA529116BBB002BC465 /* iAWriterDuoS-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuoS-Regular.ttf"; sourceTree = "<group>"; };
+		56E94FA629116BBB002BC465 /* iAWriterDuoS-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuoS-Italic.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,15 +99,6 @@
 			path = Keyboard;
 			sourceTree = "<group>";
 		};
-		56514BB329115FFD002D1BDC /* Particles */ = {
-			isa = PBXGroup;
-			children = (
-				5679D95528CE83AF0036EC9C /* ParticleView.swift */,
-				56EF44EB28D209080072F03E /* SparkParticle.sks */,
-			);
-			path = Particles;
-			sourceTree = "<group>";
-		};
 		56DF1EC128B60D0B0020B6F6 = {
 			isa = PBXGroup;
 			children = (
@@ -123,7 +118,7 @@
 		56DF1ECC28B60D0B0020B6F6 /* RageEditor */ = {
 			isa = PBXGroup;
 			children = (
-				56514BB329115FFD002D1BDC /* Particles */,
+				56E94FA229116B81002BC465 /* Fonts */,
 				5617C6EA29103A6F0081FA58 /* Keyboard */,
 				5617C6E929103A600081FA58 /* State */,
 				5617C6E829103A350081FA58 /* Util */,
@@ -144,6 +139,17 @@
 				56DF1ED428B60D0D0020B6F6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		56E94FA229116B81002BC465 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				56E94FA329116BBB002BC465 /* iAWriterDuoS-Bold.ttf */,
+				56E94FA429116BBB002BC465 /* iAWriterDuoS-BoldItalic.ttf */,
+				56E94FA629116BBB002BC465 /* iAWriterDuoS-Italic.ttf */,
+				56E94FA529116BBB002BC465 /* iAWriterDuoS-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,8 +217,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				56DF1ED528B60D0D0020B6F6 /* Preview Assets.xcassets in Resources */,
-				56EF44EC28D209080072F03E /* SparkParticle.sks in Resources */,
+				56E94FA829116BBB002BC465 /* iAWriterDuoS-BoldItalic.ttf in Resources */,
+				56E94FA729116BBB002BC465 /* iAWriterDuoS-Bold.ttf in Resources */,
 				56DF1ED228B60D0D0020B6F6 /* Assets.xcassets in Resources */,
+				56E94FAA29116BBB002BC465 /* iAWriterDuoS-Italic.ttf in Resources */,
+				56E94FA929116BBB002BC465 /* iAWriterDuoS-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +241,6 @@
 				565561D7290C16CB00290876 /* AutocompleteView.swift in Sources */,
 				568D87B2290E867E00B1B017 /* KeyboardInput.swift in Sources */,
 				568D87B0290E83CC00B1B017 /* CGKeyCode_Extension.swift in Sources */,
-				5679D95628CE83AF0036EC9C /* ParticleView.swift in Sources */,
 				56DF1EDA28B60D0D0020B6F6 /* RageEditor.xcdatamodeld in Sources */,
 				56DF1ECE28B60D0B0020B6F6 /* RageEditorApp.swift in Sources */,
 			);

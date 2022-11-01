@@ -17,29 +17,33 @@ class AppState: ObservableObject {
     @Published var attributedString = AttributedString("")
     @Published var firstPartAttributedString = AttributedString("")
     @Published var lastWordAttributedString = AttributedString("")
-    @Published var currentlySearching = false
     @Published var allCharactersStorageStringArray: [String]
 
-    @Published var scene: ParticleScene
-    @Published var secondsElapsed: Int = 0
-    @Published var typingSpeed: Float = 0.0
+    // Autocomplete
+    @Published var currentlySearching = false
     @Published var searchStringArray: [String] = []
     @Published var selectedAutocompleteOption: String = ""
     @Published var selectIndex = -1
+    @Published var markdownFileNames: [String] = []
+    @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
+
+    // Layout
     @Published var defaultFontSize = 38.0
     @Published var ratioLeft = 0.6
     @Published var ratioRight = 0.4
     @Published var ratioTop = 2.25
-    @Published var markdownFileNames: [String] = []
-    @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
 
     var timer: Timer?
     
     init() {
         allCharactersStorageStringArray = []
-        scene = ParticleScene()
-        scene.scaleMode = .resizeFill
-        scene.backgroundColor = .clear
+    }
+    
+    func reset() {
+        allCharactersStorageStringArray = []
+        visibleCharactersStringArray = []
+        visibleLastWordStringArray = []
+        attributedString = AttributedString("")
     }
     
     func autocompleteSearchMatches() -> [String] {
@@ -198,35 +202,5 @@ class AppState: ObservableObject {
         self.attributedString = AttributedString("")
         self.attributedString.append(self.firstPartAttributedString)
         self.attributedString.append(self.lastWordAttributedString)
-    }
-
-    
-    @objc func fireTimer() {
-        updateTypingSpeed()
-    }
-
-    func startTimer() {
-        self.scene.snowEmitterNode?.particleScale = CGFloat(0.0)
-
-        self.timer = Timer.scheduledTimer(timeInterval: 1.0,
-                                     target: self,
-                                     selector: #selector(fireTimer),
-                                     userInfo: [ "foo" : "bar" ],
-                                     repeats: true)
-    }
-
-    func updateTypingSpeed() {
-        secondsElapsed += 1
-
-        if(allCharactersStorageStringArray.count > 0) {
-            self.typingSpeed = Float(allCharactersStorageStringArray.count) / Float(secondsElapsed)
-        }
-        
-        let scale = CGFloat(0.4 * self.typingSpeed * Float.random(in: 0.1 ..< 1.0))
-
-        self.scene.snowEmitterNode?.particleScale = scale
-        self.scene.snowEmitterNode?.particleAlpha = CGFloat(self.typingSpeed / 100)
-        self.scene.snowEmitterNode?.particleSpeed = CGFloat(-self.typingSpeed * 3)
-        self.scene.snowEmitterNode?.xAcceleration = CGFloat(-self.typingSpeed * 3)
     }
 }

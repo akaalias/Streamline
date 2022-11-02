@@ -15,16 +15,15 @@ struct RageTextInputView: View {
     var body: some View {
         GeometryReader { geometry in
                 Path() { path in
-                    path.move(to: CGPoint(x: 0, y: state.defaultFontSize * 1.5))
-                    path.addLine(to: CGPoint(x: geometry.size.width, y: state.defaultFontSize * 1.5))
+                    path.move(to: CGPoint(x: 0, y: state.calculatedFontSize() * 1.5))
+                    path.addLine(to: CGPoint(x: geometry.size.width, y: state.calculatedFontSize() * 1.5))
                 }
                 .stroke(.white, lineWidth: 1)
                 .opacity(0.1)
 
                 HStack {
                     Text(state.attributedString)
-                        .font(.custom("JetBrainsMonoNL-Regular", size: state.defaultFontSize))
-                            // .font(.system(size: state.defaultFontSize))
+                        .font(.custom("JetBrainsMonoNL-Regular", size: state.calculatedFontSize()))
                         .truncationMode(.head)
                         .lineLimit(1)
                         .foregroundColor(.gray)
@@ -34,7 +33,7 @@ struct RageTextInputView: View {
 
                     Rectangle()
                         .fill(.white)
-                        .frame(width: 15, height: state.defaultFontSize * 1.5)
+                        .frame(width: state.calculatedFontSize() / 2.0, height: state.calculatedFontSize() * 1.5)
                         .opacity(opacity)
                         .onAppear() {
                             withAnimation(.easeInOut(duration: 2).repeatForever()) {
@@ -47,7 +46,7 @@ struct RageTextInputView: View {
             // Autocomplete
             AutocompleteView()
                 .visible(state.currentlySearching)
-                .offset(x: geometry.size.width * state.ratioLeft)
+                .offset(x: geometry.size.width * state.ratioLeft + (state.calculatedFontSize() / 2) - 15)
         }
     }
 }

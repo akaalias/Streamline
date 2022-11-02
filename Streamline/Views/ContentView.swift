@@ -15,19 +15,22 @@ struct ContentView: View {
     @State private var monitor: Any?
 
     var body: some View {
-        KeyboardEvent(into: $keyboardInput.keyCode)
-
         GeometryReader { geometry in
+            KeyboardEvent(into: $keyboardInput.keyCode)
+            .frame(width: 0, height: 0)
             if(folderBookmarkData.isEmpty) {
                FolderSetupView()
-                .offset(x: geometry.size.width / 2.0 - 200,
-                        y: (geometry.size.height / 2) - 200)
+                    .offset(x: (geometry.size.width / 2) - (state.folderConfigFrameSize / 2),
+                            y: (geometry.size.height / 2) - (state.folderConfigFrameSize / 2))
+
             } else {
                 RageTextInputView()
-                    .offset(y: (-geometry.size.height / state.ratioTop) + state.defaultFontSize)
+                    .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
+                    .readSize { size in
+                        state.dynamicWindowSize = size
+                    }
             }
         }
-        .padding(20)
         .onDisappear() {
             NSEvent.removeMonitor(self.monitor)
         }

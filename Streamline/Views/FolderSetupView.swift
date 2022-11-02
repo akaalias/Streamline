@@ -16,7 +16,7 @@ struct FolderSetupView: View {
         ZStack {
             RoundedRectangle(cornerSize: CGSize(width: 10.0, height: 10.0))
                 .foregroundColor(.black.opacity(0.2))
-                .frame(width: 400, height: 400)
+                .frame(width: state.folderConfigFrameSize, height: state.folderConfigFrameSize)
 
             VStack {
                 Text("Please Configure Your Folder")

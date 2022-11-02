@@ -32,6 +32,13 @@ class AppState: ObservableObject {
     @Published var ratioLeft = 0.6
     @Published var ratioRight = 0.4
     @Published var ratioTop = 2.25
+    @Published var folderConfigFrameSize = 400.0
+    @Published var dynamicWindowSize = CGSize()
+    @Published var fontSizeFactor = 20.0
+    
+    func calculatedFontSize() -> CGFloat {
+        return self.dynamicWindowSize.height / fontSizeFactor
+    }
 
     var timer: Timer?
     

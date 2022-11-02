@@ -31,7 +31,7 @@ struct StreamlineApp: App {
         let savePanel = NSSavePanel()
         let date = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "YY/MM/dd-HH:mm"
+        formatter.dateFormat = "dd-MM-YY"
         let dateString = formatter.string(from: date)
 
         savePanel.allowedFileTypes = ["md"]
@@ -48,7 +48,6 @@ struct StreamlineApp: App {
         let response = savePanel.runModal()
         guard response == .OK, let saveURL = savePanel.url else { return }
         try? self.state.allCharactersStorageStringArray.joined().write(to: saveURL, atomically: true, encoding: .utf8)
-        self.state.reset()
-        
+        // self.state.reset()
     }
 }

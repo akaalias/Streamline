@@ -36,6 +36,9 @@ class AppState: ObservableObject {
     @Published var dynamicWindowSize = CGSize()
     @Published var fontSizeFactor = 20.0
     
+    // Umlaute
+    @Published var umlautModifierTyped = false
+    
     func calculatedFontSize() -> CGFloat {
         return self.dynamicWindowSize.height / fontSizeFactor
     }
@@ -124,19 +127,26 @@ class AppState: ObservableObject {
     }
         
     func handleKeyEvent(event: NSEvent) {
-        let lastTypedCharacterIgnoringModifiers = event.charactersIgnoringModifiers ?? ""
+        var lastTypedCharacterIgnoringModifiers = event.charactersIgnoringModifiers ?? ""
         let lastTypedCharacters = event.characters ?? ""
         let charactersWithModifiersApplied = event.characters(byApplyingModifiers: event.modifierFlags) ?? ""
         let modifierFlags = event.modifierFlags
         
         if(modifierFlags.contains(.command)) {
+            // Ignore Command-[...]
             return
         }
         
-        //        print("lastTypedCharacterIgnoringModifiers: " + lastTypedCharacterIgnoringModifiers)
-        //        print("lastTypedCharacter: " + lastTypedCharacters)
-        //        print("charactersWithModifiersApplied: " + charactersWithModifiersApplied)
-        //        print("modifierFlags: " + modifierFlags.rawValue.description)
+//        print("lastTypedCharacterIgnoringModifiers: " + lastTypedCharacterIgnoringModifiers)
+//        print("lastTypedCharacter: " + lastTypedCharacters)
+//        print("charactersWithModifiersApplied: " + charactersWithModifiersApplied)
+//        print("modifierFlags: " + modifierFlags.rawValue.description)
+//        print("umlautModifierTyped: " + String(umlautModifierTyped))
+        
+        if(modifierFlags.contains(.option) && lastTypedCharacterIgnoringModifiers == "u") {
+            self.umlautModifierTyped = true
+            return
+        }
         
         // Autocomplete triggered
         if(self.currentlySearching) {
@@ -172,6 +182,7 @@ class AppState: ObservableObject {
                 self.resetSearch()
             }
         } else {
+            // Character input / Normal writing
             if(lastTypedCharacterIgnoringModifiers == "[" && self.allCharactersStorageStringArray.last == "[") {
                 self.currentlySearching = true
                 self.searchStringArray = []
@@ -179,33 +190,60 @@ class AppState: ObservableObject {
                 self.visibleLastWordStringArray.append("[")
             }
             
-            self.allCharactersStorageStringArray.append(lastTypedCharacterIgnoringModifiers)
-                if(lastTypedCharacterIgnoringModifiers == " ") {
+            // Umlaute
+            if(self.umlautModifierTyped) {
+                if(lastTypedCharacterIgnoringModifiers == "a") {
+                    lastTypedCharacterIgnoringModifiers = "ä"
+                }
+                if(modifierFlags.contains(.shift) && lastTypedCharacterIgnoringModifiers == "A") {
+                    lastTypedCharacterIgnoringModifiers = "Ä"
+                }
+
+                if(lastTypedCharacterIgnoringModifiers == "o") {
+                    lastTypedCharacterIgnoringModifiers = "ö"
+                }
+                if(modifierFlags.contains(.shift) && lastTypedCharacterIgnoringModifiers == "O") {
+                    lastTypedCharacterIgnoringModifiers = "Ö"
+                }
+
+                if(lastTypedCharacterIgnoringModifiers == "u") {
+                    lastTypedCharacterIgnoringModifiers = "ü"
+                }
+                if(modifierFlags.contains(.shift) && lastTypedCharacterIgnoringModifiers == "U") {
+                    lastTypedCharacterIgnoringModifiers = "Ü"
                 }
                 
-                if(event.keyCode == 36) {
-                    self.visibleCharactersStringArray.append("¶")
+                self.umlautModifierTyped = false
+            }
+            
+            // print("lastTypedCharacterIgnoringModifiers: " + lastTypedCharacterIgnoringModifiers)
+            
+            self.allCharactersStorageStringArray.append(lastTypedCharacterIgnoringModifiers)
+
+            if(event.keyCode == 36) {
+                self.visibleCharactersStringArray.append("¶")
+                self.visibleLastWordStringArray = []
+            } else {
+                self.visibleCharactersStringArray.append(lastTypedCharacterIgnoringModifiers)
+                if(lastTypedCharacterIgnoringModifiers == " ") {
                     self.visibleLastWordStringArray = []
                 } else {
-                    self.visibleCharactersStringArray.append(lastTypedCharacterIgnoringModifiers)
-                    if(lastTypedCharacterIgnoringModifiers == " ") {
-                        self.visibleLastWordStringArray = []
-                    } else {
-                        self.visibleLastWordStringArray.append(lastTypedCharacterIgnoringModifiers)
-                    }
+                    self.visibleLastWordStringArray.append(lastTypedCharacterIgnoringModifiers)
                 }
+            }
         }
         
         self.firstPartAttributedString = AttributedString(self.visibleCharactersStringArray.dropLast(self.visibleLastWordStringArray.count).joined())
         self.firstPartAttributedString.foregroundColor = Color.gray
         self.lastWordAttributedString = AttributedString(self.visibleLastWordStringArray.joined())
-
+        
         if(self.visibleLastWordStringArray.joined().starts(with: "[[")) {
             self.lastWordAttributedString.foregroundColor = Color("ObsidianPurple")
         } else {
             self.lastWordAttributedString.foregroundColor = .white
         }
-
+        
+        
         self.attributedString = AttributedString("")
         self.attributedString.append(self.firstPartAttributedString)
         self.attributedString.append(self.lastWordAttributedString)

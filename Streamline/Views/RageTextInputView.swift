@@ -23,7 +23,7 @@ struct RageTextInputView: View {
 
                 HStack {
                     Text(state.attributedString)
-                        .font(.custom("JetBrainsMonoNL-Regular", size: state.calculatedFontSize()))
+                        .font(.system(size: state.calculatedFontSize()))
                         .truncationMode(.head)
                         .lineLimit(1)
                         .foregroundColor(.gray)
@@ -31,16 +31,25 @@ struct RageTextInputView: View {
                         .mask(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .leading, endPoint: .trailing))
                         .offset(x: -15)
 
-                    Rectangle()
-                        .fill(.white)
-                        .frame(width: state.calculatedFontSize() / 2.0, height: state.calculatedFontSize() * 1.5)
-                        .opacity(opacity)
-                        .onAppear() {
-                            withAnimation(.easeInOut(duration: 2).repeatForever()) {
-                                opacity = 0.2
+                    ZStack {
+                        Rectangle()
+                            .fill(.white)
+                            .frame(width: state.calculatedFontSize() / 2.0, height: state.calculatedFontSize() * 1.5)
+                            .opacity(opacity)
+                            .onAppear() {
+                                withAnimation(.easeInOut(duration: 2).repeatForever()) {
+                                    opacity = 0.2
+                                }
                             }
+                            .offset(x: -23)
+                        
+                        if(state.umlautModifierTyped) {
+                            Text("¨")
+                                .font(.system(size: state.calculatedFontSize()))
+                                .foregroundColor(.white)
+                                .offset(x: -23, y: -(state.calculatedFontSize() / 2 + 5))
                         }
-                        .offset(x: -23)
+                    }
                 }
 
             // Autocomplete

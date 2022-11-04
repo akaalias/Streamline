@@ -11,14 +11,15 @@ import SwiftUIX
 struct RageTextInputView: View {
     @EnvironmentObject var state: AppState
     @State private var opacity = 1.0
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         GeometryReader { geometry in
-                Path() { path in
+            Path() { path in
                     path.move(to: CGPoint(x: 0, y: state.calculatedFontSize() * 1.5))
                     path.addLine(to: CGPoint(x: geometry.size.width, y: state.calculatedFontSize() * 1.5))
                 }
-                .stroke(.white, lineWidth: 1)
+                .stroke(Color("LineColor"), lineWidth: 1)
                 .opacity(0.1)
 
                 HStack {
@@ -26,14 +27,14 @@ struct RageTextInputView: View {
                         .font(.system(size: state.calculatedFontSize()))
                         .truncationMode(.head)
                         .lineLimit(1)
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color("TextColor"))
                         .frame(width: geometry.size.width * state.ratioLeft, alignment: .trailing)
-                        .mask(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .leading, endPoint: .trailing))
+                        .mask(LinearGradient(gradient: Gradient(colors: [.clear, Color("MaskColor")]), startPoint: .leading, endPoint: .trailing))
                         .offset(x: -15)
 
                     ZStack {
                         Rectangle()
-                            .fill(.white)
+                            .fill(Color("CursorColor"))
                             .frame(width: state.calculatedFontSize() / 2.0, height: state.calculatedFontSize() * 1.5)
                             .opacity(opacity)
                             .onAppear() {
@@ -46,7 +47,7 @@ struct RageTextInputView: View {
                         if(state.umlautModifierTyped) {
                             Text("¨")
                                 .font(.system(size: state.calculatedFontSize()))
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("TextColor"))
                                 .offset(x: -23, y: -(state.calculatedFontSize() / 2 + 5))
                         }
                     }

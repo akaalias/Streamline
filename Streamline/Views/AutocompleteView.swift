@@ -30,7 +30,7 @@ struct AutocompleteView: View {
                     Text(" " + match)
                         .frame(width: geometry.size.width * state.ratioRight, height: state.calculatedFontSize(), alignment: .leading)
                         .background(state.selectedAutocompleteOption == match ? Color("ObsidianPurple").opacity(0.5) : Color("ObsidianPurple").opacity(0.1))
-                        .foregroundColor(.white)
+                        .foregroundColor(Color("FirstWordColor"))
                         .font(.system(size: state.calculatedFontSize() / 2))
                         .truncationMode(.tail)
                         .lineLimit(1)

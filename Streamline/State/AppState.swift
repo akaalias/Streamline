@@ -26,6 +26,7 @@ class AppState: ObservableObject {
     @Published var selectIndex = -1
     @Published var markdownFileNames: [String] = []
     @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
+    @Environment(\.colorScheme) private var colorScheme
 
     // Layout
     @Published var defaultFontSize = 38.0
@@ -234,13 +235,13 @@ class AppState: ObservableObject {
         }
         
         self.firstPartAttributedString = AttributedString(self.visibleCharactersStringArray.dropLast(self.visibleLastWordStringArray.count).joined())
-        self.firstPartAttributedString.foregroundColor = Color.gray
+        self.firstPartAttributedString.foregroundColor = Color("TextColor")
         self.lastWordAttributedString = AttributedString(self.visibleLastWordStringArray.joined())
         
         if(self.visibleLastWordStringArray.joined().starts(with: "[[")) {
             self.lastWordAttributedString.foregroundColor = Color("ObsidianPurple")
         } else {
-            self.lastWordAttributedString.foregroundColor = .white
+            self.lastWordAttributedString.foregroundColor = Color("FirstWordColor")
         }
         
         

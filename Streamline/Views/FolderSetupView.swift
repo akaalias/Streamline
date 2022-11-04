@@ -15,7 +15,7 @@ struct FolderSetupView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerSize: CGSize(width: 10.0, height: 10.0))
-                .foregroundColor(.black.opacity(0.2))
+                .foregroundColor(Color("FirstWordColor").opacity(0.2))
                 .frame(width: state.folderConfigFrameSize, height: state.folderConfigFrameSize)
 
             VStack {

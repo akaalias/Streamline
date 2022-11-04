@@ -216,9 +216,7 @@ class AppState: ObservableObject {
                 
                 self.umlautModifierTyped = false
             }
-            
-            // print("lastTypedCharacterIgnoringModifiers: " + lastTypedCharacterIgnoringModifiers)
-            
+                        
             self.allCharactersStorageStringArray.append(lastTypedCharacterIgnoringModifiers)
 
             if(event.keyCode == 36) {

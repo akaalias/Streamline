@@ -11,7 +11,6 @@ import SwiftUIX
 struct RageTextInputView: View {
     @EnvironmentObject var state: AppState
     @State private var opacity = 1.0
-    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         GeometryReader { geometry in

@@ -19,16 +19,28 @@ struct FolderSetupView: View {
                 .frame(width: state.folderConfigFrameSize, height: state.folderConfigFrameSize)
 
             VStack {
-                Text("Please Configure Your Folder")
+                Image(systemName: "folder.circle.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 50)
+
+                Text("Select Your Notes Folder")
                     .font(.largeTitle)
+                Text("Quickly insert links to your existing Markdown (.md) notes from this folder")
+                    .multilineTextAlignment(.center)
+
+                Divider()
+                    .padding(20)
+
                 Button {
                     setupFolder()
                 } label: {
-                    Text("Select Folder")
+                    Text("Select")
                 }
-                .buttonStyle(.bordered)
+                .buttonStyle(.bordered)                
             }
-
+            .padding(10)
+            .frame(width: state.folderConfigFrameSize, height: state.folderConfigFrameSize)
         }
     }
     

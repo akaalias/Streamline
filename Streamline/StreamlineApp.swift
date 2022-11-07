@@ -22,6 +22,11 @@ struct StreamlineApp: App {
                     save()
                 }
                 .keyboardShortcut("s", modifiers: [.command])
+                
+                Button("Reset") {
+                    self.state.reset()
+                }
+                .keyboardShortcut("k", modifiers: [.command])
             }
         }
         .windowStyle(HiddenTitleBarWindowStyle())
@@ -48,6 +53,5 @@ struct StreamlineApp: App {
         let response = savePanel.runModal()
         guard response == .OK, let saveURL = savePanel.url else { return }
         try? self.state.allCharactersStorageStringArray.joined().write(to: saveURL, atomically: true, encoding: .utf8)
-        // self.state.reset()
     }
 }

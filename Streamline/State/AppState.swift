@@ -242,7 +242,6 @@ class AppState: ObservableObject {
             self.lastWordAttributedString.foregroundColor = Color("FirstWordColor")
         }
         
-        
         self.attributedString = AttributedString("")
         self.attributedString.append(self.firstPartAttributedString)
         self.attributedString.append(self.lastWordAttributedString)

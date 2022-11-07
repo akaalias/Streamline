@@ -13,34 +13,27 @@ struct FolderSetupView: View {
     @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
 
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerSize: CGSize(width: 10.0, height: 10.0))
-                .foregroundColor(Color("FirstWordColor").opacity(0.2))
-                .frame(width: state.folderConfigFrameSize, height: state.folderConfigFrameSize)
+        VStack {
+            Image("ObsidianLogo")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 100)
+            
+            Text("Select Your Obsidian Vault")
+                .font(.title)
+                .padding(5)
 
-            VStack {
-                Image(systemName: "folder.circle.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50)
+            Text("Quickly insert links to your existing notes (.md) notes from this folder using the '[[' shortcut.")
+                .multilineTextAlignment(.center)
+                .padding(5)
 
-                Text("Select Your Notes Folder")
-                    .font(.largeTitle)
-                Text("Quickly insert links to your existing Markdown (.md) notes from this folder")
-                    .multilineTextAlignment(.center)
-
-                Divider()
-                    .padding(20)
-
-                Button {
-                    setupFolder()
-                } label: {
-                    Text("Select")
-                }
-                .buttonStyle(.bordered)                
+            Button {
+                setupFolder()
+            } label: {
+                Text("Select Vault")
             }
-            .padding(10)
-            .frame(width: state.folderConfigFrameSize, height: state.folderConfigFrameSize)
+            .buttonStyle(.borderedProminent)
+            .padding(5)
         }
     }
     

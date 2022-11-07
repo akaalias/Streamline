@@ -18,11 +18,17 @@ struct ContentView: View {
         GeometryReader { geometry in
             KeyboardEvent(into: $keyboardInput.keyCode)
             .frame(width: 0, height: 0)
-            if(folderBookmarkData.isEmpty) {
-               FolderSetupView()
-                    .offset(x: (geometry.size.width / 2) - (state.folderConfigFrameSize / 2),
-                            y: (geometry.size.height / 2) - (state.folderConfigFrameSize / 2))
-
+            if(state.showSettingsPanel) {
+                VStack {
+                    Spacer()
+                        HStack {
+                            Spacer()
+                            SettingsPanelView()
+                                .frame(width: 400, height: 400)
+                            Spacer()
+                        }
+                    Spacer()
+                }
             } else {
                 RageTextInputView()
                     .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)

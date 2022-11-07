@@ -40,6 +40,9 @@ class AppState: ObservableObject {
     // Umlaute
     @Published var umlautModifierTyped = false
     
+    // Settings
+    @Published var showSettingsPanel = false
+    
     func calculatedFontSize() -> CGFloat {
         return self.dynamicWindowSize.height / fontSizeFactor
     }

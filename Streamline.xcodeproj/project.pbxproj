@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5616FFA929193D6300FE2D67 /* SettingsPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5616FFA829193D6300FE2D67 /* SettingsPanelView.swift */; };
+		5616FFAB291948E000FE2D67 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5616FFAA291948E000FE2D67 /* TutorialView.swift */; };
 		5648615628CDEA1800B7A3E5 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5648615528CDEA1800B7A3E5 /* AppState.swift */; };
-		56514BB229115F8E002D1BDC /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56514BB129115F8E002D1BDC /* AppSettings.swift */; };
 		565561D7290C16CB00290876 /* AutocompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565561D6290C16CB00290876 /* AutocompleteView.swift */; };
 		568D87B0290E83CC00B1B017 /* CGKeyCode_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D87AF290E83CC00B1B017 /* CGKeyCode_Extension.swift */; };
 		568D87B2290E867E00B1B017 /* KeyboardInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D87B1290E867D00B1B017 /* KeyboardInput.swift */; };
@@ -59,8 +60,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5616FFA829193D6300FE2D67 /* SettingsPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPanelView.swift; sourceTree = "<group>"; };
+		5616FFAA291948E000FE2D67 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		5648615528CDEA1800B7A3E5 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		56514BB129115F8E002D1BDC /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		565561D6290C16CB00290876 /* AutocompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteView.swift; sourceTree = "<group>"; };
 		568D87AF290E83CC00B1B017 /* CGKeyCode_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGKeyCode_Extension.swift; sourceTree = "<group>"; };
 		568D87B1290E867D00B1B017 /* KeyboardInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardInput.swift; sourceTree = "<group>"; };
@@ -127,10 +129,12 @@
 		5617C6E729103A300081FA58 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5616FFAA291948E000FE2D67 /* TutorialView.swift */,
 				56D0C3C928B6297100B96243 /* RageTextInputView.swift */,
 				56DF1EE128B60D390020B6F6 /* ContentView.swift */,
 				565561D6290C16CB00290876 /* AutocompleteView.swift */,
 				56B51A87290D695C00EFEAD1 /* FolderSetupView.swift */,
+				5616FFA829193D6300FE2D67 /* SettingsPanelView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -147,7 +151,6 @@
 			isa = PBXGroup;
 			children = (
 				5648615528CDEA1800B7A3E5 /* AppState.swift */,
-				56514BB129115F8E002D1BDC /* AppSettings.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -359,11 +362,12 @@
 			files = (
 				56DDF1BB29115A7D00113DFF /* ViewExtensions.swift in Sources */,
 				56D0C3CA28B6297100B96243 /* RageTextInputView.swift in Sources */,
-				56514BB229115F8E002D1BDC /* AppSettings.swift in Sources */,
+				5616FFA929193D6300FE2D67 /* SettingsPanelView.swift in Sources */,
 				5648615628CDEA1800B7A3E5 /* AppState.swift in Sources */,
 				56DF1EE228B60D390020B6F6 /* ContentView.swift in Sources */,
 				56B51A88290D695C00EFEAD1 /* FolderSetupView.swift in Sources */,
 				565561D7290C16CB00290876 /* AutocompleteView.swift in Sources */,
+				5616FFAB291948E000FE2D67 /* TutorialView.swift in Sources */,
 				568D87B2290E867E00B1B017 /* KeyboardInput.swift in Sources */,
 				568D87B0290E83CC00B1B017 /* CGKeyCode_Extension.swift in Sources */,
 				56DF1ECE28B60D0B0020B6F6 /* StreamlineApp.swift in Sources */,

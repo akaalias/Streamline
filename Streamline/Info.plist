@@ -10,5 +10,14 @@
 	<true/>
 	<key>com.apple.security.files.user-selected.read-write</key>
 	<true/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>streamline</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

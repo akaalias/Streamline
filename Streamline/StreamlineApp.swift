@@ -28,6 +28,12 @@ struct StreamlineApp: App {
                 }
                 .keyboardShortcut("k", modifiers: [.command])
             }
+            
+            CommandGroup(replacing: CommandGroupPlacement.appSettings) {
+                Button("Settings") {
+                    state.showSettingsPanel = true
+                }
+            }
         }
         .windowStyle(HiddenTitleBarWindowStyle())
     }

@@ -32,7 +32,7 @@ class ParticleScene: SKScene {
         if(children.count <= 0) {
             guard let snowEmitterNode = snowEmitterNode else { return }
 
-            snowEmitterNode.particlePosition = CGPoint(x: size.width * 0.62, y: (size.height / 2) - 40)
+            snowEmitterNode.particlePosition = CGPoint(x: size.width * 0.6, y: (size.height))
             snowEmitterNode.particleBirthRate = 0
 
             addChild(snowEmitterNode)
@@ -43,7 +43,7 @@ class ParticleScene: SKScene {
         if(children.count <= 0) {
             guard let snowEmitterNode = snowEmitterNode else { return }
             
-            snowEmitterNode.particlePosition = CGPoint(x: size.width * 0.62, y: (size.height / 2) - 40)
+            snowEmitterNode.particlePosition = CGPoint(x: size.width * 0.6, y: (size.height))
             snowEmitterNode.particleBirthRate = 0
         }
     }

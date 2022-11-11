@@ -18,7 +18,7 @@ class AppState: ObservableObject {
     @Published var firstPartAttributedString = AttributedString("")
     @Published var lastWordAttributedString = AttributedString("")
     @Published var allCharactersStorageStringArray: [String]
-
+    
     // Autocomplete
     @Published var currentlySearching = false
     @Published var searchStringArray: [String] = []
@@ -27,7 +27,7 @@ class AppState: ObservableObject {
     @Published var markdownFileNames: [String] = []
     @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
     @Environment(\.colorScheme) private var colorScheme
-
+    
     // Layout
     @Published var defaultFontSize = 38.0
     @Published var ratioLeft = 0.6
@@ -43,16 +43,23 @@ class AppState: ObservableObject {
     // Settings
     @Published var showSettingsPanel = false
     
+    // Particles
+    @Published var scene: ParticleScene
+    var timer: Timer?
+    @Published var secondsElapsed: Int = 0
+
+    init() {
+        allCharactersStorageStringArray = []
+        
+        scene = ParticleScene()
+        scene.scaleMode = .resizeFill
+        scene.backgroundColor = .clear
+    }
+    
     func calculatedFontSize() -> CGFloat {
         return self.dynamicWindowSize.height / fontSizeFactor
     }
 
-    var timer: Timer?
-    
-    init() {
-        allCharactersStorageStringArray = []
-    }
-    
     func reset() {
         allCharactersStorageStringArray = []
         visibleCharactersStringArray = []
@@ -140,13 +147,7 @@ class AppState: ObservableObject {
             // Ignore Command-[...]
             return
         }
-        
-//        print("lastTypedCharacterIgnoringModifiers: " + lastTypedCharacterIgnoringModifiers)
-//        print("lastTypedCharacter: " + lastTypedCharacters)
-//        print("charactersWithModifiersApplied: " + charactersWithModifiersApplied)
-//        print("modifierFlags: " + modifierFlags.rawValue.description)
-//        print("umlautModifierTyped: " + String(umlautModifierTyped))
-        
+                
         if(modifierFlags.contains(.option) && lastTypedCharacterIgnoringModifiers == "u") {
             self.umlautModifierTyped = true
             return
@@ -248,5 +249,7 @@ class AppState: ObservableObject {
         self.attributedString = AttributedString("")
         self.attributedString.append(self.firstPartAttributedString)
         self.attributedString.append(self.lastWordAttributedString)
+        
+        self.scene.emitOne()
     }
 }

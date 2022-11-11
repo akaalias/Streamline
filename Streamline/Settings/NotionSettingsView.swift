@@ -1,41 +1,46 @@
 //
-//  FolderSetupView.swift
-//  RageEditor
+//  NotionSettingsView.swift
+//  Streamline
 //
-//  Created by Alexis Rondeau on 29.10.22.
+//  Created by Alexis Rondeau on 10.11.22.
 //
 
 import SwiftUI
 
-struct FolderSetupView: View {
+struct NotionSettingsView: View {
     @EnvironmentObject var state: AppState
     @State var showFileChooser = false
     @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
 
     var body: some View {
         VStack {
-            Image("ObsidianLogo")
+            Image("NotionLogo")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 100)
             
-            Text("Select Your Obsidian Vault")
+            Text("Configure Your Notion Pages")
                 .font(.title)
                 .padding(5)
-
-            Text("Quickly insert links to your existing notes (.md) notes from this folder using the '[[' shortcut.")
+            
+            Text("To get a feeling for **easily linking to your Notion pages** with Streamline's `[[` hotkey, please use this hack:\n\n 1. Export your Notion database of choice to Markdown (include sub-pages, exclude attachments)\n 2. Unzip the folder\n3. Click below to set it as the source for auto-completions:")
                 .multilineTextAlignment(.center)
                 .padding(5)
-
+            
             Button {
                 setupFolder()
             } label: {
-                Text("Select Vault")
+                Text("Select Exported Notion Folder")
             }
             .buttonStyle(.borderedProminent)
             .padding(5)
+            
+            Text("Currently " + String(state.markdownFileNames.count) + " Markdown Notes Cached")
+                .font(.footnote)
+                .padding(5)
         }
     }
+    
     
     func setupFolder() {
         let panel = NSOpenPanel()
@@ -57,8 +62,8 @@ struct FolderSetupView: View {
     }
 }
 
-struct FolderSetupView_Previews: PreviewProvider {
+struct NotionSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        FolderSetupView()
+        NotionSettingsView()
     }
 }

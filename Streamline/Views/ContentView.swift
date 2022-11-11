@@ -24,17 +24,26 @@ struct ContentView: View {
                         HStack {
                             Spacer()
                             SettingsPanelView()
-                                .frame(width: 400, height: 400)
+                                .frame(width: 700, height: 450)
                             Spacer()
                         }
                     Spacer()
                 }
             } else {
-                RageTextInputView()
-                    .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
-                    .readSize { size in
-                        state.dynamicWindowSize = size
-                    }
+                ZStack {
+                    SpriteView(scene: state.scene, options: [.allowsTransparency])
+                                        .ignoresSafeArea()
+                                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                                        .opacity(1)
+                                        .background(.black)
+                                        
+                    
+                    RageTextInputView()
+                        .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
+                        .readSize { size in
+                            state.dynamicWindowSize = size
+                        }
+                }
             }
         }
         .onDisappear() {

@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56056606291D1EB00067568B /* TutorialSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56056605291D1EB00067568B /* TutorialSummaryView.swift */; };
 		5616FFA929193D6300FE2D67 /* SettingsPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5616FFA829193D6300FE2D67 /* SettingsPanelView.swift */; };
 		5616FFAB291948E000FE2D67 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5616FFAA291948E000FE2D67 /* TutorialView.swift */; };
+		5631741C291D156F00842512 /* NotionSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5631741B291D156F00842512 /* NotionSettingsView.swift */; };
 		5648615628CDEA1800B7A3E5 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5648615528CDEA1800B7A3E5 /* AppState.swift */; };
 		565561D7290C16CB00290876 /* AutocompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565561D6290C16CB00290876 /* AutocompleteView.swift */; };
 		568D87B0290E83CC00B1B017 /* CGKeyCode_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D87AF290E83CC00B1B017 /* CGKeyCode_Extension.swift */; };
 		568D87B2290E867E00B1B017 /* KeyboardInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D87B1290E867D00B1B017 /* KeyboardInput.swift */; };
-		56B51A88290D695C00EFEAD1 /* FolderSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B51A87290D695C00EFEAD1 /* FolderSetupView.swift */; };
+		56AE8CC2291E83E6008E56BD /* SparkParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 56AE8CC0291E83E6008E56BD /* SparkParticle.sks */; };
+		56AE8CC3291E83E6008E56BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56AE8CC1291E83E6008E56BD /* Assets.xcassets */; };
+		56AE8CC5291E8641008E56BD /* ParticleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AE8CC4291E8641008E56BD /* ParticleScene.swift */; };
+		56B51A88290D695C00EFEAD1 /* ObsidianVaultSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B51A87290D695C00EFEAD1 /* ObsidianVaultSettings.swift */; };
 		56D0C3CA28B6297100B96243 /* RageTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0C3C928B6297100B96243 /* RageTextInputView.swift */; };
 		56DDF1BB29115A7D00113DFF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DDF1BA29115A7D00113DFF /* ViewExtensions.swift */; };
 		56DF1ECE28B60D0B0020B6F6 /* StreamlineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1ECD28B60D0B0020B6F6 /* StreamlineApp.swift */; };
@@ -21,53 +26,22 @@
 		56DF1ED528B60D0D0020B6F6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56DF1ED428B60D0D0020B6F6 /* Preview Assets.xcassets */; };
 		56DF1EE228B60D390020B6F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1EE128B60D390020B6F6 /* ContentView.swift */; };
 		56E81F7C29117A9500CAD9ED /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 56E81F7B29117A9500CAD9ED /* SwiftUIX */; };
-		56E94FA729116BBB002BC465 /* iAWriterDuoS-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FA329116BBB002BC465 /* iAWriterDuoS-Bold.ttf */; };
-		56E94FA829116BBB002BC465 /* iAWriterDuoS-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FA429116BBB002BC465 /* iAWriterDuoS-BoldItalic.ttf */; };
-		56E94FA929116BBB002BC465 /* iAWriterDuoS-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FA529116BBB002BC465 /* iAWriterDuoS-Regular.ttf */; };
-		56E94FAA29116BBB002BC465 /* iAWriterDuoS-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FA629116BBB002BC465 /* iAWriterDuoS-Italic.ttf */; };
-		56E94FCD29117125002BC465 /* JetBrainsMonoNL-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FAD29117124002BC465 /* JetBrainsMonoNL-ExtraBold.ttf */; };
-		56E94FCE29117125002BC465 /* JetBrainsMono-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FAE29117124002BC465 /* JetBrainsMono-Thin.ttf */; };
-		56E94FCF29117125002BC465 /* JetBrainsMono-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FAF29117124002BC465 /* JetBrainsMono-Italic.ttf */; };
-		56E94FD029117125002BC465 /* JetBrainsMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FB029117124002BC465 /* JetBrainsMono-Light.ttf */; };
-		56E94FD129117125002BC465 /* JetBrainsMono-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FB129117124002BC465 /* JetBrainsMono-MediumItalic.ttf */; };
-		56E94FD229117125002BC465 /* JetBrainsMonoNL-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FB229117124002BC465 /* JetBrainsMonoNL-ExtraBoldItalic.ttf */; };
-		56E94FD329117125002BC465 /* JetBrainsMono-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FB329117124002BC465 /* JetBrainsMono-ExtraLightItalic.ttf */; };
-		56E94FD429117125002BC465 /* JetBrainsMonoNL-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FB429117124002BC465 /* JetBrainsMonoNL-ThinItalic.ttf */; };
-		56E94FD529117125002BC465 /* JetBrainsMonoNL-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FB529117124002BC465 /* JetBrainsMonoNL-SemiBoldItalic.ttf */; };
-		56E94FD629117125002BC465 /* JetBrainsMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FB629117124002BC465 /* JetBrainsMono-Bold.ttf */; };
-		56E94FD729117125002BC465 /* JetBrainsMono-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FB729117124002BC465 /* JetBrainsMono-SemiBold.ttf */; };
-		56E94FD829117125002BC465 /* JetBrainsMonoNL-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FB829117124002BC465 /* JetBrainsMonoNL-Light.ttf */; };
-		56E94FD929117125002BC465 /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FB929117124002BC465 /* JetBrainsMono-Regular.ttf */; };
-		56E94FDA29117125002BC465 /* JetBrainsMonoNL-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FBA29117124002BC465 /* JetBrainsMonoNL-ExtraLightItalic.ttf */; };
-		56E94FDB29117125002BC465 /* JetBrainsMonoNL-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FBB29117124002BC465 /* JetBrainsMonoNL-Regular.ttf */; };
-		56E94FDC29117125002BC465 /* JetBrainsMonoNL-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FBC29117124002BC465 /* JetBrainsMonoNL-Medium.ttf */; };
-		56E94FDD29117125002BC465 /* JetBrainsMonoNL-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FBD29117124002BC465 /* JetBrainsMonoNL-SemiBold.ttf */; };
-		56E94FDE29117125002BC465 /* JetBrainsMonoNL-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FBE29117124002BC465 /* JetBrainsMonoNL-BoldItalic.ttf */; };
-		56E94FDF29117125002BC465 /* JetBrainsMono-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FBF29117124002BC465 /* JetBrainsMono-ExtraLight.ttf */; };
-		56E94FE029117125002BC465 /* JetBrainsMono-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FC029117124002BC465 /* JetBrainsMono-ExtraBoldItalic.ttf */; };
-		56E94FE129117125002BC465 /* JetBrainsMonoNL-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FC129117124002BC465 /* JetBrainsMonoNL-Bold.ttf */; };
-		56E94FE229117125002BC465 /* JetBrainsMonoNL-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FC229117125002BC465 /* JetBrainsMonoNL-Italic.ttf */; };
-		56E94FE329117125002BC465 /* JetBrainsMono-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FC329117125002BC465 /* JetBrainsMono-ThinItalic.ttf */; };
-		56E94FE429117125002BC465 /* JetBrainsMonoNL-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FC429117125002BC465 /* JetBrainsMonoNL-MediumItalic.ttf */; };
-		56E94FE529117125002BC465 /* JetBrainsMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FC529117125002BC465 /* JetBrainsMono-Medium.ttf */; };
-		56E94FE629117125002BC465 /* JetBrainsMono-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FC629117125002BC465 /* JetBrainsMono-SemiBoldItalic.ttf */; };
-		56E94FE729117125002BC465 /* JetBrainsMonoNL-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FC729117125002BC465 /* JetBrainsMonoNL-ExtraLight.ttf */; };
-		56E94FE829117125002BC465 /* JetBrainsMono-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FC829117125002BC465 /* JetBrainsMono-LightItalic.ttf */; };
-		56E94FE929117125002BC465 /* JetBrainsMonoNL-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FC929117125002BC465 /* JetBrainsMonoNL-Thin.ttf */; };
-		56E94FEA29117125002BC465 /* JetBrainsMonoNL-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FCA29117125002BC465 /* JetBrainsMonoNL-LightItalic.ttf */; };
-		56E94FEB29117125002BC465 /* JetBrainsMono-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FCB29117125002BC465 /* JetBrainsMono-BoldItalic.ttf */; };
-		56E94FEC29117125002BC465 /* JetBrainsMono-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E94FCC29117125002BC465 /* JetBrainsMono-ExtraBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		56056605291D1EB00067568B /* TutorialSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSummaryView.swift; sourceTree = "<group>"; };
 		5616FFA829193D6300FE2D67 /* SettingsPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPanelView.swift; sourceTree = "<group>"; };
 		5616FFAA291948E000FE2D67 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		5631741B291D156F00842512 /* NotionSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionSettingsView.swift; sourceTree = "<group>"; };
 		5648615528CDEA1800B7A3E5 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		565561D6290C16CB00290876 /* AutocompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteView.swift; sourceTree = "<group>"; };
 		568D87AF290E83CC00B1B017 /* CGKeyCode_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGKeyCode_Extension.swift; sourceTree = "<group>"; };
 		568D87B1290E867D00B1B017 /* KeyboardInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardInput.swift; sourceTree = "<group>"; };
+		56AE8CC0291E83E6008E56BD /* SparkParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SparkParticle.sks; sourceTree = "<group>"; };
+		56AE8CC1291E83E6008E56BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		56AE8CC4291E8641008E56BD /* ParticleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleScene.swift; sourceTree = "<group>"; };
 		56B51A86290D5FC700EFEAD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		56B51A87290D695C00EFEAD1 /* FolderSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderSetupView.swift; sourceTree = "<group>"; };
+		56B51A87290D695C00EFEAD1 /* ObsidianVaultSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObsidianVaultSettings.swift; sourceTree = "<group>"; };
 		56D0C3C928B6297100B96243 /* RageTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RageTextInputView.swift; sourceTree = "<group>"; };
 		56DDF1BA29115A7D00113DFF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		56DF1ECA28B60D0B0020B6F6 /* Streamline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamline.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,42 +50,6 @@
 		56DF1ED428B60D0D0020B6F6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		56DF1EDB28B60D0D0020B6F6 /* Streamline.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Streamline.entitlements; sourceTree = "<group>"; };
 		56DF1EE128B60D390020B6F6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		56E94FA329116BBB002BC465 /* iAWriterDuoS-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuoS-Bold.ttf"; sourceTree = "<group>"; };
-		56E94FA429116BBB002BC465 /* iAWriterDuoS-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuoS-BoldItalic.ttf"; sourceTree = "<group>"; };
-		56E94FA529116BBB002BC465 /* iAWriterDuoS-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuoS-Regular.ttf"; sourceTree = "<group>"; };
-		56E94FA629116BBB002BC465 /* iAWriterDuoS-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuoS-Italic.ttf"; sourceTree = "<group>"; };
-		56E94FAD29117124002BC465 /* JetBrainsMonoNL-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMonoNL-ExtraBold.ttf"; sourceTree = "<group>"; };
-		56E94FAE29117124002BC465 /* JetBrainsMono-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Thin.ttf"; sourceTree = "<group>"; };
-		56E94FAF29117124002BC465 /* JetBrainsMono-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Italic.ttf"; sourceTree = "<group>"; };
-		56E94FB029117124002BC465 /* JetBrainsMono-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Light.ttf"; sourceTree = "<group>"; };
-		56E94FB129117124002BC465 /* JetBrainsMono-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-MediumItalic.ttf"; sourceTree = "<group>"; };
-		56E94FB229117124002BC465 /* JetBrainsMonoNL-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMonoNL-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		56E94FB329117124002BC465 /* JetBrainsMono-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
-		56E94FB429117124002BC465 /* JetBrainsMonoNL-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMonoNL-ThinItalic.ttf"; sourceTree = "<group>"; };
-		56E94FB529117124002BC465 /* JetBrainsMonoNL-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMonoNL-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		56E94FB629117124002BC465 /* JetBrainsMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Bold.ttf"; sourceTree = "<group>"; };
-		56E94FB729117124002BC465 /* JetBrainsMono-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-SemiBold.ttf"; sourceTree = "<group>"; };
-		56E94FB829117124002BC465 /* JetBrainsMonoNL-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMonoNL-Light.ttf"; sourceTree = "<group>"; };
-		56E94FB929117124002BC465 /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
-		56E94FBA29117124002BC465 /* JetBrainsMonoNL-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMonoNL-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
-		56E94FBB29117124002BC465 /* JetBrainsMonoNL-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMonoNL-Regular.ttf"; sourceTree = "<group>"; };
-		56E94FBC29117124002BC465 /* JetBrainsMonoNL-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMonoNL-Medium.ttf"; sourceTree = "<group>"; };
-		56E94FBD29117124002BC465 /* JetBrainsMonoNL-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMonoNL-SemiBold.ttf"; sourceTree = "<group>"; };
-		56E94FBE29117124002BC465 /* JetBrainsMonoNL-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMonoNL-BoldItalic.ttf"; sourceTree = "<group>"; };
-		56E94FBF29117124002BC465 /* JetBrainsMono-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraLight.ttf"; sourceTree = "<group>"; };
-		56E94FC029117124002BC465 /* JetBrainsMono-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		56E94FC129117124002BC465 /* JetBrainsMonoNL-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMonoNL-Bold.ttf"; sourceTree = "<group>"; };
-		56E94FC229117125002BC465 /* JetBrainsMonoNL-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMonoNL-Italic.ttf"; sourceTree = "<group>"; };
-		56E94FC329117125002BC465 /* JetBrainsMono-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ThinItalic.ttf"; sourceTree = "<group>"; };
-		56E94FC429117125002BC465 /* JetBrainsMonoNL-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMonoNL-MediumItalic.ttf"; sourceTree = "<group>"; };
-		56E94FC529117125002BC465 /* JetBrainsMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Medium.ttf"; sourceTree = "<group>"; };
-		56E94FC629117125002BC465 /* JetBrainsMono-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		56E94FC729117125002BC465 /* JetBrainsMonoNL-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMonoNL-ExtraLight.ttf"; sourceTree = "<group>"; };
-		56E94FC829117125002BC465 /* JetBrainsMono-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-LightItalic.ttf"; sourceTree = "<group>"; };
-		56E94FC929117125002BC465 /* JetBrainsMonoNL-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMonoNL-Thin.ttf"; sourceTree = "<group>"; };
-		56E94FCA29117125002BC465 /* JetBrainsMonoNL-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMonoNL-LightItalic.ttf"; sourceTree = "<group>"; };
-		56E94FCB29117125002BC465 /* JetBrainsMono-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-BoldItalic.ttf"; sourceTree = "<group>"; };
-		56E94FCC29117125002BC465 /* JetBrainsMono-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,12 +67,9 @@
 		5617C6E729103A300081FA58 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5616FFAA291948E000FE2D67 /* TutorialView.swift */,
 				56D0C3C928B6297100B96243 /* RageTextInputView.swift */,
 				56DF1EE128B60D390020B6F6 /* ContentView.swift */,
 				565561D6290C16CB00290876 /* AutocompleteView.swift */,
-				56B51A87290D695C00EFEAD1 /* FolderSetupView.swift */,
-				5616FFA829193D6300FE2D67 /* SettingsPanelView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,6 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				5648615528CDEA1800B7A3E5 /* AppState.swift */,
+				56AE8CC4291E8641008E56BD /* ParticleScene.swift */,
+				56AE8CC0291E83E6008E56BD /* SparkParticle.sks */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -164,9 +101,22 @@
 			path = Keyboard;
 			sourceTree = "<group>";
 		};
+		5631741A291D14B000842512 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				56056605291D1EB00067568B /* TutorialSummaryView.swift */,
+				56B51A87290D695C00EFEAD1 /* ObsidianVaultSettings.swift */,
+				5616FFA829193D6300FE2D67 /* SettingsPanelView.swift */,
+				5616FFAA291948E000FE2D67 /* TutorialView.swift */,
+				5631741B291D156F00842512 /* NotionSettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		56DF1EC128B60D0B0020B6F6 = {
 			isa = PBXGroup;
 			children = (
+				56AE8CC1291E83E6008E56BD /* Assets.xcassets */,
 				56DF1ECC28B60D0B0020B6F6 /* Streamline */,
 				56DF1ECB28B60D0B0020B6F6 /* Products */,
 			);
@@ -183,7 +133,7 @@
 		56DF1ECC28B60D0B0020B6F6 /* Streamline */ = {
 			isa = PBXGroup;
 			children = (
-				56E94FA229116B81002BC465 /* Fonts */,
+				5631741A291D14B000842512 /* Settings */,
 				5617C6EA29103A6F0081FA58 /* Keyboard */,
 				5617C6E929103A600081FA58 /* State */,
 				5617C6E829103A350081FA58 /* Util */,
@@ -203,49 +153,6 @@
 				56DF1ED428B60D0D0020B6F6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		56E94FA229116B81002BC465 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				56E94FB629117124002BC465 /* JetBrainsMono-Bold.ttf */,
-				56E94FCB29117125002BC465 /* JetBrainsMono-BoldItalic.ttf */,
-				56E94FCC29117125002BC465 /* JetBrainsMono-ExtraBold.ttf */,
-				56E94FC029117124002BC465 /* JetBrainsMono-ExtraBoldItalic.ttf */,
-				56E94FBF29117124002BC465 /* JetBrainsMono-ExtraLight.ttf */,
-				56E94FB329117124002BC465 /* JetBrainsMono-ExtraLightItalic.ttf */,
-				56E94FAF29117124002BC465 /* JetBrainsMono-Italic.ttf */,
-				56E94FB029117124002BC465 /* JetBrainsMono-Light.ttf */,
-				56E94FC829117125002BC465 /* JetBrainsMono-LightItalic.ttf */,
-				56E94FC529117125002BC465 /* JetBrainsMono-Medium.ttf */,
-				56E94FB129117124002BC465 /* JetBrainsMono-MediumItalic.ttf */,
-				56E94FB929117124002BC465 /* JetBrainsMono-Regular.ttf */,
-				56E94FB729117124002BC465 /* JetBrainsMono-SemiBold.ttf */,
-				56E94FC629117125002BC465 /* JetBrainsMono-SemiBoldItalic.ttf */,
-				56E94FAE29117124002BC465 /* JetBrainsMono-Thin.ttf */,
-				56E94FC329117125002BC465 /* JetBrainsMono-ThinItalic.ttf */,
-				56E94FC129117124002BC465 /* JetBrainsMonoNL-Bold.ttf */,
-				56E94FBE29117124002BC465 /* JetBrainsMonoNL-BoldItalic.ttf */,
-				56E94FAD29117124002BC465 /* JetBrainsMonoNL-ExtraBold.ttf */,
-				56E94FB229117124002BC465 /* JetBrainsMonoNL-ExtraBoldItalic.ttf */,
-				56E94FC729117125002BC465 /* JetBrainsMonoNL-ExtraLight.ttf */,
-				56E94FBA29117124002BC465 /* JetBrainsMonoNL-ExtraLightItalic.ttf */,
-				56E94FC229117125002BC465 /* JetBrainsMonoNL-Italic.ttf */,
-				56E94FB829117124002BC465 /* JetBrainsMonoNL-Light.ttf */,
-				56E94FCA29117125002BC465 /* JetBrainsMonoNL-LightItalic.ttf */,
-				56E94FBC29117124002BC465 /* JetBrainsMonoNL-Medium.ttf */,
-				56E94FC429117125002BC465 /* JetBrainsMonoNL-MediumItalic.ttf */,
-				56E94FBB29117124002BC465 /* JetBrainsMonoNL-Regular.ttf */,
-				56E94FBD29117124002BC465 /* JetBrainsMonoNL-SemiBold.ttf */,
-				56E94FB529117124002BC465 /* JetBrainsMonoNL-SemiBoldItalic.ttf */,
-				56E94FC929117125002BC465 /* JetBrainsMonoNL-Thin.ttf */,
-				56E94FB429117124002BC465 /* JetBrainsMonoNL-ThinItalic.ttf */,
-				56E94FA329116BBB002BC465 /* iAWriterDuoS-Bold.ttf */,
-				56E94FA429116BBB002BC465 /* iAWriterDuoS-BoldItalic.ttf */,
-				56E94FA629116BBB002BC465 /* iAWriterDuoS-Italic.ttf */,
-				56E94FA529116BBB002BC465 /* iAWriterDuoS-Regular.ttf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,44 +219,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56E94FD329117125002BC465 /* JetBrainsMono-ExtraLightItalic.ttf in Resources */,
-				56E94FE829117125002BC465 /* JetBrainsMono-LightItalic.ttf in Resources */,
-				56E94FD529117125002BC465 /* JetBrainsMonoNL-SemiBoldItalic.ttf in Resources */,
-				56E94FE229117125002BC465 /* JetBrainsMonoNL-Italic.ttf in Resources */,
-				56E94FEC29117125002BC465 /* JetBrainsMono-ExtraBold.ttf in Resources */,
-				56E94FE329117125002BC465 /* JetBrainsMono-ThinItalic.ttf in Resources */,
-				56E94FE029117125002BC465 /* JetBrainsMono-ExtraBoldItalic.ttf in Resources */,
-				56E94FCF29117125002BC465 /* JetBrainsMono-Italic.ttf in Resources */,
-				56E94FDD29117125002BC465 /* JetBrainsMonoNL-SemiBold.ttf in Resources */,
 				56DF1ED528B60D0D0020B6F6 /* Preview Assets.xcassets in Resources */,
-				56E94FEB29117125002BC465 /* JetBrainsMono-BoldItalic.ttf in Resources */,
-				56E94FD729117125002BC465 /* JetBrainsMono-SemiBold.ttf in Resources */,
-				56E94FA829116BBB002BC465 /* iAWriterDuoS-BoldItalic.ttf in Resources */,
-				56E94FE129117125002BC465 /* JetBrainsMonoNL-Bold.ttf in Resources */,
-				56E94FA729116BBB002BC465 /* iAWriterDuoS-Bold.ttf in Resources */,
-				56E94FD229117125002BC465 /* JetBrainsMonoNL-ExtraBoldItalic.ttf in Resources */,
-				56E94FE929117125002BC465 /* JetBrainsMonoNL-Thin.ttf in Resources */,
-				56E94FDA29117125002BC465 /* JetBrainsMonoNL-ExtraLightItalic.ttf in Resources */,
-				56E94FDC29117125002BC465 /* JetBrainsMonoNL-Medium.ttf in Resources */,
-				56E94FDE29117125002BC465 /* JetBrainsMonoNL-BoldItalic.ttf in Resources */,
-				56E94FE429117125002BC465 /* JetBrainsMonoNL-MediumItalic.ttf in Resources */,
-				56E94FDF29117125002BC465 /* JetBrainsMono-ExtraLight.ttf in Resources */,
-				56E94FE629117125002BC465 /* JetBrainsMono-SemiBoldItalic.ttf in Resources */,
+				56AE8CC2291E83E6008E56BD /* SparkParticle.sks in Resources */,
+				56AE8CC3291E83E6008E56BD /* Assets.xcassets in Resources */,
 				56DF1ED228B60D0D0020B6F6 /* Assets.xcassets in Resources */,
-				56E94FD829117125002BC465 /* JetBrainsMonoNL-Light.ttf in Resources */,
-				56E94FEA29117125002BC465 /* JetBrainsMonoNL-LightItalic.ttf in Resources */,
-				56E94FE529117125002BC465 /* JetBrainsMono-Medium.ttf in Resources */,
-				56E94FAA29116BBB002BC465 /* iAWriterDuoS-Italic.ttf in Resources */,
-				56E94FD929117125002BC465 /* JetBrainsMono-Regular.ttf in Resources */,
-				56E94FDB29117125002BC465 /* JetBrainsMonoNL-Regular.ttf in Resources */,
-				56E94FCE29117125002BC465 /* JetBrainsMono-Thin.ttf in Resources */,
-				56E94FD429117125002BC465 /* JetBrainsMonoNL-ThinItalic.ttf in Resources */,
-				56E94FE729117125002BC465 /* JetBrainsMonoNL-ExtraLight.ttf in Resources */,
-				56E94FD629117125002BC465 /* JetBrainsMono-Bold.ttf in Resources */,
-				56E94FD029117125002BC465 /* JetBrainsMono-Light.ttf in Resources */,
-				56E94FA929116BBB002BC465 /* iAWriterDuoS-Regular.ttf in Resources */,
-				56E94FD129117125002BC465 /* JetBrainsMono-MediumItalic.ttf in Resources */,
-				56E94FCD29117125002BC465 /* JetBrainsMonoNL-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,12 +237,15 @@
 				56D0C3CA28B6297100B96243 /* RageTextInputView.swift in Sources */,
 				5616FFA929193D6300FE2D67 /* SettingsPanelView.swift in Sources */,
 				5648615628CDEA1800B7A3E5 /* AppState.swift in Sources */,
+				56AE8CC5291E8641008E56BD /* ParticleScene.swift in Sources */,
 				56DF1EE228B60D390020B6F6 /* ContentView.swift in Sources */,
-				56B51A88290D695C00EFEAD1 /* FolderSetupView.swift in Sources */,
+				56B51A88290D695C00EFEAD1 /* ObsidianVaultSettings.swift in Sources */,
+				5631741C291D156F00842512 /* NotionSettingsView.swift in Sources */,
 				565561D7290C16CB00290876 /* AutocompleteView.swift in Sources */,
 				5616FFAB291948E000FE2D67 /* TutorialView.swift in Sources */,
 				568D87B2290E867E00B1B017 /* KeyboardInput.swift in Sources */,
 				568D87B0290E83CC00B1B017 /* CGKeyCode_Extension.swift in Sources */,
+				56056606291D1EB00067568B /* TutorialSummaryView.swift in Sources */,
 				56DF1ECE28B60D0B0020B6F6 /* StreamlineApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,7 +393,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 2.3;
+				MACOSX_DEPLOYMENT_TARGET = 12.2;
+				MARKETING_VERSION = 2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rondeau.Streamline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -550,7 +427,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 2.3;
+				MACOSX_DEPLOYMENT_TARGET = 12.2;
+				MARKETING_VERSION = 2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rondeau.Streamline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

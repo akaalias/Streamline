@@ -13,13 +13,21 @@ struct SettingsPanelView: View {
     var body: some View {
         VStack {
             TabView {
-                FolderSetupView().tabItem {
-                    Label("Folder Setup", systemImage: "folder.badge.plus")
-                }
-                
-                TutorialView().tabItem {
-                    Label("Tutorial", systemImage: "book")
-                }
+                TutorialView()
+                    .tabItem {
+                        Label("Quick-Start Guide", systemImage: "book")
+                        
+                    }
+
+                ObsidianVaultSettings()
+                    .tabItem {
+                        Label("Obsidian Linking", systemImage: "folder.badge.plus")
+                    }   
+
+                NotionSettingsView()
+                    .tabItem {
+                            Label("Notion Linking", systemImage: "folder.badge.plus")
+                    }
             }
             .shadow(radius: 30)
             .padding(10)

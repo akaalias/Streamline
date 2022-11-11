@@ -9,7 +9,12 @@ import SwiftUI
 
 struct TutorialView: View {
     var body: some View {
-        Text("Coming soon! Link to video")
+        VStack(alignment: .leading) {
+            TutorialSummaryView()
+
+            Text("PS: Full tutorial coming soon. [Please let me know](mailto:alexis.rondeau@gmail.com) what you struggle most with!")
+                .padding(5)
+        }
     }
 }
 

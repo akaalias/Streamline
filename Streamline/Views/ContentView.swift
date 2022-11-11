@@ -11,6 +11,8 @@ import SpriteKit
 struct ContentView: View {
     @EnvironmentObject var state: AppState
     @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
+    @AppStorage("showParticles") private var showParticles: Bool = false
+
     @StateObject var keyboardInput = KeyboardInput()
     @State private var monitor: Any?
 
@@ -31,12 +33,12 @@ struct ContentView: View {
                 }
             } else {
                 ZStack {
-                    SpriteView(scene: state.scene, options: [.allowsTransparency])
-                                        .ignoresSafeArea()
-                                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                                        .opacity(1)
-                                        .background(.black)
-                                        
+                    if(showParticles) {
+                        SpriteView(scene: state.scene, options: [.allowsTransparency])
+                                            .ignoresSafeArea()
+                                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                                            .opacity(0.5)
+                    }
                     
                     RageTextInputView()
                         .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)

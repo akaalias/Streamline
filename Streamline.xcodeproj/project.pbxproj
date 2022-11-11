@@ -18,6 +18,7 @@
 		56AE8CC2291E83E6008E56BD /* SparkParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 56AE8CC0291E83E6008E56BD /* SparkParticle.sks */; };
 		56AE8CC3291E83E6008E56BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56AE8CC1291E83E6008E56BD /* Assets.xcassets */; };
 		56AE8CC5291E8641008E56BD /* ParticleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AE8CC4291E8641008E56BD /* ParticleScene.swift */; };
+		56AE8CC8291E8AB8008E56BD /* ParticlesSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AE8CC7291E8AB8008E56BD /* ParticlesSettingsView.swift */; };
 		56B51A88290D695C00EFEAD1 /* ObsidianVaultSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B51A87290D695C00EFEAD1 /* ObsidianVaultSettings.swift */; };
 		56D0C3CA28B6297100B96243 /* RageTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0C3C928B6297100B96243 /* RageTextInputView.swift */; };
 		56DDF1BB29115A7D00113DFF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DDF1BA29115A7D00113DFF /* ViewExtensions.swift */; };
@@ -40,6 +41,7 @@
 		56AE8CC0291E83E6008E56BD /* SparkParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SparkParticle.sks; sourceTree = "<group>"; };
 		56AE8CC1291E83E6008E56BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56AE8CC4291E8641008E56BD /* ParticleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleScene.swift; sourceTree = "<group>"; };
+		56AE8CC7291E8AB8008E56BD /* ParticlesSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticlesSettingsView.swift; sourceTree = "<group>"; };
 		56B51A86290D5FC700EFEAD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		56B51A87290D695C00EFEAD1 /* ObsidianVaultSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObsidianVaultSettings.swift; sourceTree = "<group>"; };
 		56D0C3C928B6297100B96243 /* RageTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RageTextInputView.swift; sourceTree = "<group>"; };
@@ -86,8 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				5648615528CDEA1800B7A3E5 /* AppState.swift */,
-				56AE8CC4291E8641008E56BD /* ParticleScene.swift */,
-				56AE8CC0291E83E6008E56BD /* SparkParticle.sks */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -109,8 +109,18 @@
 				5616FFA829193D6300FE2D67 /* SettingsPanelView.swift */,
 				5616FFAA291948E000FE2D67 /* TutorialView.swift */,
 				5631741B291D156F00842512 /* NotionSettingsView.swift */,
+				56AE8CC7291E8AB8008E56BD /* ParticlesSettingsView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		56AE8CC6291E87AE008E56BD /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				56AE8CC4291E8641008E56BD /* ParticleScene.swift */,
+				56AE8CC0291E83E6008E56BD /* SparkParticle.sks */,
+			);
+			path = Particles;
 			sourceTree = "<group>";
 		};
 		56DF1EC128B60D0B0020B6F6 = {
@@ -133,6 +143,7 @@
 		56DF1ECC28B60D0B0020B6F6 /* Streamline */ = {
 			isa = PBXGroup;
 			children = (
+				56AE8CC6291E87AE008E56BD /* Particles */,
 				5631741A291D14B000842512 /* Settings */,
 				5617C6EA29103A6F0081FA58 /* Keyboard */,
 				5617C6E929103A600081FA58 /* State */,
@@ -238,6 +249,7 @@
 				5616FFA929193D6300FE2D67 /* SettingsPanelView.swift in Sources */,
 				5648615628CDEA1800B7A3E5 /* AppState.swift in Sources */,
 				56AE8CC5291E8641008E56BD /* ParticleScene.swift in Sources */,
+				56AE8CC8291E8AB8008E56BD /* ParticlesSettingsView.swift in Sources */,
 				56DF1EE228B60D390020B6F6 /* ContentView.swift in Sources */,
 				56B51A88290D695C00EFEAD1 /* ObsidianVaultSettings.swift in Sources */,
 				5631741C291D156F00842512 /* NotionSettingsView.swift in Sources */,

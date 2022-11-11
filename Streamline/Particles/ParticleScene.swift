@@ -29,18 +29,22 @@ class ParticleScene: SKScene {
     }
 
     override func didMove(to view: SKView) {
-        guard let snowEmitterNode = snowEmitterNode else { return }
+        if(children.count <= 0) {
+            guard let snowEmitterNode = snowEmitterNode else { return }
 
-        snowEmitterNode.particlePosition = CGPoint(x: size.width * 0.62, y: (size.height / 2) - 40)
-        snowEmitterNode.particleBirthRate = 0
+            snowEmitterNode.particlePosition = CGPoint(x: size.width * 0.62, y: (size.height / 2) - 40)
+            snowEmitterNode.particleBirthRate = 0
 
-        addChild(snowEmitterNode)
+            addChild(snowEmitterNode)
+        }
     }
 
     override func didChangeSize(_ oldSize: CGSize) {
-        guard let snowEmitterNode = snowEmitterNode else { return }
-
-        snowEmitterNode.particlePosition = CGPoint(x: size.width * 0.62, y: (size.height / 2) - 40)
-        snowEmitterNode.particleBirthRate = 0
+        if(children.count <= 0) {
+            guard let snowEmitterNode = snowEmitterNode else { return }
+            
+            snowEmitterNode.particlePosition = CGPoint(x: size.width * 0.62, y: (size.height / 2) - 40)
+            snowEmitterNode.particleBirthRate = 0
+        }
     }
 }

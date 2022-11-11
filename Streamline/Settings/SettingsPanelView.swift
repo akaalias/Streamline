@@ -28,6 +28,11 @@ struct SettingsPanelView: View {
                     .tabItem {
                             Label("Notion Linking", systemImage: "folder.badge.plus")
                     }
+                
+                ParticlesSettingsView()
+                    .tabItem {
+                        Label("Particles", systemImage: "snow")
+                    }
             }
             .shadow(radius: 30)
             .padding(10)

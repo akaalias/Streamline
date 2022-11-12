@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		56056606291D1EB00067568B /* TutorialSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56056605291D1EB00067568B /* TutorialSummaryView.swift */; };
 		5616FFA929193D6300FE2D67 /* SettingsPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5616FFA829193D6300FE2D67 /* SettingsPanelView.swift */; };
 		5616FFAB291948E000FE2D67 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5616FFAA291948E000FE2D67 /* TutorialView.swift */; };
 		5631741C291D156F00842512 /* NotionSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5631741B291D156F00842512 /* NotionSettingsView.swift */; };
@@ -30,7 +29,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		56056605291D1EB00067568B /* TutorialSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSummaryView.swift; sourceTree = "<group>"; };
 		5616FFA829193D6300FE2D67 /* SettingsPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPanelView.swift; sourceTree = "<group>"; };
 		5616FFAA291948E000FE2D67 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		5631741B291D156F00842512 /* NotionSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionSettingsView.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 		5631741A291D14B000842512 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				56056605291D1EB00067568B /* TutorialSummaryView.swift */,
 				56B51A87290D695C00EFEAD1 /* ObsidianVaultSettings.swift */,
 				5616FFA829193D6300FE2D67 /* SettingsPanelView.swift */,
 				5616FFAA291948E000FE2D67 /* TutorialView.swift */,
@@ -257,7 +254,6 @@
 				5616FFAB291948E000FE2D67 /* TutorialView.swift in Sources */,
 				568D87B2290E867E00B1B017 /* KeyboardInput.swift in Sources */,
 				568D87B0290E83CC00B1B017 /* CGKeyCode_Extension.swift in Sources */,
-				56056606291D1EB00067568B /* TutorialSummaryView.swift in Sources */,
 				56DF1ECE28B60D0B0020B6F6 /* StreamlineApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,7 +402,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.2;
-				MARKETING_VERSION = 2.6;
+				MARKETING_VERSION = 2.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rondeau.Streamline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -440,7 +436,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.2;
-				MARKETING_VERSION = 2.6;
+				MARKETING_VERSION = 2.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rondeau.Streamline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

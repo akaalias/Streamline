@@ -32,20 +32,11 @@ struct ContentView: View {
                     Spacer()
                 }
             } else {
-                ZStack {
-                    if(showParticles) {
-                        SpriteView(scene: state.scene, options: [.allowsTransparency])
-                                            .ignoresSafeArea()
-                                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                                            .opacity(0.5)
+                RageTextInputView()
+                    .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
+                    .readSize { size in
+                        state.dynamicWindowSize = size
                     }
-                    
-                    RageTextInputView()
-                        .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
-                        .readSize { size in
-                            state.dynamicWindowSize = size
-                        }
-                }
             }
         }
         .onDisappear() {

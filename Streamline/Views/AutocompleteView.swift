@@ -21,7 +21,7 @@ struct AutocompleteView: View {
                         .truncationMode(.tail)
                         .lineLimit(1)
                         .padding(0)
-                        .background(Color("ObsidianPurple").opacity(0.4))
+                        .background(Color("ObsidianPurple").opacity(0.5))
                 }.readSize { textSize in
                     commonSize = textSize
                 }

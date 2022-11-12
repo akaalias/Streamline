@@ -32,9 +32,9 @@ struct RageTextInputView: View {
                         .offset(x: -15)
 
                     ZStack {
-                        Rectangle()
+                        RoundedRectangle(cornerRadius: 3, style: .continuous)
                             .fill(Color("CursorColor"))
-                            .frame(width: state.calculatedFontSize() / 2.0, height: state.calculatedFontSize() * 1.5)
+                            .frame(width: state.calculatedFontSize() / 2.5, height: state.calculatedFontSize() * 1.5)
                             .opacity(opacity)
                             .onAppear() {
                                 withAnimation(.easeInOut(duration: 2).repeatForever()) {

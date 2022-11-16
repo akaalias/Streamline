@@ -10,6 +10,13 @@
 		5616FFA929193D6300FE2D67 /* SettingsPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5616FFA829193D6300FE2D67 /* SettingsPanelView.swift */; };
 		5616FFAB291948E000FE2D67 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5616FFAA291948E000FE2D67 /* TutorialView.swift */; };
 		5631741C291D156F00842512 /* NotionSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5631741B291D156F00842512 /* NotionSettingsView.swift */; };
+		5643C1C82925181800EBBF2D /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5643C1C72925181800EBBF2D /* ThemeView.swift */; };
+		5643C1CB29251DEE00EBBF2D /* Fireflies.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5643C1C929251DEE00EBBF2D /* Fireflies.sks */; };
+		5643C1CC29251DEE00EBBF2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5643C1CA29251DEE00EBBF2D /* Assets.xcassets */; };
+		5643C1CE29251E4F00EBBF2D /* Magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5643C1CD29251E4F00EBBF2D /* Magic.sks */; };
+		5643C1D029251E5E00EBBF2D /* Rain.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5643C1CF29251E5E00EBBF2D /* Rain.sks */; };
+		5643C1D229251E6900EBBF2D /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5643C1D129251E6900EBBF2D /* Fire.sks */; };
+		5643C1D429251F0300EBBF2D /* Smoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5643C1D329251F0300EBBF2D /* Smoke.sks */; };
 		5648615628CDEA1800B7A3E5 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5648615528CDEA1800B7A3E5 /* AppState.swift */; };
 		565561D7290C16CB00290876 /* AutocompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565561D6290C16CB00290876 /* AutocompleteView.swift */; };
 		568D87B0290E83CC00B1B017 /* CGKeyCode_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D87AF290E83CC00B1B017 /* CGKeyCode_Extension.swift */; };
@@ -32,6 +39,13 @@
 		5616FFA829193D6300FE2D67 /* SettingsPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPanelView.swift; sourceTree = "<group>"; };
 		5616FFAA291948E000FE2D67 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		5631741B291D156F00842512 /* NotionSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionSettingsView.swift; sourceTree = "<group>"; };
+		5643C1C72925181800EBBF2D /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
+		5643C1C929251DEE00EBBF2D /* Fireflies.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fireflies.sks; sourceTree = "<group>"; };
+		5643C1CA29251DEE00EBBF2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5643C1CD29251E4F00EBBF2D /* Magic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Magic.sks; sourceTree = "<group>"; };
+		5643C1CF29251E5E00EBBF2D /* Rain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Rain.sks; sourceTree = "<group>"; };
+		5643C1D129251E6900EBBF2D /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
+		5643C1D329251F0300EBBF2D /* Smoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Smoke.sks; sourceTree = "<group>"; };
 		5648615528CDEA1800B7A3E5 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		565561D6290C16CB00290876 /* AutocompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteView.swift; sourceTree = "<group>"; };
 		568D87AF290E83CC00B1B017 /* CGKeyCode_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGKeyCode_Extension.swift; sourceTree = "<group>"; };
@@ -107,6 +121,7 @@
 				5616FFAA291948E000FE2D67 /* TutorialView.swift */,
 				5631741B291D156F00842512 /* NotionSettingsView.swift */,
 				56AE8CC7291E8AB8008E56BD /* ParticlesSettingsView.swift */,
+				5643C1C72925181800EBBF2D /* ThemeView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -115,7 +130,13 @@
 			isa = PBXGroup;
 			children = (
 				56AE8CC4291E8641008E56BD /* ParticleScene.swift */,
+				5643C1D329251F0300EBBF2D /* Smoke.sks */,
+				5643C1CD29251E4F00EBBF2D /* Magic.sks */,
+				5643C1CF29251E5E00EBBF2D /* Rain.sks */,
+				5643C1D129251E6900EBBF2D /* Fire.sks */,
 				56AE8CC0291E83E6008E56BD /* SparkParticle.sks */,
+				5643C1C929251DEE00EBBF2D /* Fireflies.sks */,
+				5643C1CA29251DEE00EBBF2D /* Assets.xcassets */,
 			);
 			path = Particles;
 			sourceTree = "<group>";
@@ -227,10 +248,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5643C1D229251E6900EBBF2D /* Fire.sks in Resources */,
 				56DF1ED528B60D0D0020B6F6 /* Preview Assets.xcassets in Resources */,
+				5643C1D029251E5E00EBBF2D /* Rain.sks in Resources */,
+				5643C1D429251F0300EBBF2D /* Smoke.sks in Resources */,
 				56AE8CC2291E83E6008E56BD /* SparkParticle.sks in Resources */,
 				56AE8CC3291E83E6008E56BD /* Assets.xcassets in Resources */,
+				5643C1CE29251E4F00EBBF2D /* Magic.sks in Resources */,
 				56DF1ED228B60D0D0020B6F6 /* Assets.xcassets in Resources */,
+				5643C1CC29251DEE00EBBF2D /* Assets.xcassets in Resources */,
+				5643C1CB29251DEE00EBBF2D /* Fireflies.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +281,7 @@
 				5616FFAB291948E000FE2D67 /* TutorialView.swift in Sources */,
 				568D87B2290E867E00B1B017 /* KeyboardInput.swift in Sources */,
 				568D87B0290E83CC00B1B017 /* CGKeyCode_Extension.swift in Sources */,
+				5643C1C82925181800EBBF2D /* ThemeView.swift in Sources */,
 				56DF1ECE28B60D0B0020B6F6 /* StreamlineApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,7 +430,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.2;
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rondeau.Streamline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -436,7 +464,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.2;
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rondeau.Streamline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

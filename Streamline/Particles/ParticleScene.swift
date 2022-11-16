@@ -9,11 +9,11 @@ import SpriteKit
 
 class ParticleScene: SKScene {
 
-    public var snowEmitterNode = SKEmitterNode(fileNamed: "SparkParticle.sks")
+    public var snowEmitterNode = SKEmitterNode(fileNamed: "Smoke.sks")
 
     func emitOne() {
         self.start()
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(50), execute: {
             self.stop()
         })
     }
@@ -32,7 +32,7 @@ class ParticleScene: SKScene {
         if(children.count <= 0) {
             guard let snowEmitterNode = snowEmitterNode else { return }
 
-            snowEmitterNode.particlePosition = CGPoint(x: size.width * 0.6, y: (size.height))
+            snowEmitterNode.particlePosition = CGPoint(x: size.width - 40, y: (size.height) + 80)
             snowEmitterNode.particleBirthRate = 0
 
             addChild(snowEmitterNode)
@@ -43,7 +43,7 @@ class ParticleScene: SKScene {
         if(children.count <= 0) {
             guard let snowEmitterNode = snowEmitterNode else { return }
             
-            snowEmitterNode.particlePosition = CGPoint(x: size.width * 0.6, y: (size.height))
+            snowEmitterNode.particlePosition = CGPoint(x: size.width - 40, y: (size.height) + 80)
             snowEmitterNode.particleBirthRate = 0
         }
     }

@@ -226,6 +226,9 @@ class AppState: ObservableObject {
             if(event.keyCode == 36) {
                 self.visibleCharactersStringArray.append("¶")
                 self.visibleLastWordStringArray = []
+            } else if (event.keyCode == 51) {
+                // Acknowledge backspace without deleting
+                self.scene.emitOne()
             } else {
                 self.visibleCharactersStringArray.append(lastTypedCharacterIgnoringModifiers)
                 if(lastTypedCharacterIgnoringModifiers == " ") {
@@ -249,7 +252,5 @@ class AppState: ObservableObject {
         self.attributedString = AttributedString("")
         self.attributedString.append(self.firstPartAttributedString)
         self.attributedString.append(self.lastWordAttributedString)
-        
-        self.scene.emitOne()
     }
 }

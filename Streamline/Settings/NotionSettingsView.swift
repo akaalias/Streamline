@@ -13,13 +13,15 @@ struct NotionSettingsView: View {
     @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
 
     let markdown: LocalizedStringKey = """
-    To get a feeling for **easily linking to your Notion pages** with Streamline's `[[` hotkey, please use this hack:
+    Hey there!
+    
+    To set up auto-complete search of your Notion pages, follow these steps:
     
     1. Export your Notion database of choice to Markdown (include sub-pages, exclude attachments)
     2. Unzip the folder
-    3. Click below to set it as the source for auto-completions:
-
+    3. Click below to set it as the source for auto-completions
     """
+
     var body: some View {
         VStack {
             Image("NotionLogo")
@@ -43,7 +45,7 @@ struct NotionSettingsView: View {
             .buttonStyle(.borderedProminent)
             .padding(5)
             
-            Text("Currently " + String(state.markdownFileNames.count) + " Markdown Notes Cached")
+            Text("Currently " + String(state.markdownFileNames.count) + " Page-Names Cached")
                 .font(.footnote)
                 .padding(5)
         }

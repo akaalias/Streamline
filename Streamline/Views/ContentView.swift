@@ -20,24 +20,22 @@ struct ContentView: View {
         GeometryReader { geometry in
             KeyboardEvent(into: $keyboardInput.keyCode)
             .frame(width: 0, height: 0)
-            if(state.showSettingsPanel) {
-                VStack {
-                    Spacer()
-                        HStack {
-                            Spacer()
-                            SettingsPanelView()
-                                .frame(width: 700, height: 450)
-                            Spacer()
-                        }
-                    Spacer()
-                }
-            } else {
+
+            ZStack {
+                SpriteView(scene: state.scene, options: [.allowsTransparency])
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                
                 RageTextInputView()
                     .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
                     .readSize { size in
                         state.dynamicWindowSize = size
                     }
+                
+                if(state.showSettingsPanel) {
+                    ObsidianVaultSettings()
+                }
             }
+        
         }
         .onDisappear() {
             NSEvent.removeMonitor(self.monitor)

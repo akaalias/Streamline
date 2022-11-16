@@ -13,31 +13,51 @@ struct ObsidianVaultSettings: View {
     @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
 
     var body: some View {
-        VStack {
-            Image("ObsidianLogo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 100)
+        ZStack {
+            RoundedRectangle(cornerRadius: 10.0)
+                .foregroundColor(Color("ObsidianPurpleDark"))
+                .frame(width: 500, height: 500)
+                .shadow(radius: 20)
             
-            Text("Select Your Obsidian Vault")
-                .font(.title)
-                .padding(5)
+            VStack {
+                Image("ObsidianLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100)
+                
+                Text("Select Your Obsidian Vault")
+                    .font(.title)
+                    .padding(5)
 
-            Text("Quickly insert links to your existing Obsidian markdown notes from this folder using the '[[' shortcut.")
-                .multilineTextAlignment(.center)
-                .padding(5)
+                Text("Quickly insert links to your existing Obsidian markdown notes from this folder using the '[[' shortcut.")
+                    .multilineTextAlignment(.center)
+                    .padding(5)
 
-            Button {
-                setupFolder()
-            } label: {
-                Text("Select Vault")
+                Button {
+                    setupFolder()
+                } label: {
+                    Text("Select Vault")
+                }
+                .buttonStyle(.borderedProminent)
+                .padding(5)
+                
+                Text("Currently " + String(state.markdownFileNames.count) + " Markdown File-Names Cached")
+                    .font(.footnote)
+                    .padding(5)
+                
+                Text(" ")
+                Text("PS: If you would like to test out **Notion** integration, [please contact me](mailto:alexis.rondeau@gmail.com)")
             }
-            .buttonStyle(.borderedProminent)
-            .padding(5)
+            .frame(width: 450, height: 450)
             
-            Text("Currently " + String(state.markdownFileNames.count) + " Markdown Notes Cached")
-                .font(.footnote)
-                .padding(5)
+            Button {
+                state.showSettingsPanel.toggle()
+            } label: {
+                Label("", systemImage: "xmark.circle.fill")
+            }
+            .buttonStyle(.plain)
+            .offset(x: 250, y: -250)
+
         }
     }
     

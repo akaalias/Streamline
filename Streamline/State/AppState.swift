@@ -47,7 +47,7 @@ class AppState: ObservableObject {
     @Published var scene: ParticleScene
     var timer: Timer?
     @Published var secondsElapsed: Int = 0
-
+    
     init() {
         allCharactersStorageStringArray = []
         
@@ -59,7 +59,7 @@ class AppState: ObservableObject {
     func calculatedFontSize() -> CGFloat {
         return self.dynamicWindowSize.height / fontSizeFactor
     }
-
+    
     func reset() {
         allCharactersStorageStringArray = []
         visibleCharactersStringArray = []
@@ -83,7 +83,7 @@ class AppState: ObservableObject {
             selectOption()
         }
     }
-
+    
     func selectNextAutocompleteOptionsUp() {
         if(selectIndex >= 0) {
             selectIndex -= 1
@@ -93,7 +93,7 @@ class AppState: ObservableObject {
     
     func selectOption() {
         selectedAutocompleteOption = searchStringArray.joined()
-
+        
         if(selectIndex >= 0 && selectIndex < autocompleteSearchMatches().count) {
             selectedAutocompleteOption = autocompleteSearchMatches()[selectIndex]
         }
@@ -133,11 +133,11 @@ class AppState: ObservableObject {
                 } catch { print(error, fileURL) }
             }
         }
-
+        
         self.markdownFileNames = Array(Set(self.markdownFileNames))
     }
-        
-    func handleKeyEvent(event: NSEvent) {
+    
+    func handleKeyEvent(event: NSEvent) -> NSEvent {
         var lastTypedCharacterIgnoringModifiers = event.charactersIgnoringModifiers ?? ""
         let lastTypedCharacters = event.characters ?? ""
         let charactersWithModifiersApplied = event.characters(byApplyingModifiers: event.modifierFlags) ?? ""
@@ -145,12 +145,12 @@ class AppState: ObservableObject {
         
         if(modifierFlags.contains(.command)) {
             // Ignore Command-[...]
-            return
+            return event
         }
-                
+        
         if(modifierFlags.contains(.option) && lastTypedCharacterIgnoringModifiers == "u") {
             self.umlautModifierTyped = true
-            return
+            return event
         }
         
         // Autocomplete triggered
@@ -170,13 +170,13 @@ class AppState: ObservableObject {
                 self.selectNextAutocompleteOptionsUp()
             } else if (event.keyCode == 36) {
                 var appendString = self.selectedAutocompleteOption
-
+                
                 // Enter
                 if(!self.selectedAutocompleteOption.reversed().starts(with: "]]")) {
                     appendString = appendString + "]]"
                 }
                 self.selectedAutocompleteOption = ""
-
+                
                 let arrayLiteral = Array(arrayLiteral: appendString)
                 self.allCharactersStorageStringArray.append(contentsOf: arrayLiteral)
                 self.visibleCharactersStringArray.append(contentsOf: arrayLiteral)
@@ -203,14 +203,14 @@ class AppState: ObservableObject {
                 if(modifierFlags.contains(.shift) && lastTypedCharacterIgnoringModifiers == "A") {
                     lastTypedCharacterIgnoringModifiers = "Ä"
                 }
-
+                
                 if(lastTypedCharacterIgnoringModifiers == "o") {
                     lastTypedCharacterIgnoringModifiers = "ö"
                 }
                 if(modifierFlags.contains(.shift) && lastTypedCharacterIgnoringModifiers == "O") {
                     lastTypedCharacterIgnoringModifiers = "Ö"
                 }
-
+                
                 if(lastTypedCharacterIgnoringModifiers == "u") {
                     lastTypedCharacterIgnoringModifiers = "ü"
                 }
@@ -220,15 +220,16 @@ class AppState: ObservableObject {
                 
                 self.umlautModifierTyped = false
             }
-                        
+            
             self.allCharactersStorageStringArray.append(lastTypedCharacterIgnoringModifiers)
-
+            
             if(event.keyCode == 36) {
                 self.visibleCharactersStringArray.append("¶")
                 self.visibleLastWordStringArray = []
             } else if (event.keyCode == 51) {
                 // Acknowledge backspace without deleting
                 self.scene.emitOne()
+                return event
             } else {
                 self.visibleCharactersStringArray.append(lastTypedCharacterIgnoringModifiers)
                 if(lastTypedCharacterIgnoringModifiers == " ") {
@@ -252,5 +253,7 @@ class AppState: ObservableObject {
         self.attributedString = AttributedString("")
         self.attributedString.append(self.firstPartAttributedString)
         self.attributedString.append(self.lastWordAttributedString)
+        
+        return event
     }
 }

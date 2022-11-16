@@ -12,6 +12,14 @@ struct NotionSettingsView: View {
     @State var showFileChooser = false
     @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
 
+    let markdown: LocalizedStringKey = """
+    To get a feeling for **easily linking to your Notion pages** with Streamline's `[[` hotkey, please use this hack:
+    
+    1. Export your Notion database of choice to Markdown (include sub-pages, exclude attachments)
+    2. Unzip the folder
+    3. Click below to set it as the source for auto-completions:
+
+    """
     var body: some View {
         VStack {
             Image("NotionLogo")
@@ -23,7 +31,7 @@ struct NotionSettingsView: View {
                 .font(.title)
                 .padding(5)
             
-            Text("To get a feeling for **easily linking to your Notion pages** with Streamline's `[[` hotkey, please use this hack:\n\n 1. Export your Notion database of choice to Markdown (include sub-pages, exclude attachments)\n 2. Unzip the folder\n3. Click below to set it as the source for auto-completions:")
+            Text(markdown)
                 .multilineTextAlignment(.center)
                 .padding(5)
             

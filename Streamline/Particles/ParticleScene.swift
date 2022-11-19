@@ -6,6 +6,8 @@
 //
 
 import SpriteKit
+import Swift
+import SwiftUI
 
 class ParticleScene: SKScene {
 
@@ -20,11 +22,17 @@ class ParticleScene: SKScene {
     
     func start() {
         guard let snowEmitterNode = snowEmitterNode else { return }
+        
+        let colors = [NSColor(Color("FireflyColorOne")), NSColor(Color("FireflyColorTwo")), NSColor(Color("FireflyColorThree")), NSColor(Color("FireflyColorFour"))]
+        snowEmitterNode.particleColorSequence = nil
+        snowEmitterNode.particleColor = colors.randomElement()!
+        
         snowEmitterNode.particleBirthRate = 1
     }
     
     func stop() {
         guard let snowEmitterNode = snowEmitterNode else { return }
+        
         snowEmitterNode.particleBirthRate = 0
     }
 
@@ -43,6 +51,8 @@ class ParticleScene: SKScene {
         if(children.count <= 0) {
             guard let snowEmitterNode = snowEmitterNode else { return }
             
+
+            snowEmitterNode.particleColor = NSColor.red
             snowEmitterNode.particlePosition = CGPoint(x: size.width - 40, y: (size.height) + 80)
             snowEmitterNode.particleBirthRate = 0
         }

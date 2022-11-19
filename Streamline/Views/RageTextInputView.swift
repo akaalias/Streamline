@@ -19,7 +19,13 @@ struct RageTextInputView: View {
                 path.addLine(to: CGPoint(x: geometry.size.width * state.ratioLeft, y: geometry.size.height))
             }
             .stroke(Color("LineColor"), lineWidth: 1)
-            .opacity(0.1)
+            .opacity(0.0)
+            
+            Rectangle()
+                .foregroundColor(Color("RightSide"))
+                .frame(width: geometry.size.width * state.ratioRight, height: geometry.size.height + 100)
+                .offset(x: geometry.size.width * state.ratioLeft, y: -geometry.size.height / 2)
+                .opacity(0.0)
             
             HStack {
                 Text(state.attributedString)
@@ -32,15 +38,9 @@ struct RageTextInputView: View {
                     .offset(x: -8, y: -1)
                 
                 ZStack {
-                    RoundedRectangle(cornerRadius: 0, style: .continuous)
+                    Rectangle()
                         .fill(Color("CursorColor"))
                         .frame(width: 5, height: state.calculatedFontSize() * 1.5)
-                        .opacity(opacity)
-                        .onAppear() {
-                            withAnimation(.easeInOut(duration: 2).repeatForever()) {
-                                opacity = 0.2
-                            }
-                        }
                         .offset(x: -13)
                 }
                 

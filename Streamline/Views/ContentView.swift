@@ -24,7 +24,8 @@ struct ContentView: View {
             ZStack {
                 SpriteView(scene: state.scene, options: [.allowsTransparency])
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                
+                    .offset(y: 50)
+
                 RageTextInputView()
                     .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
                     .readSize { size in

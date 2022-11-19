@@ -24,13 +24,10 @@ struct ContentView: View {
             ZStack {
                 SpriteView(scene: state.scene, options: [.allowsTransparency])
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                    .offset(y: 50)
+                    .opacity(0.5)
 
                 RageTextInputView()
                     .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
-                    .readSize { size in
-                        state.dynamicWindowSize = size
-                    }
                 
                 if(state.showSettingsPanel) {
                     ObsidianVaultSettings()
@@ -38,11 +35,15 @@ struct ContentView: View {
             }
         }
         .onAppear() {
-            state.setupCacheFromBookmark()
             self.monitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (aEvent) -> NSEvent? in
                 state.handleKeyEvent(event: aEvent)
                 return aEvent
             }
+            state.setupCacheFromBookmark()
+        }
+        .readSize { size in
+            state.dynamicWindowSize = size
+            state.updateParticleScene()
         }
     }
 }

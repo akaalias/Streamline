@@ -50,10 +50,10 @@ class AppState: ObservableObject {
     
     init() {
         allCharactersStorageStringArray = []
-        
         scene = ParticleScene()
         scene.scaleMode = .resizeFill
         scene.backgroundColor = .clear
+        scene.state = self
     }
     
     func calculatedFontSize() -> CGFloat {
@@ -255,5 +255,8 @@ class AppState: ObservableObject {
         self.attributedString.append(self.lastWordAttributedString)
         
         return event
+    }
+    
+    func updateParticleScene() {
     }
 }

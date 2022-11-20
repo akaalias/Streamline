@@ -28,7 +28,10 @@ class ParticleScene: SKScene {
             NSColor(Color("FireflyColorOne")),
             NSColor(Color("FireflyColorTwo")),
             NSColor(Color("FireflyColorThree")),
-            NSColor(Color("FireflyColorFour"))]
+            NSColor(Color("FireflyColorFour")),
+            NSColor(Color("FireflyColorFive")),
+            NSColor(Color("FireflyColorSix"))
+        ]
 
         snowEmitterNode.particleColorSequence = nil
         snowEmitterNode.particleColor = colors.randomElement()!

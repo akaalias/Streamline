@@ -15,6 +15,13 @@ struct StreamlineApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(state)
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(50), execute: {
+                        if let window = NSApplication.shared.windows.last {
+                            window.toggleFullScreen(nil)
+                        }
+                    })
+                }
         }
         .commands {
             CommandGroup(replacing: CommandGroupPlacement.newItem) {

@@ -16,7 +16,7 @@ struct StreamlineApp: App {
             ContentView()
                 .environmentObject(state)
                 .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(50), execute: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100), execute: {
                         if let window = NSApplication.shared.windows.last {
                             window.toggleFullScreen(nil)
                         }

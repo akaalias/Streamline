@@ -32,9 +32,10 @@ class ParticleScene: SKScene {
             NSColor(Color("FireflyColorFive")),
             NSColor(Color("FireflyColorSix"))
         ]
-
+        
         snowEmitterNode.particleColorSequence = nil
         snowEmitterNode.particleColor = colors.randomElement()!
+        snowEmitterNode.particlePosition = CGPoint(x: state!.dynamicWindowSize.width * state!.ratioLeft, y: state!.dynamicWindowSize.height / 2 + state!.calculatedFontSize() * 2)
         snowEmitterNode.particleBirthRate = 1
     }
     
@@ -45,8 +46,6 @@ class ParticleScene: SKScene {
 
     override func didMove(to view: SKView) {
         guard let snowEmitterNode = snowEmitterNode else { return }
-        
-        snowEmitterNode.particlePosition = CGPoint(x: size.width - 30, y: (((state!.dynamicWindowSize.height * state!.ratioTop) ?? 10) / 2) + 40)
         snowEmitterNode.particleBirthRate = 0
         addChild(snowEmitterNode)
     }

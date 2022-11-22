@@ -43,7 +43,6 @@ struct ContentView: View {
         }
         .readSize { size in
             state.dynamicWindowSize = size
-            state.updateParticleScene()
         }
     }
 }

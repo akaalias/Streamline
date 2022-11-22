@@ -142,7 +142,7 @@ class AppState: ObservableObject {
         let lastTypedCharacters = event.characters ?? ""
         let charactersWithModifiersApplied = event.characters(byApplyingModifiers: event.modifierFlags) ?? ""
         let modifierFlags = event.modifierFlags
-        
+                
         if(modifierFlags.contains(.command)) {
             // Ignore Command-[...]
             return event
@@ -220,17 +220,15 @@ class AppState: ObservableObject {
                 
                 self.umlautModifierTyped = false
             }
-            
-            self.allCharactersStorageStringArray.append(lastTypedCharacterIgnoringModifiers)
-            
-            if(event.keyCode == 36) {
-                self.visibleCharactersStringArray.append("¶")
-                self.visibleLastWordStringArray = []
-            } else if (event.keyCode == 51) {
-                // Acknowledge backspace without deleting
+                        
+            if(event.keyCode == 36 || event.keyCode == 51) {
+                // Acknowledge enter and backspace without deleting
+                // TBD: Add TAB
                 self.scene.emitOne()
                 return event
             } else {
+                // Store and display all others
+                self.allCharactersStorageStringArray.append(lastTypedCharacterIgnoringModifiers)
                 self.visibleCharactersStringArray.append(lastTypedCharacterIgnoringModifiers)
                 if(lastTypedCharacterIgnoringModifiers == " ") {
                     self.visibleLastWordStringArray = []

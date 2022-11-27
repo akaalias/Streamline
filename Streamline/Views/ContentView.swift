@@ -49,6 +49,9 @@ struct ContentView: View {
             }
             state.setupCacheFromBookmark()
         }
+        .onDisappear() {
+                 NSEvent.removeMonitor(self.monitor)
+        }
         .readSize { size in
             state.dynamicWindowSize = size
         }

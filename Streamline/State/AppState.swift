@@ -49,7 +49,8 @@ class AppState: ObservableObject {
     @Published var secondsElapsed: Int = 0
     
     @AppStorage("showDemoVideo") public var showDemoVideo: Bool = true
-    
+    // public var showDemoVideo: Bool = true
+
     init() {
         allCharactersStorageStringArray = []
         scene = ParticleScene()

@@ -35,7 +35,9 @@ struct ContentView: View {
 
                 if(state.showDemoVideo) {
                     DemoVideoView()
-                        .frame(alignment: .center)
+                        .frame(width: 400, height: 400, alignment: .center)
+                        .shadow(radius: 40)
+                        .background(Color("ObsidianPurpleDark"))
 
                 }
             }

@@ -10,25 +10,41 @@ import AVKit
 
 struct DemoVideoView: View {
     @EnvironmentObject var state: AppState
-    var player = AVPlayer(url: URL(string: "https://fast.wistia.net/embed/medias/f1xos22k50.m3u8")!)
+    @Environment(\.openURL) var openURL
 
     var body: some View {
-        VStack {
-            Text("Hello! Let's get you started with a quick demo:")
-                .font(.title2)
+        VStack(alignment: .center) {
+            Text("Hello and welcome to Streamline!")
+                .font(.title)
                 .padding(5)
 
-            VideoPlayer(player: player)
-                .frame(width: 815,
-                       height: 510)
+            Text("If you're new to Streamline, fret not! Here is a quick demo video to get you started.")
+                .font(.title3)
+                .multilineTextAlignment(.center)
                 .padding(5)
-            
+
+            Button {
+                openURL(URL(string: "https://getstreamline.app?wvideo=f1xos22k50")!)
+            } label: {
+                Text("Watch the Streamline Demo Video")
+            }
+            .padding(5)
+            .buttonStyle(.borderedProminent)
+        
+            Divider()
+
             Button {
                 state.showDemoVideo = false
             } label: {
                 Text("Got it! I'm ready.")
             }
-
+            .padding(5)
+        
+            
+            Text("If you need to, you can open this window later via the Help menu item.")
+                .font(.footnote)
+                .multilineTextAlignment(.center)
+                .padding(5)
         }
     }
 }

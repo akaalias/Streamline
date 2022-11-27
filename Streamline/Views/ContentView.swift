@@ -12,10 +12,10 @@ struct ContentView: View {
     @EnvironmentObject var state: AppState
     @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
     @AppStorage("showParticles") private var showParticles: Bool = false
-    
+
     @StateObject var keyboardInput = KeyboardInput()
     @State private var monitor: Any?
-    
+
     var body: some View {
         GeometryReader { geometry in
             KeyboardEvent(into: $keyboardInput.keyCode)
@@ -31,6 +31,12 @@ struct ContentView: View {
                 
                 if(state.showSettingsPanel) {
                     ObsidianVaultSettings()
+                }
+
+                if(state.showDemoVideo) {
+                    DemoVideoView()
+                        .frame(alignment: .center)
+
                 }
             }
         }

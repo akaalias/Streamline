@@ -35,7 +35,7 @@ class ParticleScene: SKScene {
         
         snowEmitterNode.particleColorSequence = nil
         snowEmitterNode.particleColor = colors.randomElement()!
-        snowEmitterNode.particlePosition = CGPoint(x: state!.dynamicWindowSize.width * state!.ratioLeft, y: state!.dynamicWindowSize.height / 2 + state!.calculatedFontSize() * 2)
+        snowEmitterNode.particlePosition = CGPoint(x: state!.dynamicWindowSize.width * state!.ratioLeft, y: state!.dynamicWindowSize.height / 2 + 50)
         snowEmitterNode.particleBirthRate = 1
     }
     

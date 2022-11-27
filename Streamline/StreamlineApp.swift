@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct StreamlineApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @AppStorage("showDemoVideo") private var showDemoVideo: Bool = true
+
     @StateObject var state = AppState()
 
     var body: some Scene {
@@ -39,6 +42,12 @@ struct StreamlineApp: App {
             CommandGroup(replacing: CommandGroupPlacement.appSettings) {
                 Button("Settings") {
                     state.showSettingsPanel = true
+                }
+            }
+            
+            CommandGroup(after: .help) {
+                Button("Watch Intro Video") {
+                    state.showDemoVideo = true
                 }
             }
         }

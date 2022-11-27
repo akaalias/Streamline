@@ -22,6 +22,8 @@
 		56AE8CC8291E8AB8008E56BD /* ParticlesSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AE8CC7291E8AB8008E56BD /* ParticlesSettingsView.swift */; };
 		56B51A88290D695C00EFEAD1 /* ObsidianVaultSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B51A87290D695C00EFEAD1 /* ObsidianVaultSettings.swift */; };
 		56D0C3CA28B6297100B96243 /* RageTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0C3C928B6297100B96243 /* RageTextInputView.swift */; };
+		56DBA3F829336D1800A442D9 /* DemoVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBA3F729336D1800A442D9 /* DemoVideoView.swift */; };
+		56DBA3FA2933700400A442D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DBA3F92933700400A442D9 /* AppDelegate.swift */; };
 		56DDF1BB29115A7D00113DFF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DDF1BA29115A7D00113DFF /* ViewExtensions.swift */; };
 		56DF1ECE28B60D0B0020B6F6 /* StreamlineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DF1ECD28B60D0B0020B6F6 /* StreamlineApp.swift */; };
 		56DF1ED228B60D0D0020B6F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56DF1ED128B60D0D0020B6F6 /* Assets.xcassets */; };
@@ -47,6 +49,8 @@
 		56B51A86290D5FC700EFEAD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		56B51A87290D695C00EFEAD1 /* ObsidianVaultSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObsidianVaultSettings.swift; sourceTree = "<group>"; };
 		56D0C3C928B6297100B96243 /* RageTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RageTextInputView.swift; sourceTree = "<group>"; };
+		56DBA3F729336D1800A442D9 /* DemoVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoVideoView.swift; sourceTree = "<group>"; };
+		56DBA3F92933700400A442D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56DDF1BA29115A7D00113DFF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		56DF1ECA28B60D0B0020B6F6 /* Streamline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56DF1ECD28B60D0B0020B6F6 /* StreamlineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamlineApp.swift; sourceTree = "<group>"; };
@@ -74,6 +78,7 @@
 				56D0C3C928B6297100B96243 /* RageTextInputView.swift */,
 				56DF1EE128B60D390020B6F6 /* ContentView.swift */,
 				565561D6290C16CB00290876 /* AutocompleteView.swift */,
+				56DBA3F729336D1800A442D9 /* DemoVideoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 				5617C6E729103A300081FA58 /* Views */,
 				56B51A86290D5FC700EFEAD1 /* Info.plist */,
 				56DF1ECD28B60D0B0020B6F6 /* StreamlineApp.swift */,
+				56DBA3F92933700400A442D9 /* AppDelegate.swift */,
 				56DF1ED128B60D0D0020B6F6 /* Assets.xcassets */,
 				56DF1EDB28B60D0D0020B6F6 /* Streamline.entitlements */,
 				56DF1ED328B60D0D0020B6F6 /* Preview Content */,
@@ -253,6 +259,7 @@
 				5616FFA929193D6300FE2D67 /* SettingsPanelView.swift in Sources */,
 				5648615628CDEA1800B7A3E5 /* AppState.swift in Sources */,
 				56AE8CC5291E8641008E56BD /* ParticleScene.swift in Sources */,
+				56DBA3F829336D1800A442D9 /* DemoVideoView.swift in Sources */,
 				56AE8CC8291E8AB8008E56BD /* ParticlesSettingsView.swift in Sources */,
 				56DF1EE228B60D390020B6F6 /* ContentView.swift in Sources */,
 				56B51A88290D695C00EFEAD1 /* ObsidianVaultSettings.swift in Sources */,
@@ -262,6 +269,7 @@
 				568D87B2290E867E00B1B017 /* KeyboardInput.swift in Sources */,
 				568D87B0290E83CC00B1B017 /* CGKeyCode_Extension.swift in Sources */,
 				5643C1C82925181800EBBF2D /* ThemeView.swift in Sources */,
+				56DBA3FA2933700400A442D9 /* AppDelegate.swift in Sources */,
 				56DF1ECE28B60D0B0020B6F6 /* StreamlineApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,7 +418,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.2;
-				MARKETING_VERSION = 3.3;
+				MARKETING_VERSION = 3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rondeau.Streamline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -444,7 +452,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.2;
-				MARKETING_VERSION = 3.3;
+				MARKETING_VERSION = 3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rondeau.Streamline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

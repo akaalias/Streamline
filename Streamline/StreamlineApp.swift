@@ -11,7 +11,6 @@ import SwiftUI
 struct StreamlineApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @AppStorage("showDemoVideo") private var showDemoVideo: Bool = true
-
     @StateObject var state = AppState()
 
     var body: some Scene {
@@ -34,7 +33,7 @@ struct StreamlineApp: App {
                 .keyboardShortcut("s", modifiers: [.command])
                 
                 Button("Reset") {
-                    self.state.reset()
+                    self.state.resetSessionData()
                 }
                 .keyboardShortcut("k", modifiers: [.command])
             }

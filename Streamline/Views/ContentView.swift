@@ -25,19 +25,19 @@ struct ContentView: View {
                 SpriteView(scene: state.scene, options: [.allowsTransparency])
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                     .opacity(0.5)
-
-                RageTextInputView()
-                    .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
                 
                 if(state.showSettingsPanel) {
-                    ObsidianVaultSettings()
+                    SettingsView()
+                } else {
+                    RageTextInputView()
+                        .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
                 }
 
                 if(state.showDemoVideo) {
                     DemoVideoView()
                         .frame(width: 400, height: 400, alignment: .center)
                         .shadow(radius: 40)
-                        .background(Color("ObsidianPurpleDark"))
+                        .background(Color("SettingsBackground"))
 
                 }
             }
@@ -45,7 +45,12 @@ struct ContentView: View {
         .onAppear() {
             self.monitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (aEvent) -> NSEvent? in
                 state.handleKeyEvent(event: aEvent)
-                return aEvent
+
+                if aEvent.modifierFlags.intersection(.deviceIndependentFlagsMask).contains(.command) {
+                    return aEvent
+                }
+
+                return nil
             }
             state.setupCacheFromBookmark()
         }

@@ -11,54 +11,31 @@ struct ObsidianVaultSettings: View {
     @EnvironmentObject var state: AppState
     @State var showFileChooser = false
     @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
+    @AppStorage("vaultUrl") private var vaultURL: URL = URL(fileURLWithPath: "~")
 
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10.0)
-                .foregroundColor(Color("ObsidianPurpleDark"))
-                .frame(width: 500, height: 500)
-                .shadow(radius: 20)
-            
             VStack {
                 Image("ObsidianLogo")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 100)
                 
-                Text("Select Your Obsidian Vault")
-                    .font(.title)
-                    .padding(5)
-
-                Text("Quickly insert links to your existing Obsidian markdown notes from this folder using the '[[' shortcut.")
-                    .multilineTextAlignment(.center)
+                Text("Select Your Obsidian Vault Folder for Auto-Completion")
                     .padding(5)
 
                 Button {
                     setupFolder()
                 } label: {
-                    Text("Select Vault")
+                    Text("Select Vault Folder")
                 }
                 .buttonStyle(.borderedProminent)
                 .padding(5)
-                
-                Text("Currently " + String(state.markdownFileNames.count) + " Markdown File-Names Cached")
-                    .font(.footnote)
-                    .padding(5)
-                
-                Text(" ")
-                Text("PS: If you would like to test out **Notion** integration, [please contact me](mailto:alexis.rondeau@gmail.com)")
-            }
-            .frame(width: 450, height: 450)
-            
-            Button {
-                state.showSettingsPanel.toggle()
-            } label: {
-                Label("", systemImage: "xmark.circle.fill")
-            }
-            .buttonStyle(.plain)
-            .offset(x: 250, y: -250)
 
-        }
+                Text(String(state.markdownFileNames.count) + " markdown file-names from your vault are cached in-memory")
+                    .font(.body)
+                    .padding(5)
+            }
+        
     }
     
     func setupFolder() {
@@ -73,11 +50,17 @@ struct ObsidianVaultSettings: View {
             do {
                 let bookmarkData = try url?.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
                 self.folderBookmarkData = bookmarkData!
+                self.vaultURL = url!
+
                 state.cacheMarkdownFilenames(url: url!)
             } catch {
                 print("Error while accessing folder!")
             }
         }
+    }
+    
+    func resetVault() {
+        state.resetEverything()
     }
 }
 

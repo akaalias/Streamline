@@ -40,7 +40,6 @@ struct DemoVideoView: View {
             }
             .padding(5)
         
-            
             Text("If you need to, you can open this window later via the Help menu item.")
                 .font(.footnote)
                 .multilineTextAlignment(.center)

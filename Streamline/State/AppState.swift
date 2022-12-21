@@ -26,6 +26,7 @@ class AppState: ObservableObject {
     @Published var selectIndex = -1
     @Published var markdownFileNames: [String] = []
     @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
+    @AppStorage("vaultURL") private var vaultURL: URL?
     @Environment(\.colorScheme) private var colorScheme
     
     // Layout
@@ -63,11 +64,21 @@ class AppState: ObservableObject {
         return self.dynamicWindowSize.height / fontSizeFactor
     }
     
-    func reset() {
+    func resetSessionData() {
         allCharactersStorageStringArray = []
         visibleCharactersStringArray = []
         visibleLastWordStringArray = []
         attributedString = AttributedString("")
+    }
+    
+    func resetEverything() {
+        resetSearch()
+        resetSessionData()
+        
+        // Settings
+        markdownFileNames = []
+        folderBookmarkData = Data()
+        vaultURL = URL(fileURLWithPath: "~")
     }
     
     func autocompleteSearchMatches() -> [String] {
@@ -160,7 +171,14 @@ class AppState: ObservableObject {
         if(self.currentlySearching) {
             if(event.characters == "\u{1B}") {
                 // ESC = Optional("\u{1B}")
+                let appendString = "]]"
+                self.selectedAutocompleteOption = ""
+                let arrayLiteral = Array(arrayLiteral: appendString)
+                self.allCharactersStorageStringArray.append(contentsOf: arrayLiteral)
+                self.visibleCharactersStringArray.append(contentsOf: arrayLiteral)
+                self.visibleLastWordStringArray.append(contentsOf: arrayLiteral)
                 self.currentlySearching = false
+
             } else if (event.keyCode == 51) {
                 // Backspace
                 self.searchStringArray = self.searchStringArray.dropLast()
@@ -256,8 +274,5 @@ class AppState: ObservableObject {
         self.attributedString.append(self.lastWordAttributedString)
         
         return event
-    }
-    
-    func updateParticleScene() {
     }
 }

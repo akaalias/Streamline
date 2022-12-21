@@ -29,22 +29,18 @@ struct ContentView: View {
                 if(state.showSettingsPanel) {
                     SettingsView()
                 } else {
-                    RageTextInputView()
-                        .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
-                }
-
-                if(state.showDemoVideo) {
-                    DemoVideoView()
-                        .frame(width: 400, height: 400, alignment: .center)
-                        .shadow(radius: 40)
-                        .background(Color("SettingsBackground"))
-
+                    if(state.showDemoVideo) {
+                        WelcomeView()
+                    } else {
+                        RageTextInputView()
+                            .offset(y: (geometry.size.height / state.ratioTop) - state.defaultFontSize)
+                    }
                 }
             }
         }
         .onAppear() {
             self.monitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (aEvent) -> NSEvent? in
-                state.handleKeyEvent(event: aEvent)
+                let _ = state.handleKeyEvent(event: aEvent)
 
                 if aEvent.modifierFlags.intersection(.deviceIndependentFlagsMask).contains(.command) {
                     return aEvent

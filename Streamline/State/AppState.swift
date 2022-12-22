@@ -25,10 +25,7 @@ class AppState: ObservableObject {
     @Published var selectedAutocompleteOption: String = ""
     @Published var selectIndex = -1
     @Published var markdownFileNames: [String] = []
-    @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
-    @AppStorage("vaultURL") private var vaultURL: URL?
-    @Environment(\.colorScheme) private var colorScheme
-    
+
     // Layout
     @Published var defaultFontSize = 38.0
     @Published var ratioLeft = 0.6
@@ -48,8 +45,11 @@ class AppState: ObservableObject {
     @Published var scene: ParticleScene
     var timer: Timer?
     @Published var secondsElapsed: Int = 0
-    
-    @AppStorage("showDemoVideo") public var showDemoVideo: Bool = true
+        
+    @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
+    @AppStorage("vaultURL") private var vaultURL: URL?
+    @AppStorage("logStorage") private var logStorage: String = ""
+    @AppStorage("showWelcomeScreen") public var showWelcomeScreen: Bool = true
 
     init() {
         allCharactersStorageStringArray = []
@@ -78,7 +78,7 @@ class AppState: ObservableObject {
         markdownFileNames = []
         folderBookmarkData = Data()
         vaultURL = URL(fileURLWithPath: "~")
-        showDemoVideo = true
+        showWelcomeScreen = true
     }
     
     func autocompleteSearchMatches() -> [String] {
@@ -123,11 +123,11 @@ class AppState: ObservableObject {
             do {
                 var isStale = false
                 let newURL = try URL(resolvingBookmarkData: self.folderBookmarkData, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &isStale)
-                newURL.startAccessingSecurityScopedResource()
+                let _ = newURL.startAccessingSecurityScopedResource()
                 self.cacheMarkdownFilenames(url: newURL)
                 newURL.stopAccessingSecurityScopedResource()
             } catch {
-                print("Error while decoding bookmark URL data")
+                logStorage += " | Error while decoding bookmark URL data"
             }
         }
     }
@@ -139,12 +139,16 @@ class AppState: ObservableObject {
                 do {
                     let fileAttributes = try fileURL.resourceValues(forKeys:[.isRegularFileKey, .contentTypeKey])
                     if (fileAttributes.isRegularFile! && fileAttributes.contentType != nil) {
-                        if(fileAttributes.contentType != nil && fileAttributes.contentType?.description == "net.daringfireball.markdown") {
-                            let fileName = String(fileURL.lastPathComponent.dropLast(3))
-                            self.markdownFileNames.append(fileName)
+                        if(fileAttributes.contentType != nil) {
+                            if(fileAttributes.contentType?.description == "net.daringfireball.markdown") {
+                                let fileName = String(fileURL.lastPathComponent.dropLast(3))
+                                self.markdownFileNames.append(fileName)
+                            }
                         }
                     }
-                } catch { print(error, fileURL) }
+                } catch {
+                    logStorage += " | Error \(error) while caching \(fileURL.absoluteString)"
+                }
             }
         }
         
@@ -153,8 +157,8 @@ class AppState: ObservableObject {
     
     func handleKeyEvent(event: NSEvent) -> NSEvent {
         var lastTypedCharacterIgnoringModifiers = event.charactersIgnoringModifiers ?? ""
-        let lastTypedCharacters = event.characters ?? ""
-        let charactersWithModifiersApplied = event.characters(byApplyingModifiers: event.modifierFlags) ?? ""
+        let _ = event.characters ?? ""
+        let _ = event.characters(byApplyingModifiers: event.modifierFlags) ?? ""
         let modifierFlags = event.modifierFlags
                 
         if(modifierFlags.contains(.command)) {

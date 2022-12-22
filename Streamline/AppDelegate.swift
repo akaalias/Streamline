@@ -27,7 +27,6 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
             if nil != viewMenu {
                 NSApp.mainMenu?.removeItem(viewMenu!)
             }
-
         }
     }
 }

@@ -29,7 +29,7 @@ struct ContentView: View {
                 if(state.showSettingsPanel) {
                     SettingsView()
                 } else {
-                    if(state.showDemoVideo) {
+                    if(state.showWelcomeScreen) {
                         WelcomeView()
                     } else {
                         RageTextInputView()
@@ -51,7 +51,7 @@ struct ContentView: View {
             state.setupCacheFromBookmark()
         }
         .onDisappear() {
-                 NSEvent.removeMonitor(self.monitor)
+            NSEvent.removeMonitor(self.monitor as Any)
         }
         .readSize { size in
             state.dynamicWindowSize = size

@@ -12,6 +12,7 @@ struct ObsidianVaultSettings: View {
     @State var showFileChooser = false
     @AppStorage("folderBookmarkData") private var folderBookmarkData: Data = Data()
     @AppStorage("vaultUrl") private var vaultURL: URL = URL(fileURLWithPath: "~")
+    @AppStorage("logStorage") private var logStorage: String = ""
 
     var body: some View {
             VStack {
@@ -54,7 +55,7 @@ struct ObsidianVaultSettings: View {
 
                 state.cacheMarkdownFilenames(url: url!)
             } catch {
-                print("Error while accessing folder!")
+                logStorage += " | Error while accessing folder!"
             }
         }
     }

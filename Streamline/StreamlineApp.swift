@@ -45,8 +45,8 @@ struct StreamlineApp: App {
             }
             
             CommandGroup(after: .help) {
-                Button("Watch Intro Video") {
-                    state.showDemoVideo = true
+                Button("Show Welcome Screen") {
+                    state.showWelcomeScreen = true
                 }
             }
         }
@@ -64,7 +64,7 @@ struct StreamlineApp: App {
         savePanel.canCreateDirectories = true
         savePanel.isExtensionHidden = false
         savePanel.allowsOtherFileTypes = false
-        savePanel.title = "Save your Streamline note"
+        savePanel.title = "Save your Streamline Session as markdown"
         savePanel.message = "Choose a folder and a name"
         savePanel.prompt = "Save now"
         savePanel.nameFieldLabel = "File name:"

@@ -22,7 +22,6 @@ struct SettingsView: View {
                     .tabItem {
                         Label("Advanced", systemImage: "gear")
                     }
-
             }
             .frame(width: 600, height: 400)
             

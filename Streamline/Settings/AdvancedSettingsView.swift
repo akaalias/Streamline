@@ -9,16 +9,38 @@ import SwiftUI
 
 struct AdvancedSettingsView: View {
     @EnvironmentObject var state: AppState
+    @AppStorage("logStorage") private var logStorage: String = ""
     @State var result: String = ""
+    @State private var selection: String?
+
     var body: some View {
         VStack {
-            Button("Reset All Settings and Caches") {
-                state.resetEverything()
-                result = "All settings and caches were reset."
+            Text("Application Logs")
+                .font(.title2)
+
+            List(selection: $selection) {
+                ForEach(splitLogs(), id: \.self) { item in
+                    Text(item)
+                }
             }
+            .padding()
+            .frame(height: 150)
+            .listStyle(.automatic)
+            
+            Button("Reset All Settings, Logs and Caches") {
+                state.resetEverything()
+                result = "All settings, logs and caches were reset."
+            }
+            .padding()
             
             Text(result)
+                .padding()
+
         }
+    }
+    
+    private func splitLogs() -> [String] {
+        return logStorage.components(separatedBy: " | ")
     }
 }
 

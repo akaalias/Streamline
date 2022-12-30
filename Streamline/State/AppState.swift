@@ -123,8 +123,17 @@ class AppState: ObservableObject {
             do {
                 var isStale = false
                 let newURL = try URL(resolvingBookmarkData: self.folderBookmarkData, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &isStale)
-                let _ = newURL.startAccessingSecurityScopedResource()
+
+                if isStale {
+                    logStorage += " | bookmark is stale."
+                }
+
+                if !newURL.startAccessingSecurityScopedResource() {
+                    logStorage += " |  startAccessingSecurityScopedResource returned false."
+                }
+
                 self.cacheMarkdownFilenames(url: newURL)
+
                 newURL.stopAccessingSecurityScopedResource()
             } catch {
                 logStorage += " | Error while decoding bookmark URL data"
@@ -140,7 +149,7 @@ class AppState: ObservableObject {
                     let fileAttributes = try fileURL.resourceValues(forKeys:[.isRegularFileKey, .contentTypeKey])
                     if (fileAttributes.isRegularFile! && fileAttributes.contentType != nil) {
                         if(fileAttributes.contentType != nil) {
-                            if(fileAttributes.contentType?.description == "net.daringfireball.markdown") {
+                            if(String(fileURL.lastPathComponent).reversed().starts(with: "dm.")) {
                                 let fileName = String(fileURL.lastPathComponent.dropLast(3))
                                 self.markdownFileNames.append(fileName)
                             }

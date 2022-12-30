@@ -15,9 +15,10 @@ struct WelcomeView: View {
     var body: some View {
         VStack(alignment: .center) {
             Text("Hello and welcome to Streamline, let's get you started!")
+                .font(.title)
                 .padding()
 
-            Text("Before anything else, let's have some fun! Hit your DELETE key a few times. Nice.")
+            Text("Before anything else, let's have some fun! Hit your DELETE and RETURN keys a few times. Nice.")
                 .font(.title2)
                 .padding()
             
@@ -26,14 +27,6 @@ struct WelcomeView: View {
             
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
-                    Image("Welcome")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 250)
-                        .background(.white)
-                        .clipShape(Capsule())
-                        .shadow(color: .black, x: 0, y: 0, blur: 20)
-
                     Text("Step 1")
                         .font(.title)
 
@@ -51,14 +44,6 @@ struct WelcomeView: View {
                 .frame(width: 300)
                 
                 VStack(alignment: .leading) {
-                    Image("Vault")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 250)
-                        .background(.white)
-                        .clipShape(Capsule())
-                        .shadow(color: .black, x: 0, y: 0, blur: 20)
-
                     Text("Step 2")
                         .font(.title)
 
@@ -76,14 +61,6 @@ struct WelcomeView: View {
                 .padding()
                 
                 VStack(alignment: .leading) {
-                    Image("Start")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 250)
-                        .background(.white)
-                        .clipShape(Capsule())
-                        .shadow(color: .black, x: 0, y: 0, blur: 20)
-
                     Text("Step 3")
                         .font(.title)
 

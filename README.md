@@ -89,7 +89,7 @@ Also, Streamline is free and open-source.
 
 Click on the link below to download it now!
 
-[🎁 Download Streamline for macOS 12+](https://github.com/akaalias/getstreamline/releases/latest/download/Streamline.zip)
+[🎁 Download Streamline for macOS 12+](https://github.com/akaalias/getstreamline/releases/latest/download/Streamline.dmg)
 
 ## What you’ll get
 
@@ -151,5 +151,5 @@ It intentionally only *moves forward*.
 
 Streamline is free and [open-source](https://github.com/akaalias/Streamline)!
 
-[🎁 Download Streamline for macOS 12+](https://github.com/akaalias/getstreamline/releases/latest/download/Streamline.zip)
+[🎁 Download Streamline for macOS 12+](https://github.com/akaalias/getstreamline/releases/latest/download/Streamline.dmg)
 

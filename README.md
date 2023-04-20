@@ -3,6 +3,7 @@
 - [Alicia Guo](https://www.aliciaguo.com/)'s Demo [on Twitter](https://twitter.com/upcycledwords/status/1648427766151532545)
 - [iA Writer](https://ia.net/writer)
 - [FlowState](https://apps.apple.com/us/app/flowstate/id1060276201)
+- [Typora](https://typora.io/)
 
 ## Streamline Demo and Download
 Watch the demo and get Streamline for macOS here:
